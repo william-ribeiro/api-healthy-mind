@@ -1,0 +1,70 @@
+.eslintrc.js
+ormconfig.js
+packages/**/*.js
+node_modules
+dist
+*.sh
+#Images.
+*.jpg
+*.png
+*.ico
+*.svg
+# OSX
+#
+.DS_Store
+#ENV
+.env
+
+# Xcode
+#
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+project.xcworkspace
+
+# Android/ds
+#
+build/
+.idea
+.gradle
+local.properties
+*.iml
+*.hprof
+
+# node.js
+#
+
+npm-debug.log
+yarn-error.log
+node_modules/
+yarn.lock
+package-lock.json
+
+# BUCK
+buck-out/
+\.buckd/
+*.keystore
+!debug.keystore
+
+# Bundle artifacts
+*.jsbundle
+
+# CocoaPods
+/ios/Pods/
+
+# Expo
+.expo/
+web-build/

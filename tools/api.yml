@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  db:
+    build: ../.docker/postgres
+    container_name: data
+    hostname: db
+    restart: always
+    tty: true
+    environment:
+      - POSTGRES_DB=gamma
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=gamma
+      - HOSTNAME=data
+    ports:
+      - '5432:5432'
+    volumes:
+      - ${PWD}/.docker/dbdata:/var/lib/postgresql/data 
+    networks:
+      - gamma
+
+  server:
+    build: ../
+    entrypoint: dockerize -wait tcp://db:5432 -timeout 40s ./.docker/entrypoint.sh
+    container_name: server
+    environment:
+      NODE_ENV: ${NODE_ENV}
+    ports:
+      - 4000:4000
+    volumes:
+      - ${PWD}/:/home/node/app 
+    networks:
+      - gamma
+    depends_on:
+      - db
+networks:
+  gamma:
+  

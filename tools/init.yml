@@ -1,0 +1,27 @@
+version: '3'
+services:
+  migrator:
+    image: node:alpine
+    container_name: migrator
+    volumes:
+      - ${PWD}/:/home/node/app
+    working_dir: /home/node/app
+    command: yarn migration:run
+    environment:
+      NODE_ENV: ${NODE_ENV}
+    networks:
+      - gamma
+  revert:
+    image: node:alpine
+    container_name: revert
+    volumes:
+      - ${PWD}/:/home/node/app
+    working_dir: /home/node/app
+    command: yarn migration:revert
+    environment:
+      NODE_ENV: ${NODE_ENV}
+    networks:
+      - gamma
+networks:
+  gamma:
+   

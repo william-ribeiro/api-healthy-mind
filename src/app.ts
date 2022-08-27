@@ -12,7 +12,7 @@ import morgan from 'morgan';
 import swaggerUi from 'swagger-ui-express';
 import swaggerFile from './swagger.json';
 
-import { logger, } from './shared';
+import { logger } from './shared';
 import { AppError } from './errors';
 import router from './routes';
 
@@ -25,8 +25,6 @@ const morganMiddleware = morgan('combined', {
     write: (msg) => logger.http(msg),
   },
 });
-
-
 
 app.use(morganMiddleware);
 

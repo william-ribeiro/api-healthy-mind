@@ -22,6 +22,17 @@ services:
       NODE_ENV: ${NODE_ENV}
     networks:
       - gamma
+  tests:
+    image: node:alpine
+    container_name: tests
+    volumes:
+      - ${PWD}/:/home/node/app
+    working_dir: /home/node/app
+    command: yarn test
+    environment:
+      NODE_ENV: ${NODE_ENV}
+    networks:
+      - gamma
 networks:
   gamma:
    

@@ -1,9 +1,9 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, PrimaryColumn, Repository } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 import { IUser } from '../../../interfaces/entities';
 
 @Entity('users')
-export class User implements IUser {
+export abstract class User implements IUser {
   @PrimaryColumn()
   public readonly id: string;
 
@@ -30,4 +30,7 @@ export class User implements IUser {
       this.id = uuidV4();
     }
   }
+  abstract repository(): Repository<IUser>;
+
+  abstract getById(storeId: number): Promise<IUser | undefined>;
 }

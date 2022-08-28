@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CreateUserUseCase } from './CreateUserUseCase';
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';

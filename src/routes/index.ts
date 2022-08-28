@@ -8,4 +8,6 @@ routes.use(getIp);
 
 routes.use('/signup', userRoutes);
 
+routes.use('/users', userRoutes);
+
 export default routes;

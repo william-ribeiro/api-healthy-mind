@@ -10,8 +10,7 @@ import helmet from 'helmet';
 import cors from 'cors';
 import morgan from 'morgan';
 import swaggerUi from 'swagger-ui-express';
-import swaggerFile from './swagger.json';
-
+import { apiDocs } from './docs/apiDocs';
 import { logger } from './shared';
 import { AppError } from './errors';
 import router from './routes';
@@ -34,7 +33,7 @@ app.use(
   }),
 );
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiDocs));
 
 app.use(router);
 

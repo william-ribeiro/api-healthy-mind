@@ -1,3 +1,3 @@
 export * from './entities';
 export * from './repositories';
-export * from './response';
+export * from './useCases';

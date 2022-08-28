@@ -1,4 +1,3 @@
-import { hash } from 'bcryptjs';
 import { inject, injectable } from 'tsyringe';
 
 import { CONTAINER } from '../../../../constants';
@@ -6,6 +5,7 @@ import { AppError } from '../../../../errors';
 import { ICreateUser, IUser, IUsersRepository } from '../../../../interfaces';
 import { Validators } from '../../../../shared';
 import { parseName, removeSpecialCharactersFromString } from '../../../../utils';
+import { generatePasswordHash } from '../../utils';
 
 @injectable()
 export class CreateUserUseCase {
@@ -27,7 +27,7 @@ export class CreateUserUseCase {
 
     payload.name = parseName(name);
     payload.email = removeSpecialCharactersFromString(email);
-    payload.password = await hash(password.trim(), 8);
+    payload.password = await generatePasswordHash(password);
 
     const response = await this.userRepository.create(payload);
 

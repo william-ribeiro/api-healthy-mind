@@ -6,4 +6,7 @@ export class Validators {
     email: yup.string().email('invalid email').required(),
     password: yup.string().required('invalid password').min(6, 'minimum 6 characters'),
   });
+  updateUser = yup.object().shape({
+    password: yup.string().min(6, 'minimum 6 characters'),
+  });
 }

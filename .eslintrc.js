@@ -45,6 +45,7 @@ module.exports = {
     semi: ['error', 'always'],
     'no-empty-function': 'off',
     strictPropertyInitialization: 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-unsafe-return': 'off',
     '@typescript-eslint/no-unsafe-call': 'off',

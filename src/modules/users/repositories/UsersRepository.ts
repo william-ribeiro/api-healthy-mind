@@ -15,6 +15,10 @@ export class UsersRepository implements IUsersRepository {
     return this.repository.findOne({ id, enabled: true });
   }
 
+  public async getByEmail(email: string): Promise<IUser> {
+    return this.repository.findOne({ email, enabled: true });
+  }
+
   public async create(payload: ICreateUser): Promise<IUser> {
     const newUser = this.repository.create(payload);
     return this.repository.save(newUser);

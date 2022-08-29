@@ -21,6 +21,10 @@ export class CreateUserUseCase {
       throw new AppError(err.errors[0]);
     }
 
+    const user = await this.userRepository.getByEmail(payload.email);
+
+    if (user) throw new AppError('User already exists', 409);
+
     const { name, email, password, confirmPassword } = payload;
 
     if (password !== confirmPassword) throw new AppError('Password mismatch');

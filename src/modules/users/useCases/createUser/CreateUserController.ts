@@ -17,11 +17,7 @@ export class CreateUserController {
     } catch (err: Error | any) {
       logger.error(`${timeBr} | [USER NOT CREATED] => ${err.message}`);
 
-      if (err.code === '23505' || err.statusCode === 409) {
-        throw new AppError('User already exists', 409);
-      }
-
-      throw new AppError(err.message);
+      throw new AppError(err.message, err.statusCode);
     }
   }
 }

@@ -1,10 +1,14 @@
-import { parseName } from './../../../../utils/helpers';
 import { inject, injectable } from 'tsyringe';
-import { CONTAINER } from '../../../../constants';
 import { AppError } from '../../../../errors';
+import { CONTAINER } from '../../../../constants';
+import {
+  parseName,
+  removeSpecialCharactersFromString,
+  filterDefinedProperties,
+} from './../../../../utils/helpers';
 import { IUpdateUser, IUser, IUsersRepository } from '../../../../interfaces';
-import { filterDefinedProperties } from '../../../../utils';
 import { makePasswordUpdate } from '../../utils';
+import { Validators } from '../../../../shared';
 
 @injectable()
 export class UpdateUserUseCase {
@@ -14,11 +18,29 @@ export class UpdateUserUseCase {
   ) {}
 
   async execute(id: string, payload: IUpdateUser): Promise<IUser> {
+    const { name, email } = payload;
+
     const user = await this.repository.getById(id);
 
     if (!user) throw new AppError('User not found', 404);
 
-    if (payload.name) payload.name = parseName(payload.name);
+    payload.name = !name ? user.name : parseName(name);
+
+    if (email && email !== user.email) {
+      const verifyEmail = await this.repository.getByEmail(email);
+
+      if (verifyEmail) throw new AppError('Email in use', 409);
+
+      try {
+        await new Validators().email.validate(removeSpecialCharactersFromString(email), {
+          abortEarly: false,
+        });
+      } catch (err) {
+        throw new AppError(err.errors[0]);
+      }
+
+      payload.email = removeSpecialCharactersFromString(email);
+    }
 
     const isUpdatePassword = await makePasswordUpdate(payload);
 

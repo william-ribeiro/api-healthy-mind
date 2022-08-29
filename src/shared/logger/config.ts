@@ -19,19 +19,19 @@ const levels = {
 
 const transports = [
   new winston.transports.File({
-    filename: resolve(__dirname, '..', '..','..', 'logs', 'error.log'),
+    filename: resolve(__dirname, '..', '..', '..', 'logs', 'error.log'),
     level: 'error',
     format: winston.format.simple(),
   }),
 
   new winston.transports.File({
-    filename: resolve(__dirname, '..', '..', '..','logs', 'combined.log'),
+    filename: resolve(__dirname, '..', '..', '..', 'logs', 'combined.log'),
     level: 'info',
     format: winston.format.simple(),
   }),
 
   new winston.transports.File({
-    filename: resolve(__dirname, '..', '..', '..','logs', 'http.log'),
+    filename: resolve(__dirname, '..', '..', '..', 'logs', 'http.log'),
     level: 'http',
     format: filter('http'),
   }),

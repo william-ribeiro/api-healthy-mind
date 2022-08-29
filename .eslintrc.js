@@ -11,7 +11,6 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
-    'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
   ],
@@ -24,7 +23,7 @@ module.exports = {
     project: ['tsconfig.json'],
     sourceType: 'module',
   },
-  plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier'],
+  plugins: ['@typescript-eslint', 'prettier'],
   rules: {
     indent: ['error', 2, { SwitchCase: 1 }],
     '@typescript-eslint/no-misused-promises': 'off',
@@ -69,5 +68,3 @@ module.exports = {
     },
   },
 };
-//"project": "./**/tsconfig.json",
-//"tsconfigRootDir": "__dirname",

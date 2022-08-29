@@ -14,7 +14,7 @@ data.db
 .docker/dbdata/
 dbdata
 *.log
-yarn.lock
+
 yarn-error.log
 # Xcode
 #
@@ -51,7 +51,7 @@ node_modules/
 npm-debug.log
 yarn-error.log
 node_modules/
-yarn.lock
+
 package-lock.json
 
 # BUCK

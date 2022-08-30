@@ -94,10 +94,10 @@ export default {
   // modulePathIgnorePatterns: [],
 
   // Activates notifications for test results
-  // notify: false,
+  notify: true,
 
   // An enum that specifies notification mode. Requires { notify: true }
-  // notifyMode: "failure-change",
+  notifyMode: 'failure-change',
 
   // A preset that is used as a base for Jest's configuration
   preset: 'ts-jest',
@@ -106,7 +106,7 @@ export default {
   // projects: undefined,
 
   // Use this configuration option to add custom reporters to Jest
-  // reporters: undefined,
+  reporters: ['default', 'github-actions'],
 
   // Automatically reset mock state before every test
   // resetMocks: false,
@@ -155,11 +155,10 @@ export default {
   // The glob patterns Jest uses to detect test files
   testMatch: ['**/*.spec.ts'],
   setupFilesAfterEnv: ['reflect-metadata'],
+  coveragePathIgnorePatterns: ['/node_modules/', '/test/'],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
-  // testPathIgnorePatterns: [
-  //   "/node_modules/"
-  // ],
+  testPathIgnorePatterns: ['/node_modules', '/logs', '/tools', '/coverage', '/src/@types'],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
   // testRegex: [],

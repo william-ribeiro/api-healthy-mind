@@ -16,6 +16,7 @@ dbdata
 *.log
 
 # node.js
+coverage
 node_modules/
 npm-debug.log
 yarn-error.log

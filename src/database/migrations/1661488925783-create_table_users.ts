@@ -13,12 +13,12 @@ export class createTableUsers1661488925783 implements MigrationInterface {
             isPrimary: true,
           },
           {
-            name: 'created_at',
+            name: 'createdAt',
             type: 'timestamp',
             default: 'now()',
           },
           {
-            name: 'updated_at',
+            name: 'updatedAt',
             type: 'timestamp',
             default: 'now()',
           },

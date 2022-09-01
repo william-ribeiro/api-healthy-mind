@@ -1,16 +1,19 @@
 import { UsersRepositoryMock, fakeUsers } from '../../../../mocks';
 import { RemoveUserUseCase } from '../../../../../src/modules/users';
 import { IUser } from '../../../../../src/interfaces';
+import { UserCredentialsRepositoryMock } from '../../../../mocks/userCredentials';
 
 let removeUserUseCase: RemoveUserUseCase;
 let usersRepositoryMock: UsersRepositoryMock;
+let userCredentialsRepositoryMock: UserCredentialsRepositoryMock;
 let payload: IUser;
 
 beforeEach(() => {
   payload = fakeUsers[0];
 
   usersRepositoryMock = new UsersRepositoryMock();
-  removeUserUseCase = new RemoveUserUseCase(usersRepositoryMock);
+  userCredentialsRepositoryMock = new UserCredentialsRepositoryMock();
+  removeUserUseCase = new RemoveUserUseCase(usersRepositoryMock, userCredentialsRepositoryMock);
 });
 
 describe('Testing createUserUseCase', () => {

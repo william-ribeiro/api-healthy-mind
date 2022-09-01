@@ -1,13 +1,15 @@
-import { components } from './../config';
+import { components } from '../config';
 
-const { createdResponse, badRequestError, conflictError, internalError } = components.responses;
+const { successResponse, badRequestError, unauthorizedError, conflictError, internalError } =
+  components.responses;
 
-export const signUp = {
-  '/signup': {
-    post: {
+export const update = {
+  '/users/update': {
+    put: {
       tags: ['Users'],
-      summary: 'Create user',
-      description: 'Here you can created user',
+      security: [{ bearerAuth: [] }],
+      summary: 'Update user',
+      description: 'Here you can updated user',
       requestBody: {
         content: {
           'application/json': {
@@ -19,20 +21,20 @@ export const signUp = {
                 password: { type: 'string' },
                 confirmPassword: { type: 'string' },
               },
-              required: ['name', 'email', 'password', 'confirmPassword'],
               example: {
-                name: 'user sample',
-                email: 'sample@email.com',
-                password: 'sample',
-                confirmPassword: 'sample',
+                name: 'user sample update',
+                email: 'sampleupdate@email.com',
+                password: 'sample update',
+                confirmPassword: 'sample update',
               },
             },
           },
         },
       },
       responses: {
-        '201': createdResponse,
+        '200': successResponse,
         '400': badRequestError,
+        '401': unauthorizedError,
         '409': conflictError,
         '500': internalError,
       },

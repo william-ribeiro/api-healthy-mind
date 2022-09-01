@@ -20,7 +20,7 @@ export class UpdateUserController {
     } catch (err: Error | any) {
       logger.error(`${timeBr} | [User not updated] => ${err.message}`);
 
-      throw new AppError(err.message);
+      throw new AppError(err.message, err.statusCode);
     }
   }
 }

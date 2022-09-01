@@ -1,4 +1,6 @@
-import { response } from '../config';
+import { components } from './../config';
+
+const { successResponse, notFoundError, badRequestError, internalError } = components.responses;
 
 export const signIn = {
   '/signin': {
@@ -24,7 +26,12 @@ export const signIn = {
           },
         },
       },
-      responses: { '200': response[201], '401': response[401], '500': response[500] },
+      responses: {
+        '200': successResponse,
+        '400': badRequestError,
+        '404': notFoundError,
+        '500': internalError,
+      },
     },
   },
 };

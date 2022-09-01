@@ -1,9 +1,12 @@
 import { users } from './users';
-import { header, security } from './config';
+import { components, header } from './config';
+import { refreshToken } from './refreshToken';
+
 export const apiDocs = {
   ...header,
   paths: {
+    ...refreshToken,
     ...users,
   },
-  ...security,
+  components,
 };

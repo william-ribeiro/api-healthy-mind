@@ -36,7 +36,7 @@ export class RefreshTokenUseCase {
       }
 
       logger.error(`${timeBr} | [INVALID REFRESH TOKEN] =>`);
-      throw new AppError(err.message);
+      throw new AppError(err.message, 401);
     }
   }
 }

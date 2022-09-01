@@ -27,7 +27,7 @@ export class UsersRepository implements IUsersRepository {
   public async update(id: string, payload: IUpdateUser): Promise<IUser> {
     const updateUser = await this.repository.update(id, {
       ...payload,
-      updated_at: moment(),
+      updatedAt: moment(),
     });
 
     await this.repository.save({ id, updateUser });

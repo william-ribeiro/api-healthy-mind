@@ -1,10 +1,11 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
+import { DATABASE } from '../../constants';
 
 export class createTablePatients1661489883008 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'patients',
+        name: DATABASE.PATIENTS,
         columns: [
           {
             name: 'id',
@@ -12,12 +13,12 @@ export class createTablePatients1661489883008 implements MigrationInterface {
             isPrimary: true,
           },
           {
-            name: 'created_at',
+            name: 'createdAt',
             type: 'timestamp',
             default: 'now()',
           },
           {
-            name: 'updated_at',
+            name: 'updatedAt',
             type: 'timestamp',
             default: 'now()',
           },
@@ -41,12 +42,12 @@ export class createTablePatients1661489883008 implements MigrationInterface {
             isNullable: true,
           },
           {
-            name: 'birth_date',
+            name: 'birthDate',
             type: 'varchar',
             isNullable: true,
           },
           {
-            name: 'address_id',
+            name: 'addressId',
             type: 'integer',
           },
           {
@@ -65,7 +66,7 @@ export class createTablePatients1661489883008 implements MigrationInterface {
             name: 'fk_address',
             referencedTableName: 'address',
             referencedColumnNames: ['id'],
-            columnNames: ['address_id'],
+            columnNames: ['addressId'],
             onDelete: 'CASCADE',
             onUpdate: 'CASCADE',
           },

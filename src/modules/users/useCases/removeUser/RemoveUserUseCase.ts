@@ -2,13 +2,15 @@ import moment from 'moment';
 import { inject, injectable } from 'tsyringe';
 import { CONTAINER } from '../../../../constants';
 import { AppError } from '../../../../errors';
-import { IUsersRepository } from '../../../../interfaces';
+import { IUserCredentialsRepository, IUsersRepository } from '../../../../interfaces';
 
 @injectable()
 export class RemoveUserUseCase {
   constructor(
     @inject(CONTAINER.USERS_REPOSITORY)
     private repository: IUsersRepository,
+    @inject(CONTAINER.USER_CREDENTIALS_REPOSITORY)
+    private userCredentialsRepository: IUserCredentialsRepository,
   ) {}
 
   async execute(id: string): Promise<void> {
@@ -18,6 +20,9 @@ export class RemoveUserUseCase {
 
     const email = `${moment().unix()}_${user.email}`;
 
-    await this.repository.remove(id, email);
+    await Promise.all([
+      this.repository.remove(id, email),
+      this.userCredentialsRepository.remove(id),
+    ]);
   }
 }

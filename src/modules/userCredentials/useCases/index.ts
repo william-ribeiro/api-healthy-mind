@@ -1,3 +1,3 @@
-export * from './createUserCredential';
+export * from './createCredential';
 export * from './refreshTokenUserCredential';
-export * from './updateUserCredential';
+export * from './updateCredential';

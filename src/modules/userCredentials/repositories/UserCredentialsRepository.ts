@@ -34,4 +34,8 @@ export class UserCredentialsRepository implements IUserCredentialsRepository {
 
     return updateCredential;
   }
+
+  async remove(userId: string): Promise<void> {
+    await this.repository.delete({ userId });
+  }
 }

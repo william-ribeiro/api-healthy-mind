@@ -6,7 +6,7 @@ import { RemoveUserUseCase } from './RemoveUserUseCase';
 
 export class RemoveUserController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const id = '05cb453f-c877-48ac-8ef4-e4949ea4408f'; //response.locals;
+    const { id } = response.locals;
     try {
       const removeUserUseCase = container.resolve(RemoveUserUseCase);
 

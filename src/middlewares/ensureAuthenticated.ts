@@ -11,25 +11,24 @@ export async function ensureAuthenticated(
   response: Response<IResponseLocals>,
   next: NextFunction,
 ) {
-  const authHeader = request.headers.authorization;
+  const authToken = request.headers.authorization;
 
-  if (!authHeader) {
+  if (!authToken) {
     logger.error(`${timeBr} | [TOKEN MISSING][401] => ${Object.values(request.headers)} | `);
     throw new AppError('Token missing', 401);
   }
 
-  const [, token] = authHeader.split(' ');
+  const [, token] = authToken.split(' ');
+  const usersRepository = new UsersRepository();
 
   try {
-    const { sub: userId } = verify(token, process.env.SECRET) as IPayload;
+    const { sub: id } = verify(token, process.env.SECRET_ACCESS_TOKEN) as IPayload;
 
-    const usersRepository = new UsersRepository();
-
-    const user = await usersRepository.getById(userId);
+    const user = await usersRepository.getById(id);
 
     if (!user) throw new AppError('User does not exists!', 400);
 
-    response.locals.id = userId;
+    response.locals.id = id;
     next();
   } catch (err) {
     logger.error(`${timeBr} | [INVALID TOKEN] => ${err.message}`);

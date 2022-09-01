@@ -1,17 +1,18 @@
 import { Column, CreateDateColumn, Entity, PrimaryColumn, Repository } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
+import { DATABASE } from '../../../constants';
 import { IUser } from '../../../interfaces/entities';
 
-@Entity('users')
+@Entity(DATABASE.USERS)
 export abstract class User implements IUser {
   @PrimaryColumn()
   public readonly id: string;
 
   @CreateDateColumn()
-  public created_at: Date;
+  public createdAt: Date;
 
   @CreateDateColumn()
-  public updated_at: Date;
+  public updatedAt: Date;
 
   @Column()
   public name: string;

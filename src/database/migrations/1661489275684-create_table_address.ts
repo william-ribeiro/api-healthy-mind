@@ -1,10 +1,11 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
+import { DATABASE } from '../../constants';
 
 export class createTableAddress1661489275684 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'address',
+        name: DATABASE.ADDRESS,
         columns: [
           {
             name: 'id',
@@ -13,12 +14,12 @@ export class createTableAddress1661489275684 implements MigrationInterface {
             isGenerated: true,
           },
           {
-            name: 'created_at',
+            name: 'createdAt',
             type: 'timestamp',
             default: 'now()',
           },
           {
-            name: 'updated_at',
+            name: 'updatedAt',
             type: 'timestamp',
             default: 'now()',
           },

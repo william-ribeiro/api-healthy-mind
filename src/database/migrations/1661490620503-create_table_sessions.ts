@@ -1,10 +1,11 @@
+import { DATABASE } from './../../constants/index';
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
 export class createTableSessions1661490620503 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'sessions',
+        name: DATABASE.SESSIONS,
         columns: [
           {
             name: 'id',
@@ -12,21 +13,21 @@ export class createTableSessions1661490620503 implements MigrationInterface {
             isGenerated: true,
           },
           {
-            name: 'created_at',
+            name: 'createdAt',
             type: 'timestamp',
             default: 'now()',
           },
           {
-            name: 'updated_at',
+            name: 'updatedAt',
             type: 'timestamp',
             default: 'now()',
           },
           {
-            name: 'user_id',
+            name: 'userId',
             type: 'varchar',
           },
           {
-            name: 'patient_id',
+            name: 'patientId',
             type: 'varchar',
           },
           {
@@ -60,7 +61,7 @@ export class createTableSessions1661490620503 implements MigrationInterface {
             name: 'fk_users',
             referencedTableName: 'users',
             referencedColumnNames: ['id'],
-            columnNames: ['user_id'],
+            columnNames: ['userId'],
             onDelete: 'CASCADE',
             onUpdate: 'CASCADE',
           },
@@ -68,7 +69,7 @@ export class createTableSessions1661490620503 implements MigrationInterface {
             name: 'fk_patients',
             referencedTableName: 'patients',
             referencedColumnNames: ['id'],
-            columnNames: ['patient_id'],
+            columnNames: ['patientId'],
             onDelete: 'CASCADE',
             onUpdate: 'CASCADE',
           },

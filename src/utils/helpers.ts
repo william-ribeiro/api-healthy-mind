@@ -1,3 +1,4 @@
+import lodash from 'lodash';
 import { PAGINATION } from '../constants';
 import util from 'util';
 
@@ -19,6 +20,31 @@ export const parseName = (name: string) => {
     })
     .join(' ')
     .trim();
+};
+
+export const toCamelCase = (object: any) => {
+  const camelCaseObject =
+    (Array.isArray(object) && object.map(toCamelCase)) ||
+    (typeof object === 'object' && lodash.mapKeys(object, (_, key) => lodash.camelCase(key)));
+  return (
+    (camelCaseObject &&
+      ((Array.isArray(camelCaseObject) && camelCaseObject) ||
+        Object.keys(camelCaseObject).reduce((result, key) => {
+          const current =
+            typeof camelCaseObject[key] === 'boolean' && !camelCaseObject[key]
+              ? false
+              : camelCaseObject[key];
+          const value =
+            typeof camelCaseObject[key] !== 'boolean' && !current
+              ? null
+              : (Array.isArray(current) && current.map(toCamelCase)) ||
+                (typeof current === 'object' && toCamelCase(current)) ||
+                current;
+
+          return { ...result, [key]: value };
+        }, {}))) ||
+    object
+  );
 };
 
 export const removeSpecialCharactersFromString = (text: string) => {

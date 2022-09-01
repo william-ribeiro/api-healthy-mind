@@ -1,2 +1,2 @@
-export * from './makeToken';
+export * from './generateToken';
 export * from './helpers';

@@ -6,7 +6,7 @@ import { UpdateUserUseCase } from './UpdateUserUseCase';
 
 export class UpdateUserController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const id = '4c6b2e0d-1cce-49a1-aeda-b8f6f9536fe8'; //response.locals;
+    const { id } = response.locals;
     const payload = request.body;
 
     try {

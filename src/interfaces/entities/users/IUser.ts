@@ -1,7 +1,7 @@
 export abstract class IUser {
   public readonly id: string;
-  public created_at: Date;
-  public updated_at: Date;
+  public createdAt: Date;
+  public updatedAt: Date;
   public name: string;
   public email: string;
   public password: string;

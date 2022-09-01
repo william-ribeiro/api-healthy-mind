@@ -1,10 +1,11 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
+import { DATABASE } from '../../constants';
 
 export class createTableUserCredentials1661490328637 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'user_credentials',
+        name: DATABASE.USER_CREDENTIALS,
         columns: [
           {
             name: 'id',
@@ -12,29 +13,29 @@ export class createTableUserCredentials1661490328637 implements MigrationInterfa
             isGenerated: true,
           },
           {
-            name: 'created_at',
+            name: 'createdAt',
             type: 'timestamp',
             default: 'now()',
           },
           {
-            name: 'updated_at',
+            name: 'updatedAt',
             type: 'timestamp',
             default: 'now()',
           },
           {
-            name: 'user_id',
+            name: 'userId',
             type: 'varchar',
           },
           {
-            name: 'access_token',
+            name: 'accessToken',
             type: 'varchar',
           },
           {
-            name: 'refresh_token',
+            name: 'refreshToken',
             type: 'varchar',
           },
           {
-            name: 'expire_in',
+            name: 'expiresIn',
             type: 'timestamp',
           },
           {
@@ -48,7 +49,7 @@ export class createTableUserCredentials1661490328637 implements MigrationInterfa
             name: 'fk_user',
             referencedTableName: 'users',
             referencedColumnNames: ['id'],
-            columnNames: ['user_id'],
+            columnNames: ['userId'],
             onDelete: 'CASCADE',
             onUpdate: 'CASCADE',
           },

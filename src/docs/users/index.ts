@@ -1,3 +1,4 @@
-import { signup } from './signup';
+import { signIn } from './signIn';
+import { signUp } from './signUp';
 
-export const users = { ...signup };
+export const users = { ...signIn, ...signUp };

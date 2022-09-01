@@ -12,7 +12,7 @@
     "start": "node dist/server.js",
     "build": "tsc",
     "start:server": "nodemon -w src --ext ts --exec ts-node --transpile-only src/server.ts",
-    "deploy": "git push -f origin develop && git checkout main && git merge develop && git push -f origin main && git push -f heroku main && git checkout develop",
+    "deploy": "git push -f origin develop && git checkout main && git merge develop && git push -f origin main && git checkout develop",
     "typeorm": "ts-node ./node_modules/typeorm/cli",
     "migration:run": "ts-node ./node_modules/typeorm/cli migration:run",
     "migration:revert": "ts-node ./node_modules/typeorm/cli migration:revert",

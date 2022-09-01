@@ -1,6 +1,6 @@
 import { response } from './../config';
 
-export const signup = {
+export const signUp = {
   '/signup': {
     post: {
       tags: ['Users'],

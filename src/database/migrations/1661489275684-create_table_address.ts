@@ -56,6 +56,11 @@ export class createTableAddress1661489275684 implements MigrationInterface {
             name: 'country',
             type: 'varchar',
           },
+          {
+            name: 'enabled',
+            type: 'boolean',
+            default: true,
+          },
         ],
       }),
     );

@@ -47,7 +47,7 @@ export class createTableUserCredentials1661490328637 implements MigrationInterfa
         foreignKeys: [
           {
             name: 'fk_user',
-            referencedTableName: 'users',
+            referencedTableName: DATABASE.USERS,
             referencedColumnNames: ['id'],
             columnNames: ['userId'],
             onDelete: 'CASCADE',

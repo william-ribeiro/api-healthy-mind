@@ -59,7 +59,7 @@ export class createTableSessions1661490620503 implements MigrationInterface {
         foreignKeys: [
           {
             name: 'fk_users',
-            referencedTableName: 'users',
+            referencedTableName: DATABASE.USERS,
             referencedColumnNames: ['id'],
             columnNames: ['userId'],
             onDelete: 'CASCADE',
@@ -67,7 +67,7 @@ export class createTableSessions1661490620503 implements MigrationInterface {
           },
           {
             name: 'fk_patients',
-            referencedTableName: 'patients',
+            referencedTableName: DATABASE.PATIENTS,
             referencedColumnNames: ['id'],
             columnNames: ['patientId'],
             onDelete: 'CASCADE',

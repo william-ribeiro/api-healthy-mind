@@ -23,9 +23,9 @@ describe('Testing createUserUseCase', () => {
       ...payload,
     });
 
-    const response = await usersRepositoryMock.getById(createUser.id);
+    const expectResponse = await usersRepositoryMock.getById(createUser.id);
 
-    expect(createUser).toEqual(response);
+    expect(createUser).toEqual(expectResponse);
   });
 
   it('must return error when passed invalid payload', async () => {

@@ -5,7 +5,7 @@ import {
   IUserCredentials,
   IUserCredentialsRepository,
 } from '../../../../interfaces';
-import { filterDefinedProperties, toCamelCase } from '../../../../utils';
+import { filterDefinedProperties } from '../../../../utils';
 
 @injectable()
 export class UpdateUserCredentialsUseCase {
@@ -15,8 +15,6 @@ export class UpdateUserCredentialsUseCase {
   ) {}
 
   async execute(userId: string, payload: IUpdateUserCredentials): Promise<IUserCredentials> {
-    return toCamelCase(
-      await this.userCredentialsRepository.update(userId, filterDefinedProperties(payload)),
-    );
+    return this.userCredentialsRepository.update(userId, filterDefinedProperties(payload));
   }
 }

@@ -19,9 +19,17 @@ describe('Testing updateUserUseCase', () => {
 
     const updateUser = await updateUserUseCase.execute(payload.id, payload);
 
-    const response = await usersRepositoryMock.getById(updateUser.id);
+    const expectResponse = await usersRepositoryMock.getById(updateUser.id);
 
-    expect(updateUser).toEqual(response);
+    expect(updateUser).toEqual(expectResponse);
+  });
+
+  it('must return update user error when payload empty', async () => {
+    try {
+      return expect(await updateUserUseCase.execute(payload.id, {})).toBeUndefined();
+    } catch (err) {
+      return expect(err.message).toBe('Invalid payload');
+    }
   });
 
   it('must return update user error when password mismatch', async () => {

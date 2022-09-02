@@ -1,5 +1,5 @@
 export interface IUpdateAddress {
-  postaCode?: string;
+  postalCode?: string;
   street?: string;
   number?: string;
   details?: string;

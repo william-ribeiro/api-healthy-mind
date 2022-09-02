@@ -15,7 +15,7 @@ export class UserCredentialsRepositoryMock implements IUserCredentialsRepository
   }
 
   async create(payload: ICreateUserCredentials): Promise<IUserCredentials> {
-    const id = fakeCredentials.length;
+    const id = fakeCredentials.length + 1;
 
     const index = fakeCredentials.push({
       id,

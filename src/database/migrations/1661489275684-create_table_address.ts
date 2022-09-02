@@ -24,7 +24,7 @@ export class createTableAddress1661489275684 implements MigrationInterface {
             default: 'now()',
           },
           {
-            name: 'postaCode',
+            name: 'postalCode',
             type: 'varchar',
           },
           {
@@ -39,6 +39,7 @@ export class createTableAddress1661489275684 implements MigrationInterface {
             name: 'details',
             type: 'varchar',
             isNullable: true,
+            default: null,
           },
           {
             name: 'district',

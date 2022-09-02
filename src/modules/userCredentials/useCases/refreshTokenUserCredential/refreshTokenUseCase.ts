@@ -16,6 +16,7 @@ export class RefreshTokenUseCase {
 
   async execute(refreshToken: string): Promise<IRefreshToken> {
     try {
+      if (!refreshToken) throw new AppError('Invalid refreshToken');
       const { sub: userId } = verify(refreshToken, process.env.SECRET_REFRESH_TOKEN) as IPayload;
 
       const credential = await this.userCredentialsRepository.getCredentialByUserId(userId);

@@ -18,6 +18,8 @@ export class UpdateUserUseCase {
   ) {}
 
   async execute(id: string, payload: IUpdateUser): Promise<IUser> {
+    if (!Object.values(payload).length) throw new AppError('Invalid payload');
+
     const { name, email } = payload;
 
     const user = await this.repository.getById(id);

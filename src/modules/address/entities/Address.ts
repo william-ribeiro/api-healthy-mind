@@ -14,7 +14,7 @@ export abstract class Address implements IAddress {
   public updatedAt: Date;
 
   @Column()
-  public postaCode: string;
+  public postalCode: string;
 
   @Column()
   public street: string;
@@ -22,7 +22,7 @@ export abstract class Address implements IAddress {
   @Column()
   public number: string;
 
-  @Column()
+  @Column({ default: null, nullable: true })
   public details: string;
 
   @Column()

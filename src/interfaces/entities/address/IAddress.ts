@@ -2,7 +2,7 @@ export abstract class IAddress {
   public readonly id: number;
   public createdAt: Date;
   public updatedAt: Date;
-  public postaCode: string;
+  public postalCode: string;
   public street: string;
   public number: string;
   public details: string;

@@ -9,7 +9,7 @@ export class AddressRepository implements IAddressRepository {
     this.repository = getRepository(Address);
   }
   async getAddressById(id: number): Promise<IAddress> {
-    return this.repository.findOne({ id });
+    return this.repository.findOne({ id, enabled: true });
   }
   async create(payload: ICreateAddress): Promise<IAddress> {
     const newAddress = this.repository.create(payload);

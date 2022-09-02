@@ -1,10 +1,15 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn, Repository } from 'typeorm';
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryColumn } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 import { DATABASE } from '../../../constants';
-import { IUser } from '../../../interfaces/entities';
+import { IPatient, IUser } from '../../../interfaces/entities';
+import { Patient } from '../../patients';
 
 @Entity(DATABASE.USERS)
 export abstract class User implements IUser {
+  constructor() {
+    if (!this.id) this.id = uuidV4();
+  }
+
   @PrimaryColumn()
   public readonly id: string;
 
@@ -26,12 +31,6 @@ export abstract class User implements IUser {
   @Column({ default: true })
   public enabled: boolean;
 
-  constructor() {
-    if (!this.id) {
-      this.id = uuidV4();
-    }
-  }
-  abstract repository(): Repository<IUser>;
-
-  abstract getById(storeId: number): Promise<IUser | undefined>;
+  @OneToMany(() => Patient, (patient) => patient.user)
+  patient: IPatient[];
 }

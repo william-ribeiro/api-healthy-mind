@@ -40,20 +40,27 @@ export class createTablePatients1661489883008 implements MigrationInterface {
             name: 'gender',
             type: 'varchar',
             isNullable: true,
+            default: null,
           },
           {
             name: 'birthDate',
-            type: 'varchar',
+            type: 'timestamp',
             isNullable: true,
+            default: null,
           },
           {
             name: 'addressId',
             type: 'integer',
           },
           {
+            name: 'userId',
+            type: 'varchar',
+          },
+          {
             name: 'phone',
             type: 'varchar',
             isNullable: true,
+            default: null,
           },
           {
             name: 'enabled',
@@ -64,9 +71,17 @@ export class createTablePatients1661489883008 implements MigrationInterface {
         foreignKeys: [
           {
             name: 'fk_address',
-            referencedTableName: 'address',
+            referencedTableName: DATABASE.ADDRESS,
             referencedColumnNames: ['id'],
             columnNames: ['addressId'],
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE',
+          },
+          {
+            name: 'fk_users',
+            referencedTableName: DATABASE.USERS,
+            referencedColumnNames: ['id'],
+            columnNames: ['userId'],
             onDelete: 'CASCADE',
             onUpdate: 'CASCADE',
           },

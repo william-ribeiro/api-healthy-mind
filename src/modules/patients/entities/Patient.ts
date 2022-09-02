@@ -1,0 +1,65 @@
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { v4 as uuidV4 } from 'uuid';
+import { DATABASE } from '../../../constants';
+import { IPatient, IUser } from '../../../interfaces';
+import { Address } from '../../address';
+import { User } from '../../users';
+
+@Entity(DATABASE.PATIENTS)
+export abstract class Patient implements IPatient {
+  constructor() {
+    if (!this.id) this.id = uuidV4();
+  }
+  @PrimaryGeneratedColumn()
+  public readonly id: string;
+
+  @CreateDateColumn()
+  public createdAt: Date;
+
+  @CreateDateColumn()
+  public updatedAt: Date;
+
+  @Column()
+  public userId: string;
+
+  @Column()
+  public addressId: number;
+
+  @Column()
+  public name: string;
+
+  @Column({ unique: true })
+  @Column()
+  public email: string;
+
+  @Column({ unique: true })
+  public document: string;
+
+  @Column({ default: null, nullable: true })
+  public gender: string;
+
+  @Column({ default: null, nullable: true })
+  public birtDate: Date;
+
+  @Column({ default: null, nullable: true })
+  public phone: string;
+
+  @Column({ default: true })
+  public enabled: boolean;
+
+  @ManyToOne(() => User, (user) => user.patient)
+  @JoinColumn({ name: 'userId', referencedColumnName: 'id' })
+  user: IUser;
+
+  @OneToOne(() => Address)
+  @JoinColumn({ name: 'addressId' })
+  address: Address;
+}

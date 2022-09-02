@@ -11,10 +11,12 @@ export class AddressRepository implements IAddressRepository {
   async getAddressById(id: number): Promise<IAddress> {
     return this.repository.findOne({ id, enabled: true });
   }
+
   async create(payload: ICreateAddress): Promise<IAddress> {
     const newAddress = this.repository.create(payload);
     return this.repository.save(newAddress);
   }
+
   async update(id: number, payload: IUpdateAddress): Promise<IAddress> {
     const { raw: updateAddress } = await this.repository
       .createQueryBuilder()
@@ -25,6 +27,7 @@ export class AddressRepository implements IAddressRepository {
 
     return updateAddress;
   }
+
   async remove(id: number): Promise<void> {
     await this.update(id, { enabled: false });
   }

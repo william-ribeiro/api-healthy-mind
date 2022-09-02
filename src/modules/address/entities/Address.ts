@@ -22,7 +22,7 @@ export abstract class Address implements IAddress {
   @Column()
   public number: string;
 
-  @Column({ default: true })
+  @Column()
   public details: string;
 
   @Column()
@@ -37,6 +37,6 @@ export abstract class Address implements IAddress {
   @Column()
   public country: string;
 
-  @Column()
+  @Column({ default: true })
   public enabled: boolean;
 }

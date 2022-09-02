@@ -19,7 +19,7 @@
     "lint": "eslint --ext .tsx --ext .ts src/ --fix",
     "format": "prettier --check src/",
     "prettier": "npx @btmills/prettier --write",
-    "test": "npx jest",
+    "test": "npx jest --i --verbose --ci --updateSnapshot",
     "test:watch": "npx jest --watch",
     "test:coverage": "npx jest --coverage"
   },

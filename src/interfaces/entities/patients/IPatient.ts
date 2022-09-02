@@ -8,7 +8,7 @@ export abstract class IPatient {
   public email: string;
   public document: string;
   public gender: string;
-  public birtDate: Date;
+  public birthDate: string;
   public phone: string;
   public enabled: boolean;
 }

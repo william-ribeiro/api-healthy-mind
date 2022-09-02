@@ -1,2 +1,2 @@
-export * from './UserMock';
+export * from './addressRepositoryMock';
 export * from './fakeAddress';

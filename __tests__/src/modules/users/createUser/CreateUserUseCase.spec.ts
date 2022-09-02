@@ -57,7 +57,7 @@ describe('Testing createUserUseCase', () => {
     }
   });
 
-  it('must return user update error when password less than 6 characters', async () => {
+  it('must return user created error when password less than 6 characters', async () => {
     payload.password = '123';
     payload.confirmPassword = '123';
     try {

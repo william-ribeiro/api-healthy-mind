@@ -5,7 +5,7 @@ import {
   JoinColumn,
   ManyToOne,
   OneToOne,
-  PrimaryGeneratedColumn,
+  PrimaryColumn,
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 import { DATABASE } from '../../../constants';
@@ -18,7 +18,7 @@ export abstract class Patient implements IPatient {
   constructor() {
     if (!this.id) this.id = uuidV4();
   }
-  @PrimaryGeneratedColumn()
+  @PrimaryColumn()
   public readonly id: string;
 
   @CreateDateColumn()
@@ -47,7 +47,7 @@ export abstract class Patient implements IPatient {
   public gender: string;
 
   @Column({ default: null, nullable: true })
-  public birtDate: Date;
+  public birthDate: string;
 
   @Column({ default: null, nullable: true })
   public phone: string;

@@ -21,7 +21,9 @@ export class CreateUserUseCase {
       throw new AppError(err.errors[0]);
     }
 
-    const user = await this.userRepository.getByEmail(payload.email);
+    const user = await this.userRepository.getByEmail(
+      removeSpecialCharactersFromString(payload.email),
+    );
 
     if (user) throw new AppError('User already exists', 409);
 

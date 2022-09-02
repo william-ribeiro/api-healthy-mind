@@ -1,5 +1,6 @@
 export const CONTAINER = {
   ADDRESS_REPOSITORY: 'AddressRepository',
+  PATIENT_REPOSITORY: 'PatientRepository',
   USERS_REPOSITORY: 'UsersRepository',
   USER_CREDENTIALS_REPOSITORY: 'UserCredentialsRepository',
 };

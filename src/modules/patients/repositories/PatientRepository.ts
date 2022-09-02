@@ -1,14 +1,15 @@
 import moment from 'moment';
 import { getRepository, Repository } from 'typeorm';
 import {
-  ICreatePatients,
+  ICreatePatient,
+  IGetPatientByAttribute,
   IPatient,
-  IPatientsRepository,
-  IUpdatePatients,
+  IPatientRepository,
+  IUpdatePatient,
 } from '../../../interfaces';
 import { Patient } from '../entities';
 
-export class PatientsRepository implements IPatientsRepository {
+export class PatientRepository implements IPatientRepository {
   private repository: Repository<IPatient>;
 
   constructor() {
@@ -16,15 +17,19 @@ export class PatientsRepository implements IPatientsRepository {
   }
 
   async getPatientById(idPatient: string, idUser: string): Promise<IPatient> {
-    return this.repository.findOne({ id: idPatient, userId: idUser });
+    return this.repository.findOne({ id: idPatient, userId: idUser, enabled: true });
   }
 
-  async create(payload: ICreatePatients): Promise<IPatient> {
+  async getPatientByAttribute(attribute: IGetPatientByAttribute): Promise<IPatient> {
+    return this.repository.findOne({ ...attribute, enabled: true });
+  }
+
+  async create(payload: ICreatePatient): Promise<IPatient> {
     const newPatient = this.repository.create(payload);
     return this.repository.save(newPatient);
   }
 
-  async update(idPatient: string, idUser: string, payload: IUpdatePatients): Promise<IPatient> {
+  async update(idPatient: string, idUser: string, payload: IUpdatePatient): Promise<IPatient> {
     const { raw: updatePatient } = await this.repository
       .createQueryBuilder()
       .update({ ...payload, updatedAt: moment() })

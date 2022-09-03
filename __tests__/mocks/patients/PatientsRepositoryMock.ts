@@ -25,6 +25,10 @@ export class PatientsRepositoryMock implements IPatientRepository {
     return fakePatients.find((patient) => patient.document === attribute.document);
   }
 
+  async listAllPatients(userId: string): Promise<IPatient[]> {
+    return fakePatients.filter((patient) => patient.userId === userId && patient.enabled);
+  }
+
   async create(payload: ICreatePatient): Promise<IPatient> {
     const index = fakePatients.push({
       id: uuidV4(),

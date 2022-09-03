@@ -1,92 +1,138 @@
-# api-healthy-mind
+<p align="center">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/william-ribeiro/api-healthy-mind?color=%2304D361">
 
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/william-ribeiro/api-healthy-mind">
 
+  <a href="https://github.com/william-ribeiro/api-healthy-mind/commits/main">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/william-ribeiro/api-healthy-mind">
+  </a>
+    
+   <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
+   <a href="https://github.com/william-ribeiro/api-healthy-mind/stargazers">
+    <img alt="Stargazers" src="https://img.shields.io/github/stars/william-ribeiro/api-healthy-mind?style=social">
+  </a>
 
-## Getting started
+  <a href="https://www.gama.academy/">
+    <img alt="Desafio proposto pela Gama Academy" src="https://img.shields.io/badge/proposto%20pela-Gama Academy-%237519C1">
+  </a>
+  
+  <a href="https://www.gama.academy/gama-station">
+    <img alt="NaveTeam" src="https://img.shields.io/badge/Gama-Academy-%237159c1?style=flat&logo=ghost">
+    </a>
+    
+  <div align="center" style="margin-bottom: 20px;">
+<img src="https://e3ba6e8732e83984.cdn.gocache.net/uploads/image/file/2538167/large_1921aa6c4ada2058f41bf79d80b1e22c.png" alt="" width="700" height="250"/>
+</div>
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+</p>
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+<h4 align="center"> 
+	🚧  API Healthy Mind 🚧
+</h4>
 
-## Add your files
+<p align="center">
+ <a href="#-sobre-o-projeto">Sobre</a> •
+ <a href="#-funcionalidades">Funcionalidades</a> • 
+ <a href="#-como-executar-o-projeto">Como executar</a> • 
+ <a href="#-tecnologias">Tecnologias</a> •  
+ <a href="#-autor">Autor</a> • 
+ <a href="#user-content--licença">Licença</a>
+</p>
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+## 💻 Sobre o projeto
+
+🚀 Healthy Mind - é a API do sistema web que visa conectar Psicólogos/Psiquiatras com seus pacientes.
+
+A API é um desafio prosposto durante a jornada Dev For Tech proposto pela [Gama Academy](https://www.gama.academy/).
+
+---
+
+## ⚙️ Funcionalidades
+
+- [V] Cadastro de profissionais:
+- [V] Autenticação JWT,
+- [V] Refresh token,
+- [V] Cadastramento de Pacientes
+- [V] Cadastramento de sessões
+
+---
+
+## 🚧 Requisitos para executar o projeto
+
+- NodeJS -> [Docs](https://nodejs.org/en/docs/)
+- Docker -> [Getting started](https://docs.docker.com/get-started/)
+- Criar seu arquivo .env com base no .env.example
+
+---
+
+## 🚀 Como executar o projeto
+
+```bash
+
+# Clone este repositório
+$ git clone git@github.com:william-ribeiro/api-healthy-mind.git
+
+# Acesse a pasta do projeto no terminal/cmd
+$ cd api-healthy-mind
+
+# Após configurar o .env execute o comando para:
+# ->instalar as dependências
+# ->instanciar o servidor e banco de dados
+# ->executar as migrações
+# ->rodar os testes e subir o servidor
+$ yarn docker:start
+
+# Acesse o endpoint para testar a API
+$ http://localhost:4000/api-docs
 
 ```
-cd existing_repo
-git remote add origin https://gitlab.com/gamma16/api-healthy-mind.git
-git branch -M main
-git push -uf origin main
-```
 
-## Integrate with your tools
+<p align="center">
+  <a href="https://github.com/william-ribeiro/api-healthy-mind/blob/develop/Insomnia_api_collection.yaml" target="_blank"><img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia"></a>
+</p>
 
-- [ ] [Set up project integrations](https://gitlab.com/gamma16/api-healthy-mind/-/settings/integrations)
+---
 
-## Collaborate with your team
+## 🛠 Tecnologias
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+Foi utilizado na aplicação as seguintes tecnologias
 
-## Test and Deploy
+##### [](https://github.com/william-ribeiro/api-healthy-mind#backend-nodejs--typescript)**Backend** ([NodeJS](https://nodejs.org/en/) + [TypeScript](https://www.typescriptlang.org/))
 
-Use the built-in continuous integration in GitLab.
+- **[Express](https://expressjs.com/)**
+- **[Typeorm](https://typeorm.io/#/)**
+- **[Jest](https://jestjs.io/pt-BR/)**
+- **[Docker](v)**
+- **[JWT](https://jwt.io/)**
+- **[UUID](https://www.uuidgenerator.net/)**
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+---
 
-***
+## 💪 Como contribuir para o projeto
 
-# Editing this README
+1. Faça um **fork** do projeto.
+2. Crie uma nova branch com as suas alterações: `git checkout -b my-feature`
+3. Salve as alterações e crie uma mensagem de commit contando o que você fez: `git commit -m "feature: My new feature"`
+4. Envie as suas alterações: `git push origin my-feature`
+   > Caso tenha alguma dúvida confira este [guia de como contribuir no GitHub](https://docs.github.com/pt/get-started/quickstart/contributing-to-projects)
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+---
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+## 🦸 Autor
 
-## Name
-Choose a self-explaining name for your project.
+<a href="https://github.com/william-ribeiro/">
+ <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/60985185?s=460&u=389f6878e2b972d3f66348a698c7ecfbbb245582&v=4" width="100px;" alt=""/>
+ <br />
+ <sub><b>William Ribeiro</b></sub></a> <a href="https://blog.rocketseat.com.br/author/thiago/" title="AlunoRocketseat">🚀</a>
+ <br />
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+[![Linkedin Badge](https://img.shields.io/badge/-William-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/william-ribeiro-0b5ab911a/)](https://www.linkedin.com/in/william-ribeiro-0b5ab911a/)
+[![Gmail Badge](https://img.shields.io/badge/-sbrdigital15@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:sbrdigital15@gmail.com)](mailto:sbrdigital15@gmail.com)
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+---
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+## 📝 Licença
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+Este projeto esta sobe a licença [MIT](./LICENSE).
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+---

@@ -16,7 +16,7 @@ beforeEach(() => {
   removeUserUseCase = new RemoveUserUseCase(usersRepositoryMock, userCredentialsRepositoryMock);
 });
 
-describe('Testing createUserUseCase', () => {
+describe('Testing removeUserUseCase', () => {
   it('must removed user when passed a valid userId', async () => {
     await removeUserUseCase.execute(payload.id);
 

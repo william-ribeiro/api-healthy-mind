@@ -13,7 +13,7 @@ beforeEach(() => {
   removePatientUseCase = new RemovePatientUseCase(patientRepositoryMock);
 });
 
-describe('Testing createUserUseCase', () => {
+describe('Testing removeUserUseCase', () => {
   it('must removed patient when passed a valid patientId', async () => {
     await removePatientUseCase.execute(payload.id, payload.userId);
 

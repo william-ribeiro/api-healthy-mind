@@ -1,8 +1,9 @@
 export const CONTAINER = {
   ADDRESS_REPOSITORY: 'AddressRepository',
   PATIENT_REPOSITORY: 'PatientRepository',
-  USERS_REPOSITORY: 'UsersRepository',
+  SESSIONS_REPOSITORY: 'SessionRepository',
   USER_CREDENTIALS_REPOSITORY: 'UserCredentialsRepository',
+  USERS_REPOSITORY: 'UsersRepository',
 };
 
 export const DATABASE = {

@@ -5,6 +5,7 @@ import { addressRoutes } from './address';
 import { authenticateRoutes } from './authenticate';
 import { patientsRouter } from './patients';
 import { refreshTokenRoutes } from './refreshToken';
+import { sessionsRoutes } from './sessions';
 import { userRoutes } from './users';
 
 const routes = Router();
@@ -18,5 +19,6 @@ routes.use(ensureAuthenticated);
 routes.use('/users', userRoutes);
 routes.use('/address', addressRoutes);
 routes.use('/patients', patientsRouter);
+routes.use('/sessions', sessionsRoutes);
 
 export default routes;

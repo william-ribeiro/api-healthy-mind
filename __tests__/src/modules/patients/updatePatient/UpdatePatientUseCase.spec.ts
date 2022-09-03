@@ -88,4 +88,17 @@ describe('Testing updatePatientUseCase', () => {
       return expect(err.message).toBe('Address not found');
     }
   });
+
+  it('must return update patient error when passed patientId disabled', async () => {
+    const patientDisabled = fakePatients[3];
+    try {
+      return expect(
+        await updatePatientUseCase.execute(patientDisabled.id, patientDisabled.userId, {
+          ...patientDisabled,
+        }),
+      ).toBeUndefined();
+    } catch (err) {
+      return expect(err.message).toBe('Patient not found');
+    }
+  });
 });

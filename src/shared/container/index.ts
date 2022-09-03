@@ -5,10 +5,15 @@ import {
   IUserCredentialsRepository,
   IAddressRepository,
   IPatientRepository,
+  ISessionRepository,
 } from '../../interfaces';
-import { UsersRepository, UserCredentialsRepository } from '../../modules';
-import { AddressRepository } from '../../modules/address';
-import { PatientRepository } from '../../modules/patients';
+import {
+  AddressRepository,
+  PatientRepository,
+  SessionRepository,
+  UserCredentialsRepository,
+  UsersRepository,
+} from '../../modules';
 
 container.registerSingleton<IUsersRepository>(
   CONTAINER.USERS_REPOSITORY,
@@ -28,4 +33,9 @@ container.registerSingleton<IAddressRepository>(
 container.registerSingleton<IPatientRepository>(
   CONTAINER.PATIENT_REPOSITORY,
   delay(() => PatientRepository),
+);
+
+container.registerSingleton<ISessionRepository>(
+  CONTAINER.SESSIONS_REPOSITORY,
+  delay(() => SessionRepository),
 );

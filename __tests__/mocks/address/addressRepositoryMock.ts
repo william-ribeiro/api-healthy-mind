@@ -11,7 +11,7 @@ import { fakeAddress } from './fakeAddress';
 
 export class AddressRepositoryMock implements IAddressRepository {
   async getAddressById(addressId: number): Promise<IAddress> {
-    return fakeAddress.find((address) => address.id === addressId);
+    return fakeAddress.find((address) => address.id === addressId && address.enabled);
   }
 
   async create(payload: ICreateAddress): Promise<IAddress> {

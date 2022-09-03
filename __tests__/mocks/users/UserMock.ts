@@ -6,11 +6,11 @@ import { fakeUsers } from './fakeUsers';
 
 export class UsersRepositoryMock implements IUsersRepository {
   async getById(id: string): Promise<IUser> {
-    return fakeUsers.find((user) => user.id === id);
+    return fakeUsers.find((user) => user.id === id && user.enabled);
   }
 
   async getByEmail(email: string): Promise<IUser> {
-    return fakeUsers.find((user) => user.email === email);
+    return fakeUsers.find((user) => user.email === email && user.enabled);
   }
 
   async create(payload: ICreateUser): Promise<IUser> {

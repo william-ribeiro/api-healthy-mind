@@ -1,0 +1,58 @@
+import { ISession } from '../../../src/interfaces';
+import { fakePatients } from '../patients';
+import { fakeUsers } from '../users';
+
+export const fakeSession: ISession[] = [
+  {
+    id: 1,
+    userId: fakeUsers[0].id,
+    patientId: fakePatients[0].id,
+    createdAt: new Date('2022-09-02T23:32:10.466Z'),
+    updatedAt: new Date('2022-09-02T23:32:10.466Z'),
+    status: 'Agendado',
+    subject: 'Conflito',
+    duration: '00:30',
+    type: 'Individual',
+    comments: 'Agendamento de sessão',
+    enabled: true,
+  } as ISession,
+  {
+    id: 2,
+    userId: fakeUsers[1].id,
+    patientId: fakePatients[1].id,
+    createdAt: new Date('2022-09-02T23:32:10.466Z'),
+    updatedAt: new Date('2022-09-02T23:32:10.466Z'),
+    status: 'Cancelado',
+    subject: 'Entrevista',
+    duration: '01:30',
+    type: 'Individual',
+    comments: 'Entrevista inicial',
+    enabled: true,
+  } as ISession,
+  {
+    id: 3,
+    userId: fakeUsers[2].id,
+    patientId: fakePatients[2].id,
+    createdAt: new Date('2022-09-02T23:32:10.466Z'),
+    updatedAt: new Date('2022-09-02T23:32:10.466Z'),
+    status: 'Atendido',
+    subject: 'Conflito Matrimonial',
+    duration: '01:00',
+    type: 'Casal',
+    comments: 'Resolução de conflito',
+    enabled: true,
+  } as ISession,
+  {
+    id: 4,
+    userId: fakeUsers[2].id,
+    patientId: fakePatients[2].id,
+    createdAt: new Date('2022-09-02T23:32:10.466Z'),
+    updatedAt: new Date('2022-09-02T23:32:10.466Z'),
+    status: 'Atendido',
+    subject: 'Conflito Matrimonial',
+    duration: '01:00',
+    type: 'Casal',
+    comments: 'Resolução de conflito',
+    enabled: false,
+  } as ISession,
+];

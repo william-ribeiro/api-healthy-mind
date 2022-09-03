@@ -13,6 +13,7 @@ export const fakeAddress: IAddress[] = [
     city: 'test city',
     state: 'test state',
     country: 'test country',
+    enabled: true,
   } as IAddress,
   {
     id: 2,
@@ -26,6 +27,7 @@ export const fakeAddress: IAddress[] = [
     city: 'test city',
     state: 'test state',
     country: 'test country',
+    enabled: true,
   } as IAddress,
   {
     id: 3,
@@ -39,5 +41,20 @@ export const fakeAddress: IAddress[] = [
     city: 'test city',
     state: 'test state',
     country: 'test country',
+    enabled: true,
+  } as IAddress,
+  {
+    id: 4,
+    createdAt: new Date('2021-10-27 00:35:07.294'),
+    updatedAt: new Date('2021-10-27 00:35:07.294'),
+    postalCode: '44444-444',
+    street: 'test street',
+    number: 'test number',
+    details: 'test details',
+    district: 'test centro',
+    city: 'test city',
+    state: 'test state',
+    country: 'test country',
+    enabled: false,
   } as IAddress,
 ];

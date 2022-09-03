@@ -25,4 +25,12 @@ export const fakeUsers: IUser[] = [
     updatedAt: new Date('2021-10-27 00:35:07.294'),
     enabled: true,
   } as IUser,
+  {
+    id: 'a3640f12-563c-4031-b3a1-9958f3fe2b55',
+    name: 'User Test 4',
+    email: '87454_email@test4.com',
+    createdAt: new Date('2021-10-27 00:35:07.294'),
+    updatedAt: new Date('2021-10-27 00:35:07.294'),
+    enabled: false,
+  } as IUser,
 ];

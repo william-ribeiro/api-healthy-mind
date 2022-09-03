@@ -17,14 +17,7 @@ describe('Testing createUserUseCase', () => {
   it('must removed patient when passed a valid payload', async () => {
     await removePatientUseCase.execute(payload.id, payload.userId);
 
-    const { enabled, email, document } = await patientRepositoryMock.getPatientById(
-      payload.id,
-      payload.userId,
-    );
-
-    expect(enabled).toEqual(false);
-    expect(email).not.toEqual(payload.email);
-    expect(document).not.toEqual(payload.document);
+    expect(await patientRepositoryMock.getPatientById(payload.id, payload.userId)).toBeUndefined();
   });
 
   it('must return error when passed invalid patient', async () => {

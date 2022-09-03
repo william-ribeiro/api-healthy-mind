@@ -14,7 +14,7 @@ import { Address } from '../../address';
 import { User } from '../../users';
 
 @Entity(DATABASE.PATIENTS)
-export abstract class Patient implements IPatient {
+export class Patient implements IPatient {
   constructor() {
     if (!this.id) this.id = uuidV4();
   }

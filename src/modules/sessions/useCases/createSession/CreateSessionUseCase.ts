@@ -1,4 +1,3 @@
-import { CONTAINER } from './../../../../constants/index';
 import { inject, injectable } from 'tsyringe';
 import {
   ICreateSession,
@@ -6,6 +5,7 @@ import {
   ISession,
   ISessionRepository,
 } from '../../../../interfaces';
+import { CONTAINER } from './../../../../constants';
 import { AppError } from '../../../../errors';
 import { Validators } from '../../../../shared';
 

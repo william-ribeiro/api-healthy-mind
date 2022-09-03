@@ -1,4 +1,3 @@
-import { CONTAINER } from './../../../../constants/index';
 import { inject, injectable } from 'tsyringe';
 import {
   IPatientRepository,
@@ -6,6 +5,7 @@ import {
   ISessionRepository,
   IUpdateSession,
 } from '../../../../interfaces';
+import { CONTAINER } from './../../../../constants';
 import { AppError } from '../../../../errors';
 import { filterDefinedProperties } from '../../../../utils';
 

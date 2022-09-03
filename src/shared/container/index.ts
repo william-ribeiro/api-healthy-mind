@@ -7,13 +7,11 @@ import {
   IPatientRepository,
   ISessionRepository,
 } from '../../interfaces';
-import {
-  AddressRepository,
-  PatientRepository,
-  SessionRepository,
-  UserCredentialsRepository,
-  UsersRepository,
-} from '../../modules';
+import { AddressRepository } from '../../modules/address';
+import { PatientRepository } from '../../modules/patients';
+import { SessionRepository } from '../../modules/sessions';
+import { UserCredentialsRepository } from '../../modules/userCredentials';
+import { UsersRepository } from '../../modules/users';
 
 container.registerSingleton<IUsersRepository>(
   CONTAINER.USERS_REPOSITORY,

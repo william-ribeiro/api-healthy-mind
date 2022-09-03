@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "docker:start": "gnome-terminal -e \"docker-compose -f ./tools/api.yml up --force-recreate\" && docker-compose -f tools/init.yml run --rm tests",
+    "docker:fast-start": "docker-compose -f ./tools/api.yml up --force-recreate",
     "docker:stop": "docker-compose -f ./tools/api.yml down",
     "docker:migrate": "docker-compose -f tools/init.yml run --rm migrator",
     "docker:revert": "docker-compose -f tools/init.yml run --rm revert",

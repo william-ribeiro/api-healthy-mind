@@ -1,8 +1,3 @@
-import {
-  filterDefinedProperties,
-  removeSpecialCharactersFromString,
-} from './../../../../utils/helpers';
-import { CONTAINER } from './../../../../constants/index';
 import { inject, injectable } from 'tsyringe';
 import {
   IAddressRepository,
@@ -10,6 +5,11 @@ import {
   IPatientRepository,
   IUpdatePatient,
 } from '../../../../interfaces';
+import {
+  filterDefinedProperties,
+  removeSpecialCharactersFromString,
+} from './../../../../utils/helpers';
+import { CONTAINER } from './../../../../constants';
 import { AppError } from '../../../../errors';
 import { Validators } from '../../../../shared';
 

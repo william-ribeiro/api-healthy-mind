@@ -3,12 +3,12 @@ import { components } from '../config';
 const { successResponse, badRequestError, unauthorizedError, internalError } = components.responses;
 
 export const listAll = {
-  '/sessions/list': {
+  '/patients/list': {
     get: {
-      tags: ['Sessions'],
+      tags: ['Patients'],
       security: [{ bearerAuth: [] }],
-      summary: 'List sessions',
-      description: 'Here you can list all your sessions',
+      summary: 'List patients',
+      description: 'Here you can list all your patients',
       responses: {
         '200': successResponse,
         '400': badRequestError,

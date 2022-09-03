@@ -12,11 +12,11 @@ export class RemoveAddressController {
 
       await removeAddresUseCase.execute(+addressId);
 
-      logger.info(`${timeBr} | [ADDRESS REMOVED] => addresId:${addressId}`);
+      logger.info(`${timeBr} | [ADDRESS REMOVED] => {"addresId":"${addressId}"`);
 
       return response.status(204).send();
     } catch (err: Error | any) {
-      logger.error(`${timeBr} | [ADDRESS NOT REMOVED] => addressId:${addressId}`);
+      logger.error(`${timeBr} | [ADDRESS NOT REMOVED] => {"addressId":"${addressId}"}`);
 
       throw new AppError(err.message, err.statusCode);
     }

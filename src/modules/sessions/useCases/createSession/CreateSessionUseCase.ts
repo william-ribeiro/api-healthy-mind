@@ -19,7 +19,7 @@ export class CreateSessionUseCase {
   ) {}
 
   async execute(userId: string, payload: ICreateSession): Promise<ISession> {
-    if (!Object.values(payload).length) throw new AppError('Invalid payload');
+    if (typeof 'object' && !Object.values(payload).length) throw new AppError('Invalid payload');
 
     try {
       await new Validators().session.validate(payload, { abortEarly: true });
@@ -29,7 +29,7 @@ export class CreateSessionUseCase {
 
     const patient = await this.patientRepository.getPatientById(payload.patientId, userId);
 
-    if (!patient) throw new AppError('Patient not found');
+    if (!patient) throw new AppError('Patient not found', 404);
 
     return this.sessionRepository.create({ ...payload, userId });
   }

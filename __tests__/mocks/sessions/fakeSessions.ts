@@ -18,7 +18,7 @@ export const fakeSession: ISession[] = [
   } as ISession,
   {
     id: 2,
-    userId: fakeUsers[1].id,
+    userId: fakeUsers[0].id,
     patientId: fakePatients[1].id,
     createdAt: new Date('2022-09-02T23:32:10.466Z'),
     updatedAt: new Date('2022-09-02T23:32:10.466Z'),
@@ -31,7 +31,7 @@ export const fakeSession: ISession[] = [
   } as ISession,
   {
     id: 3,
-    userId: fakeUsers[2].id,
+    userId: fakeUsers[0].id,
     patientId: fakePatients[2].id,
     createdAt: new Date('2022-09-02T23:32:10.466Z'),
     updatedAt: new Date('2022-09-02T23:32:10.466Z'),
@@ -44,7 +44,7 @@ export const fakeSession: ISession[] = [
   } as ISession,
   {
     id: 4,
-    userId: fakeUsers[2].id,
+    userId: fakeUsers[0].id,
     patientId: fakePatients[2].id,
     createdAt: new Date('2022-09-02T23:32:10.466Z'),
     updatedAt: new Date('2022-09-02T23:32:10.466Z'),

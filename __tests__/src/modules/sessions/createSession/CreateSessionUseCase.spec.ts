@@ -1,10 +1,9 @@
 import { fakePatients, fakeUsers, PatientsRepositoryMock } from '../../../../mocks';
-import { AddressRepositoryMock, fakeAddress } from '../../../../mocks/address';
 import { CreateSessionUseCase } from '../../../../../src/modules';
 import { SessionRepositoryMock } from '../../../../mocks/sessions';
 
 let createSessionUseCase: CreateSessionUseCase;
-let sessionepositoryMock: SessionRepositoryMock;
+let sessionRepositoryMock: SessionRepositoryMock;
 let patientRepositoryMock: PatientsRepositoryMock;
 let payload: any;
 
@@ -20,8 +19,8 @@ beforeEach(() => {
   };
 
   patientRepositoryMock = new PatientsRepositoryMock();
-  sessionepositoryMock = new SessionRepositoryMock();
-  createSessionUseCase = new CreateSessionUseCase(sessionepositoryMock, patientRepositoryMock);
+  sessionRepositoryMock = new SessionRepositoryMock();
+  createSessionUseCase = new CreateSessionUseCase(sessionRepositoryMock, patientRepositoryMock);
 });
 
 describe('Testing createSessionUseCase', () => {
@@ -32,7 +31,7 @@ describe('Testing createSessionUseCase', () => {
       ...payload,
     });
 
-    const expectResponse = await sessionepositoryMock.getSessionById(session.id, session.userId);
+    const expectResponse = await sessionRepositoryMock.getSessionById(session.id, session.userId);
 
     expect(session).toEqual(expectResponse);
   });

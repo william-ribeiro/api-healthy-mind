@@ -10,8 +10,8 @@ export class SessionRepository implements ISessionRepository {
     this.sessionRepository = getRepository(Session);
   }
 
-  async getSessionById(id: number, userId: string): Promise<ISession> {
-    return this.sessionRepository.findOne({ id, userId, enabled: true });
+  async getSessionById(sessionId: number, userId: string): Promise<ISession> {
+    return this.sessionRepository.findOne({ id: sessionId, userId, enabled: true });
   }
 
   async getAllSessions(userId: string): Promise<ISession[]> {

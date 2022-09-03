@@ -1,16 +1,19 @@
 import { fakePatients, PatientsRepositoryMock } from '../../../../mocks';
 import { IPatient } from '../../../../../src/interfaces';
 import { UpdatePatientUseCase } from '../../../../../src/modules/patients';
+import { AddressRepositoryMock } from '../../../../mocks/address';
 
 let updatePatientUseCase: UpdatePatientUseCase;
 let patientRepositoryMock: PatientsRepositoryMock;
+let addressRepositoryMock: AddressRepositoryMock;
 let payload: IPatient;
 
 beforeEach(() => {
   payload = fakePatients[0];
 
   patientRepositoryMock = new PatientsRepositoryMock();
-  updatePatientUseCase = new UpdatePatientUseCase(patientRepositoryMock);
+  addressRepositoryMock = new AddressRepositoryMock();
+  updatePatientUseCase = new UpdatePatientUseCase(patientRepositoryMock, addressRepositoryMock);
 });
 
 describe('Testing updatePatientUseCase', () => {
@@ -70,6 +73,19 @@ describe('Testing updatePatientUseCase', () => {
       ).toBeUndefined();
     } catch (err) {
       return expect(err.message).toBe('Patient already exists');
+    }
+  });
+
+  it('must return update patient error when address not found', async () => {
+    payload.addressId = 998;
+    try {
+      return expect(
+        await updatePatientUseCase.execute(payload.id, payload.userId, {
+          ...payload,
+        }),
+      ).toBeUndefined();
+    } catch (err) {
+      return expect(err.message).toBe('Address not found');
     }
   });
 });

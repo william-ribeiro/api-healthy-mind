@@ -1,9 +1,10 @@
 import { fakeUsers, PatientsRepositoryMock } from '../../../../mocks';
 import { CreatePatientUseCase } from '../../../../../src/modules/patients';
-import { fakeAddress } from '../../../../mocks/address';
+import { AddressRepositoryMock, fakeAddress } from '../../../../mocks/address';
 
 let createPatientUseCase: CreatePatientUseCase;
 let patientRepositoryMock: PatientsRepositoryMock;
+let addressRepositoryMock: AddressRepositoryMock;
 let payload: any;
 
 beforeEach(() => {
@@ -19,7 +20,8 @@ beforeEach(() => {
   };
 
   patientRepositoryMock = new PatientsRepositoryMock();
-  createPatientUseCase = new CreatePatientUseCase(patientRepositoryMock);
+  addressRepositoryMock = new AddressRepositoryMock();
+  createPatientUseCase = new CreatePatientUseCase(patientRepositoryMock, addressRepositoryMock);
 });
 
 describe('Testing createPatientUseCase', () => {
@@ -35,7 +37,7 @@ describe('Testing createPatientUseCase', () => {
     expect(patient).toEqual(expectResponse);
   });
 
-  it('must return error when passed invalid payload', async () => {
+  it('must return create patient error when passed invalid payload', async () => {
     payload.name = '';
 
     try {
@@ -49,7 +51,7 @@ describe('Testing createPatientUseCase', () => {
     }
   });
 
-  it('must return error when user already exists', async () => {
+  it('must return create patient error when user already exists', async () => {
     try {
       return expect(
         await createPatientUseCase.execute({
@@ -58,6 +60,20 @@ describe('Testing createPatientUseCase', () => {
       ).toBeUndefined();
     } catch (err) {
       return expect(err.message).toBe('Patient already exists');
+    }
+  });
+
+  it('must return create patient error when address not found', async () => {
+    try {
+      payload.addressId = 999;
+
+      return expect(
+        await createPatientUseCase.execute({
+          ...payload,
+        }),
+      ).toBeUndefined();
+    } catch (err) {
+      return expect(err.message).toBe('Address not found');
     }
   });
 });

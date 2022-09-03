@@ -1,7 +1,12 @@
 import { inject, injectable } from 'tsyringe';
 import { CONTAINER } from '../../../../constants';
 import { AppError } from '../../../../errors';
-import { ICreatePatient, IPatient, IPatientRepository } from '../../../../interfaces';
+import {
+  IAddressRepository,
+  ICreatePatient,
+  IPatient,
+  IPatientRepository,
+} from '../../../../interfaces';
 import { Validators } from '../../../../shared';
 import { parseName, removeSpecialCharactersFromString } from '../../../../utils';
 
@@ -10,10 +15,16 @@ export class CreatePatientUseCase {
   constructor(
     @inject(CONTAINER.PATIENT_REPOSITORY)
     private patientRepository: IPatientRepository,
+    @inject(CONTAINER.ADDRESS_REPOSITORY)
+    private addressRepository: IAddressRepository,
   ) {}
 
   async execute(payload: ICreatePatient): Promise<IPatient> {
     if (!Object.values(payload).length) throw new AppError('Invalid payload');
+
+    const address = await this.addressRepository.getAddressById(payload.addressId);
+
+    if (!address) throw new AppError('Address not found', 404);
     try {
       await new Validators().patient.validate(payload, { abortEarly: true });
     } catch (err) {

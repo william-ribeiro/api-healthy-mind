@@ -1,7 +1,12 @@
 import { removeSpecialCharactersFromString } from './../../../../utils/helpers';
 import { CONTAINER } from './../../../../constants/index';
 import { inject, injectable } from 'tsyringe';
-import { IPatient, IPatientRepository, IUpdatePatient } from '../../../../interfaces';
+import {
+  IAddressRepository,
+  IPatient,
+  IPatientRepository,
+  IUpdatePatient,
+} from '../../../../interfaces';
 import { AppError } from '../../../../errors';
 import { Validators } from '../../../../shared';
 
@@ -10,6 +15,8 @@ export class UpdatePatientUseCase {
   constructor(
     @inject(CONTAINER.PATIENT_REPOSITORY)
     private patientRepository: IPatientRepository,
+    @inject(CONTAINER.ADDRESS_REPOSITORY)
+    private addressrepository: IAddressRepository,
   ) {}
 
   async execute(patientId: string, userId: string, payload: IUpdatePatient): Promise<IPatient> {
@@ -18,7 +25,12 @@ export class UpdatePatientUseCase {
 
     if (!patient) throw new AppError('Patient not found', 404);
 
-    const { email, document } = payload;
+    const { addressId, email, document } = payload;
+
+    if (addressId)
+      await this.addressrepository.getAddressById(addressId).then((result) => {
+        if (!result) throw new AppError('Address not found', 404);
+      });
 
     if (email && email !== patient.email) {
       try {

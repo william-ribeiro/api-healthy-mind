@@ -67,25 +67,46 @@ A API é um desafio prosposto durante a jornada Dev For Tech proposto pela [Gama
 
 ## 🚀 Como executar o projeto
 
-```bash
+Clone este repositório:
 
-# Clone este repositório
+```console
 $ git clone git@github.com:william-ribeiro/api-healthy-mind.git
-
-# Acesse a pasta do projeto no terminal/cmd
-$ cd api-healthy-mind
-
-# Após configurar o .env execute o comando para:
-# ->instalar as dependências
-# ->instanciar o servidor e banco de dados
-# ->executar as migrações
-# ->rodar os testes e subir o servidor
-$ yarn docker:start
-
-# Acesse o endpoint para testar a API
-$ http://localhost:4000/api-docs
-
 ```
+
+Acesse a pasta do projeto no terminal/cmd:
+
+```console
+$ cd api-healthy-mind
+```
+
+Crie um arquivo .env com base no env.example
+
+```console
+PORT=4000
+NODE_ENV="local"
+DATABASE_URL="postgres://postgres:gamma@data:5432/gamma"
+DATABASE_MIGRATIONS="./src/database/migrations/*.ts"
+DATABASE_ENTITIES="./src/modules/**/*.ts"
+DATABASE_MIGRATIONS_DIR="./src/database/migrations"
+SECRET_ACCESS_TOKEN="crie-seu-secret"
+SECRET_REFRESH_TOKEN="crie-seu-secret"
+```
+
+Execute o comando `yarn docker:start` para:
+
+- Instalar as dependências;
+- Instanciar o servidor e o banco de dados
+- Executar as migrações
+- Executar os testes
+- Subi o servidor
+
+```console
+$ yarn docker:start
+```
+
+#### Acesse o endpoint para testar a API
+
+http://localhost:4000/api-docs
 
 <p align="center">
   <a href="https://github.com/william-ribeiro/api-healthy-mind/blob/develop/Insomnia_api_collection.yaml" target="_blank"><img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia"></a>

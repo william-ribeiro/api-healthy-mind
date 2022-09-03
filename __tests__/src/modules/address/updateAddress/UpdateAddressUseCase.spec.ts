@@ -14,6 +14,8 @@ beforeEach(() => {
 });
 
 describe('Testing updateAddressUseCase', () => {
+  //TO DO implementar o teste de authenticação
+
   it('must return updated address when a passed valid payload', async () => {
     payload.street = 'Update Street';
 

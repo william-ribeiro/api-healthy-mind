@@ -19,9 +19,9 @@
     "lint": "eslint --ext .tsx --ext .ts src/ --fix",
     "format": "prettier --check src/",
     "prettier": "npx @btmills/prettier --write",
-    "test": "npx jest --i --verbose --ci --updateSnapshot",
-    "test:watch": "npx jest --watch",
-    "test:coverage": "npx jest --coverage"
+    "test": "npx jest --verbose --runInBand --ci --updateSnapshot",
+    "test:watch": "npx jest --watch --verbose --runInBand",
+    "test:coverage": "npx jest --verbose --runInBand --coverage"
   },
   "dependencies": {
     "@jest/globals": "^28.0.0",

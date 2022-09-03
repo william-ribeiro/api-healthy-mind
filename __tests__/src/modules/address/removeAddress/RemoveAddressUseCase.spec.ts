@@ -14,6 +14,8 @@ beforeEach(() => {
 });
 
 describe('Testing removeAddressUseCase', () => {
+  //TO DO implementar o teste de authenticação
+
   it('must removed address when passed a valid addressId', async () => {
     await removeAddressUseCase.execute(payload.id);
 

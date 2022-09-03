@@ -57,7 +57,7 @@ describe('Testing createUserUseCase', () => {
     }
   });
 
-  it('must return user update error when password less than 6 characters', async () => {
+  it('must return user created error when password less than 6 characters', async () => {
     payload.password = '123';
     payload.confirmPassword = '123';
     try {
@@ -80,6 +80,15 @@ describe('Testing createUserUseCase', () => {
       ).toBeUndefined();
     } catch (err) {
       return expect(err.message).toBe('User already exists');
+    }
+  });
+
+  it('must return update user error when passed invalid email ', async () => {
+    try {
+      payload.email = 'invalid';
+      return expect(await createUserUseCase.execute({ ...payload })).toBeUndefined();
+    } catch (err) {
+      return expect(err.message).toBe('Invalid email');
     }
   });
 });

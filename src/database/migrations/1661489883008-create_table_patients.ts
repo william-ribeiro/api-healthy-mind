@@ -44,7 +44,7 @@ export class createTablePatients1661489883008 implements MigrationInterface {
           },
           {
             name: 'birthDate',
-            type: 'timestamp',
+            type: 'varchar',
             isNullable: true,
             default: null,
           },

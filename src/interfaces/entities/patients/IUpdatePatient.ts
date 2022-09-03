@@ -1,11 +1,11 @@
-export interface IUpdatePatients {
+export interface IUpdatePatient {
   userId?: string;
   addressId?: number;
   name?: string;
   email?: string;
   document?: string;
   gender?: string;
-  birtDate?: Date;
+  birthDate?: string;
   phone?: string;
   enabled?: boolean;
 }

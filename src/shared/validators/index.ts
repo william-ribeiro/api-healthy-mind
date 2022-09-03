@@ -18,5 +18,15 @@ export class Validators {
     state: yup.string().required('Invalid state'),
     country: yup.string().required('Invalid country'),
   });
+  patient = yup.object().shape({
+    userId: yup.string().required('Invalid userId'),
+    addressId: yup.string().required('Invalid addressId'),
+    name: yup.string().required('Invalid name'),
+    email: yup.string().email('Invalid email').required(),
+    gender: yup.string().label('Invalid gender'),
+    birthDate: yup.string().label('Invalid birthDate'),
+    phone: yup.string().label('Invalid phone'),
+  });
+
   email = yup.string().email('Invalid email');
 }

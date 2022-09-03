@@ -22,6 +22,8 @@ beforeEach(() => {
 });
 
 describe('Testing createAddressUseCase', () => {
+  //TO DO implementar o teste de authenticação
+
   it('must return created address when passed a valid payload', async () => {
     const createAddress = await createAddressUseCase.execute({
       ...payload,

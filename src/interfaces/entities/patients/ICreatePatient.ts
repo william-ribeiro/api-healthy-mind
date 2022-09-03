@@ -1,10 +1,10 @@
-export interface ICreatePatients {
+export interface ICreatePatient {
   userId: string;
   addressId: number;
   name: string;
   email: string;
   document: string;
   gender: string;
-  birtDate: Date;
+  birthDate: string;
   phone: string;
 }

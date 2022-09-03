@@ -12,7 +12,7 @@ export class UpdateAddressUseCase {
   ) {}
 
   async execute(addressId: number, payload: IUpdateAddress): Promise<IAddress> {
-    if (!Object.values(payload).length) throw new AppError('Invalid payload');
+    if (typeof 'object' && !Object.values(payload).length) throw new AppError('Invalid payload');
     const address = await this.addressRepository.getAddressById(addressId);
 
     if (!address) throw new AppError('Address not found', 404);

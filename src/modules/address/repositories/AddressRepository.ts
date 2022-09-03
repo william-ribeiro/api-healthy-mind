@@ -8,6 +8,7 @@ export class AddressRepository implements IAddressRepository {
   constructor() {
     this.repository = getRepository(Address);
   }
+
   async getAddressById(id: number): Promise<IAddress> {
     return this.repository.findOne({ id, enabled: true });
   }

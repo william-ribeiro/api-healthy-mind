@@ -17,16 +17,13 @@ beforeEach(() => {
 });
 
 describe('Testing createUserUseCase', () => {
-  it('must removed user when passed a valid payload', async () => {
+  it('must removed user when passed a valid userId', async () => {
     await removeUserUseCase.execute(payload.id);
 
-    const { enabled, email } = await usersRepositoryMock.getById(payload.id);
-
-    expect(enabled).toEqual(false);
-    expect(email).not.toEqual(payload.email);
+    expect(await usersRepositoryMock.getById(payload.id)).toBeUndefined();
   });
 
-  it('must return error when passed invalid user', async () => {
+  it('must return error when passed invalid userId', async () => {
     try {
       return expect(await usersRepositoryMock.getById('failId')).toBeUndefined();
     } catch (err) {

@@ -45,4 +45,18 @@ export const fakePatients: IPatient[] = [
     phone: '53900000000',
     enabled: true,
   } as IPatient,
+  {
+    id: '75b66128-950a-40d6-a0cf-f22c8352649c',
+    userId: fakeUsers[0].id,
+    createdAt: new Date('2022-09-02T23:32:10.466Z'),
+    updatedAt: new Date('2022-09-02T23:32:10.466Z'),
+    addressId: fakeAddress[0].id,
+    name: 'Paciente teste 4',
+    email: '1254_pacienteteste4@email.com',
+    document: '98745_123456740',
+    gender: 'Masculino',
+    birthDate: '18/10/1998',
+    phone: '53900000000',
+    enabled: false,
+  } as IPatient,
 ];

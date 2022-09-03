@@ -32,4 +32,12 @@ describe('Testing updateAddressUseCase', () => {
       return expect(err.message).toBe('Invalid payload');
     }
   });
+
+  it('must return update address error when address not found', async () => {
+    try {
+      return expect(await updateAddressUseCase.execute(999, { ...payload })).toBeUndefined();
+    } catch (err) {
+      return expect(err.message).toBe('Address not found');
+    }
+  });
 });

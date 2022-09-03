@@ -14,20 +14,13 @@ beforeEach(() => {
 });
 
 describe('Testing createUserUseCase', () => {
-  it('must removed patient when passed a valid payload', async () => {
+  it('must removed patient when passed a valid patientId', async () => {
     await removePatientUseCase.execute(payload.id, payload.userId);
 
-    const { enabled, email, document } = await patientRepositoryMock.getPatientById(
-      payload.id,
-      payload.userId,
-    );
-
-    expect(enabled).toEqual(false);
-    expect(email).not.toEqual(payload.email);
-    expect(document).not.toEqual(payload.document);
+    expect(await patientRepositoryMock.getPatientById(payload.id, payload.userId)).toBeUndefined();
   });
 
-  it('must return error when passed invalid patient', async () => {
+  it('must return error when passed invalid patientId', async () => {
     try {
       return expect(
         await patientRepositoryMock.getPatientById('failId', payload.userId),

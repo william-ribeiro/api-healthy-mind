@@ -14,7 +14,9 @@ import { fakePatients } from './fakePatients';
 
 export class PatientsRepositoryMock implements IPatientRepository {
   async getPatientById(idPatient: string, idUser: string): Promise<IPatient> {
-    return fakePatients.find((patient) => patient.id === idPatient && patient.userId === idUser);
+    return fakePatients.find(
+      (patient) => patient.id === idPatient && patient.userId === idUser && patient.enabled,
+    );
   }
 
   async getPatientByAttribute(attribute: IGetPatientByAttribute): Promise<IPatient> {

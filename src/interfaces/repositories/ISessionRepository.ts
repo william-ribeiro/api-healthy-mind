@@ -1,7 +1,7 @@
 import { ICreateSession, ISession, IUpdateSession } from '../entities/sessions';
 
 export interface ISessionRepository {
-  getSessionById(id: number, userId: string): Promise<ISession>;
+  getSessionById(sessionId: number, userId: string): Promise<ISession>;
 
   getAllSessions(userId: string): Promise<ISession[]>;
 

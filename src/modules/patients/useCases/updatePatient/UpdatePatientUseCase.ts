@@ -1,4 +1,7 @@
-import { removeSpecialCharactersFromString } from './../../../../utils/helpers';
+import {
+  filterDefinedProperties,
+  removeSpecialCharactersFromString,
+} from './../../../../utils/helpers';
 import { CONTAINER } from './../../../../constants/index';
 import { inject, injectable } from 'tsyringe';
 import {
@@ -54,6 +57,8 @@ export class UpdatePatientUseCase {
         if (result) throw new AppError('Patient already exists', 409);
       });
 
-    return this.patientRepository.update(patientId, userId, { ...payload });
+    return this.patientRepository.update(patientId, userId, {
+      ...filterDefinedProperties(payload),
+    });
   }
 }

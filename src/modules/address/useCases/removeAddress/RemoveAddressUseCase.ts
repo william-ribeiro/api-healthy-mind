@@ -13,7 +13,7 @@ export class RemoveAddressUseCase {
   async execute(addressId: number): Promise<void> {
     const address = await this.addressRepository.getAddressById(addressId);
 
-    if (!address) throw new AppError('Address not found');
+    if (!address) throw new AppError('Address not found', 404);
 
     await this.addressRepository.remove(addressId);
   }

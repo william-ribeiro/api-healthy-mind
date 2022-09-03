@@ -18,7 +18,7 @@ export class UpdateUserUseCase {
   ) {}
 
   async execute(id: string, payload: IUpdateUser): Promise<IUser> {
-    if (!Object.values(payload).length) throw new AppError('Invalid payload');
+    if (typeof 'object' && !Object.values(payload).length) throw new AppError('Invalid payload');
 
     const { name, email } = payload;
 

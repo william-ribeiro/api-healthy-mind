@@ -20,7 +20,7 @@ export class CreatePatientUseCase {
   ) {}
 
   async execute(payload: ICreatePatient): Promise<IPatient> {
-    if (!Object.values(payload).length) throw new AppError('Invalid payload');
+    if (typeof 'object' && !Object.values(payload).length) throw new AppError('Invalid payload');
 
     const address = await this.addressRepository.getAddressById(payload.addressId);
 

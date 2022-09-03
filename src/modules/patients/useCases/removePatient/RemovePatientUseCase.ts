@@ -14,7 +14,7 @@ export class RemovePatientUseCase {
   async execute(patientId: string, userId: string): Promise<void> {
     const patient = await this.patientRepository.getPatientById(patientId, userId);
 
-    if (!patient) throw new AppError('Patient not found');
+    if (!patient) throw new AppError('Patient not found', 404);
 
     const timestamp = moment().unix();
 

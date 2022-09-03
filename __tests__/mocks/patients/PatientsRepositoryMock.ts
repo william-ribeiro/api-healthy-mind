@@ -6,6 +6,7 @@ import {
   IGetPatientByAttribute,
   IPatient,
   IPatientRepository,
+  IRemovePatient,
   IUpdatePatient,
 } from '../../../src/interfaces';
 
@@ -45,7 +46,7 @@ export class PatientsRepositoryMock implements IPatientRepository {
     });
   }
 
-  async remove(idPatient: string, idUser: string): Promise<void> {
-    await this.update(idPatient, idUser, { enabled: false });
+  async remove(idPatient: string, idUser: string, payload: IRemovePatient): Promise<void> {
+    await this.update(idPatient, idUser, { enabled: false, ...payload });
   }
 }

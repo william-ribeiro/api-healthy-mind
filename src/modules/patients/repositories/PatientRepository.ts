@@ -5,6 +5,7 @@ import {
   IGetPatientByAttribute,
   IPatient,
   IPatientRepository,
+  IRemovePatient,
   IUpdatePatient,
 } from '../../../interfaces';
 import { Patient } from '../entities';
@@ -16,8 +17,8 @@ export class PatientRepository implements IPatientRepository {
     this.repository = getRepository(Patient);
   }
 
-  async getPatientById(idPatient: string, idUser: string): Promise<IPatient> {
-    return this.repository.findOne({ id: idPatient, userId: idUser, enabled: true });
+  async getPatientById(patientId: string, userId: string): Promise<IPatient> {
+    return this.repository.findOne({ id: patientId, userId, enabled: true });
   }
 
   async getPatientByAttribute(attribute: IGetPatientByAttribute): Promise<IPatient> {
@@ -29,19 +30,19 @@ export class PatientRepository implements IPatientRepository {
     return this.repository.save(newPatient);
   }
 
-  async update(idPatient: string, idUser: string, payload: IUpdatePatient): Promise<IPatient> {
+  async update(patientId: string, userId: string, payload: IUpdatePatient): Promise<IPatient> {
     const { raw: updatePatient } = await this.repository
       .createQueryBuilder()
       .update({ ...payload, updatedAt: moment() })
-      .where('id=:id', { id: idPatient })
-      .andWhere('userId=:userId', { userId: idUser })
+      .where('id=:id', { id: patientId })
+      .andWhere('userId=:userId', { userId })
       .returning('*')
       .execute();
 
     return updatePatient;
   }
 
-  async remove(idPatient: string, idUser: string): Promise<void> {
-    await this.update(idPatient, idUser, { enabled: false });
+  async remove(patientId: string, userId: string, payload: IRemovePatient): Promise<void> {
+    await this.update(patientId, userId, { ...payload, enabled: false });
   }
 }

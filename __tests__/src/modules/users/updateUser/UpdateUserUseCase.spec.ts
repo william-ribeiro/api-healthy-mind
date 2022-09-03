@@ -58,6 +58,18 @@ describe('Testing updateUserUseCase', () => {
     }
   });
 
+  it('must return update user error when passed invalid email ', async () => {
+    try {
+      return expect(
+        await updateUserUseCase.execute(payload.id, {
+          email: 'invalid',
+        }),
+      ).toBeUndefined();
+    } catch (err) {
+      return expect(err.message).toBe('Invalid email');
+    }
+  });
+
   it('must return update user error when email in use', async () => {
     try {
       return expect(

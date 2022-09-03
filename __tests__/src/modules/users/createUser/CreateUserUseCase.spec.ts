@@ -82,4 +82,13 @@ describe('Testing createUserUseCase', () => {
       return expect(err.message).toBe('User already exists');
     }
   });
+
+  it('must return update user error when passed invalid email ', async () => {
+    try {
+      payload.email = 'invalid';
+      return expect(await createUserUseCase.execute({ ...payload })).toBeUndefined();
+    } catch (err) {
+      return expect(err.message).toBe('Invalid email');
+    }
+  });
 });

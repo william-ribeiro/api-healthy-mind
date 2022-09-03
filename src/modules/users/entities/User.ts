@@ -5,7 +5,7 @@ import { IPatient, IUser } from '../../../interfaces/entities';
 import { Patient } from '../../patients';
 
 @Entity(DATABASE.USERS)
-export abstract class User implements IUser {
+export class User implements IUser {
   constructor() {
     if (!this.id) this.id = uuidV4();
   }

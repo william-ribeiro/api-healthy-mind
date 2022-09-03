@@ -7,11 +7,12 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { DATABASE } from '../../../constants';
-import { IUserCredentials } from '../../../interfaces';
+import { ISession } from '../../../interfaces/entities';
+import { Patient } from '../../patients';
 import { User } from '../../users';
 
-@Entity(DATABASE.USER_CREDENTIALS)
-export class UserCredentials implements IUserCredentials {
+@Entity(DATABASE.SESSIONS)
+export class Session implements ISession {
   @PrimaryGeneratedColumn()
   public readonly id: number;
 
@@ -25,18 +26,31 @@ export class UserCredentials implements IUserCredentials {
   public userId: string;
 
   @Column()
-  public accessToken: string;
+  public patientId: string;
 
   @Column()
-  public refreshToken: string;
+  public status: string;
 
   @Column()
-  public expiresIn: Date;
+  public subject: string;
+
+  @Column()
+  public duration: string;
+
+  @Column()
+  public type: string;
+
+  @Column()
+  public comments: string;
 
   @Column({ default: true })
-  public isValid: boolean;
+  public enabled: boolean;
 
   @OneToOne(() => User)
   @JoinColumn({ name: 'userId' })
   user: User;
+
+  @OneToOne(() => Patient)
+  @JoinColumn({ name: 'patientId' })
+  patient: Patient;
 }

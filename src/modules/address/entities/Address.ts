@@ -3,7 +3,7 @@ import { DATABASE } from '../../../constants';
 import { IAddress } from '../../../interfaces';
 
 @Entity(DATABASE.ADDRESS)
-export abstract class Address implements IAddress {
+export class Address implements IAddress {
   @PrimaryGeneratedColumn()
   public readonly id: number;
 

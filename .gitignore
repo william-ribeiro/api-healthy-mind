@@ -6,7 +6,7 @@ email-service.json
 #ENV
 .env
 .env_production
-*.env
+
 dist
 .eslintcache
 .vscode

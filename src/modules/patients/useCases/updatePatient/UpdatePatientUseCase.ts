@@ -16,7 +16,7 @@ export class UpdatePatientUseCase {
     if (!Object.values(payload).length || !patientId) throw new AppError('Invalid payload');
     const patient = await this.patientRepository.getPatientById(patientId, userId);
 
-    if (!patient) throw new AppError('Patient not found');
+    if (!patient) throw new AppError('Patient not found', 404);
 
     const { email, document } = payload;
 
@@ -33,13 +33,13 @@ export class UpdatePatientUseCase {
       await this.patientRepository
         .getPatientByAttribute({ email: payload.email })
         .then((result) => {
-          if (result) throw new AppError('Email in use');
+          if (result) throw new AppError('Email in use', 409);
         });
     }
 
     if (document && document !== patient.document)
       await this.patientRepository.getPatientByAttribute({ document }).then((result) => {
-        if (result) throw new AppError('Patient already exists');
+        if (result) throw new AppError('Patient already exists', 409);
       });
 
     return this.patientRepository.update(patientId, userId, { ...payload });

@@ -30,7 +30,7 @@ export class CreatePatientUseCase {
         return this.patientRepository.getPatientByAttribute({ document });
       });
 
-    if (patient) throw new AppError('Patient already exists');
+    if (patient) throw new AppError('Patient already exists', 409);
 
     payload.name = parseName(name);
     payload.email = removeSpecialCharactersFromString(email);

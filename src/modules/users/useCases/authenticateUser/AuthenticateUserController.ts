@@ -15,11 +15,11 @@ export class AuthenticateUserController {
 
       const token = await authenticateUserUseCase.execute({ email, password });
 
-      logger.info(`[USER LOGGED IN] ${email}=> | [${timeBr}]`);
+      logger.info(`${timeBr} | [USER LOGGED IN] => ${email}`);
 
       return response.json(token);
     } catch (err) {
-      logger.error(`[LOGIN FAILED]=> ${email}|${err.message} | [${timeBr}]`);
+      logger.error(`${timeBr} | [LOGIN FAILED]=> ${email} | ${err.message} `);
 
       if (err.statusCode === 401) throw new AppError(err.message, err.statusCode);
 

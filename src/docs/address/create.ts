@@ -1,6 +1,6 @@
 import { components } from '../config';
 
-const { createdResponse, badRequestError, internalError } = components.responses;
+const { createdResponse, badRequestError, internalError, unauthorizedError } = components.responses;
 
 export const create = {
   '/address': {
@@ -42,6 +42,7 @@ export const create = {
       responses: {
         '201': createdResponse,
         '400': badRequestError,
+        '401': unauthorizedError,
         '500': internalError,
       },
     },

@@ -98,7 +98,7 @@ Execute o comando `yarn docker:start` para:
 - Instanciar o servidor e o banco de dados
 - Executar as migrações
 - Executar os testes
-- Subi o servidor
+- Subir o servidor
 
 ```console
 $ yarn docker:start

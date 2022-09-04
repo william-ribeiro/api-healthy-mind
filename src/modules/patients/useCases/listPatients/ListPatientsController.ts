@@ -11,9 +11,9 @@ export class ListPatientsController {
     try {
       const listPatientsUseCase = container.resolve(ListPatientsUseCase);
 
-      const patients = await listPatientsUseCase.execute(userId);
+      const patients = await listPatientsUseCase.execute({ userId, query: request.query });
 
-      logger.info(`${timeBr} | [TOTAL PATIENTS] => ${patients.length}`);
+      logger.info(`${timeBr} | [TOTAL PATIENTS] => ${patients.response.length}`);
 
       return response.json(patients);
     } catch (err: Error | any) {

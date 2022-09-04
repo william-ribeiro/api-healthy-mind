@@ -11,13 +11,11 @@ export class ListSessionsUseCase {
   ) {}
 
   async execute({ userId, query }): Promise<IPaginate<ISession[]>> {
-    const { page: page_ } = query;
-
-    const page = parsePage(page_);
+    const { page = PAGINATION.PAGE } = query;
 
     const [response, total] = await this.sessionRepository.getAllSessions(
       userId,
-      (page - 1) * PAGINATION.PER_PAGE,
+      (parsePage(page) - 1) * PAGINATION.PER_PAGE,
     );
     const totalPages = Math.ceil(total / PAGINATION.PER_PAGE);
 

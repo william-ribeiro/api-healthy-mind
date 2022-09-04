@@ -1,5 +1,6 @@
 import moment from 'moment';
 import { getRepository, Repository } from 'typeorm';
+import { PAGINATION } from '../../../constants';
 import {
   ICreatePatient,
   IGetPatientByAttribute,
@@ -25,8 +26,13 @@ export class PatientRepository implements IPatientRepository {
     return this.repository.findOne({ ...attribute, enabled: true });
   }
 
-  async listAllPatients(userId: string): Promise<IPatient[]> {
-    return this.repository.find({ userId, enabled: true });
+  async getAllPatients(userId: string, skip: number): Promise<[IPatient[], number]> {
+    return this.repository
+      .createQueryBuilder()
+      .where('"userId"=:userId', { userId, enabled: true })
+      .skip(skip)
+      .take(PAGINATION.PER_PAGE)
+      .getManyAndCount();
   }
 
   async create(payload: ICreatePatient): Promise<IPatient> {

@@ -1,7 +1,7 @@
-import { IPatientRepository } from './../../../../interfaces/repositories/IPatientRepository';
 import { inject, injectable } from 'tsyringe';
-import { CONTAINER } from '../../../../constants';
-import { IPatient } from '../../../../interfaces';
+import { CONTAINER, PAGINATION } from '../../../../constants';
+import { IPatient, IPaginate, IPatientRepository } from '../../../../interfaces';
+import { parsePage } from '../../../../utils';
 
 @injectable()
 export class ListPatientsUseCase {
@@ -10,7 +10,24 @@ export class ListPatientsUseCase {
     private patientRepository: IPatientRepository,
   ) {}
 
-  async execute(userId: string): Promise<IPatient[]> {
-    return this.patientRepository.listAllPatients(userId);
+  async execute({ userId, query }): Promise<IPaginate<IPatient[]>> {
+    const { page = PAGINATION.PAGE } = query;
+
+    const [response, total] = await this.patientRepository.getAllPatients(
+      userId,
+      (parsePage(page) - 1) * PAGINATION.PER_PAGE,
+    );
+
+    const totalPages = Math.ceil(total / PAGINATION.PER_PAGE);
+
+    return {
+      response,
+      page,
+      count: response.length,
+      perPage: PAGINATION.PER_PAGE,
+      totalPages,
+      hasNext: page !== totalPages && page < totalPages,
+      total,
+    };
   }
 }

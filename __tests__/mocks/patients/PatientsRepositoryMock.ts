@@ -9,6 +9,8 @@ import {
   IRemovePatient,
   IUpdatePatient,
 } from '../../../src/interfaces';
+import { buildClusters } from '../../../src/utils';
+import { PAGINATION } from '../../../src/constants';
 
 import { fakePatients } from './fakePatients';
 
@@ -25,8 +27,16 @@ export class PatientsRepositoryMock implements IPatientRepository {
     return fakePatients.find((patient) => patient.document === attribute.document);
   }
 
-  async listAllPatients(userId: string): Promise<IPatient[]> {
-    return fakePatients.filter((patient) => patient.userId === userId && patient.enabled);
+  async getAllPatients(userId: string, skip: number): Promise<[IPatient[], number]> {
+    const patients = fakePatients.filter((patient) => patient.userId === userId && patient.enabled);
+
+    const total = patients.length;
+
+    const paginatePatients = !patients.length
+      ? []
+      : buildClusters(patients.slice(skip), PAGINATION.PER_PAGE)[0];
+
+    return [paginatePatients, total];
   }
 
   async create(payload: ICreatePatient): Promise<IPatient> {

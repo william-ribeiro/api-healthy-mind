@@ -1,3 +1,4 @@
+import { PAGINATION } from '../../../../../src/constants';
 import { ListPatientsUseCase } from '../../../../../src/modules';
 import { fakePatients, fakeUsers, PatientsRepositoryMock } from '../../../../mocks';
 
@@ -11,13 +12,44 @@ beforeEach(() => {
 
 describe('Testing listPatientsUseCase', () => {
   it('must list all patients when found', async () => {
-    const patients = await listPatientsUseCase.execute(fakeUsers[0].id);
+    const page = 1;
+    const patients = await listPatientsUseCase.execute({
+      userId: fakeUsers[0].id,
+      query: { page },
+    });
 
-    const expectedPatients = fakePatients.filter((fake) => fake.enabled);
+    const total_ = fakePatients.filter(
+      (patients) => patients.userId === fakeUsers[0].id && patients.enabled,
+    );
+
+    const totalPages = Math.ceil(total_.length / PAGINATION.PER_PAGE);
+
+    const expectedPatients = {
+      response: total_.slice(page - 1, PAGINATION.PER_PAGE),
+      page: patients.page,
+      count: patients.response.length,
+      perPage: PAGINATION.PER_PAGE,
+      total: total_.length,
+      totalPages,
+      hasNext: page !== totalPages && page < totalPages,
+    };
     expect(expectedPatients).toEqual(patients);
+    expect(patients.response).not.toEqual([]);
   });
 
   it('must return empty list if patients not found', async () => {
-    return expect(await listPatientsUseCase.execute(fakeUsers[3].id)).toEqual([]);
+    const page = 1;
+
+    return expect(
+      await listPatientsUseCase.execute({ userId: fakeUsers[3].id, query: { page } }),
+    ).toEqual({
+      response: [],
+      page,
+      count: 0,
+      perPage: PAGINATION.PER_PAGE,
+      totalPages: 0,
+      hasNext: false,
+      total: 0,
+    });
   });
 });

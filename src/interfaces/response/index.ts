@@ -3,8 +3,9 @@ export interface IResponseLocals {
   id?: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export interface IPaginate<T> {
-  response: T[];
+  response: any;
   total: number;
   count: number;
   page: number;

@@ -67,3 +67,15 @@ export const filterDefinedProperties = (data: any) => {
 };
 
 export const logFullObject = (object: any) => util.inspect(object, false, null, true);
+
+export const range = (n: any) => [...Array(n).keys()];
+
+export const buildClusters = (elements: any, clusterLength = 10) => {
+  if (!elements || !Array.isArray(elements) || !elements.length) return [];
+
+  const clusters = range(Math.ceil(elements.length / clusterLength)).map((index) =>
+    elements.slice(index * clusterLength, index * clusterLength + clusterLength),
+  );
+
+  return clusters;
+};

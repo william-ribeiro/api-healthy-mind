@@ -34,5 +34,5 @@ export const RATE_LIMIT = {
 
 export const PAGINATION = {
   OFFSET: 0,
-  PER_PAGE: 100000,
+  PER_PAGE: 10,
 };

@@ -1,11 +1,13 @@
 /* eslint-disable @typescript-eslint/require-await */
 
+import { PAGINATION } from '../../../src/constants';
 import {
   ICreateSession,
   ISession,
   ISessionRepository,
   IUpdateSession,
 } from '../../../src/interfaces';
+import { buildClusters } from '../../../src/utils';
 
 import { fakeSession } from './fakeSessions';
 
@@ -16,8 +18,15 @@ export class SessionRepositoryMock implements ISessionRepository {
     );
   }
 
-  async getAllSessions(userId: string): Promise<ISession[]> {
-    return fakeSession.filter((session) => session.userId === userId && session.enabled);
+  async getAllSessions(userId: string, skip: number): Promise<[ISession[], number]> {
+    const sessions = fakeSession.filter((session) => session.userId === userId && session.enabled);
+
+    const total = sessions.length;
+    const paginateSessions = !sessions.length
+      ? []
+      : buildClusters(sessions.splice(skip), PAGINATION.PER_PAGE)[0];
+
+    return [paginateSessions, total];
   }
 
   async create(payload: ICreateSession): Promise<ISession> {

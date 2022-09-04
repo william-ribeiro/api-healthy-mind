@@ -11,9 +11,9 @@ export class ListSessionsController {
     try {
       const listSessionUseCase = container.resolve(ListSessionsUseCase);
 
-      const sessions = await listSessionUseCase.execute(userId);
+      const sessions = await listSessionUseCase.execute({ userId, query: request.query });
 
-      logger.info(`${timeBr} | [TOTAL SESSIONS] => ${sessions.length}`);
+      logger.info(`${timeBr} | [TOTAL SESSIONS] => ${sessions.response.length}`);
 
       return response.json(sessions);
     } catch (err: Error | any) {

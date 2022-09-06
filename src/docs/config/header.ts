@@ -1,3 +1,5 @@
+import { SERVERS } from '../../constants';
+
 export const header = {
   openapi: '3.0.0',
   info: {
@@ -8,18 +10,5 @@ export const header = {
       email: 'sbrdigital15@gmail.com',
     },
   },
-  servers: [
-    {
-      url: 'https://staging-api-healthy-mind.herokuapp.com/',
-      description: 'Staging Server',
-    },
-    {
-      url: 'https://api-healthy-mind.herokuapp.com',
-      description: 'Production Server',
-    },
-    {
-      url: 'http://localhost:4000',
-      description: 'Local Server',
-    },
-  ],
+  servers: [SERVERS[process.env.NODE_ENV]],
 };

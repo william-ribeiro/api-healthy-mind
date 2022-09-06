@@ -37,3 +37,18 @@ export const PAGINATION = {
   PAGE: '1',
   PER_PAGE: 10,
 };
+
+export const SERVERS = {
+  development: {
+    url: 'https://staging-api-healthy-mind.herokuapp.com/',
+    description: 'Staging Server',
+  },
+  production: {
+    url: 'https://api-healthy-mind.herokuapp.com',
+    description: 'Production Server',
+  },
+  local: {
+    url: 'http://localhost:4000',
+    description: 'Local Server',
+  },
+};

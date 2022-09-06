@@ -10,6 +10,10 @@ export const header = {
   },
   servers: [
     {
+      url: 'https://staging-api-healthy-mind.herokuapp.com/',
+      description: 'Staging Server',
+    },
+    {
       url: 'https://api-healthy-mind.herokuapp.com',
       description: 'Production Server',
     },

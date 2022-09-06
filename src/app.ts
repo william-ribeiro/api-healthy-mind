@@ -35,6 +35,10 @@ app.use(
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(apiDocs));
 
+app.get('/', (_request: Request, response: Response) => {
+  response.redirect(301, '/api-docs');
+});
+
 app.use(router);
 
 app.use((err: Error, _request: Request, response: Response, _next: NextFunction) => {

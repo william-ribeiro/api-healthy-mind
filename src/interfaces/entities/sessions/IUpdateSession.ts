@@ -7,4 +7,5 @@ export interface IUpdateSession {
   type?: string;
   comments?: string;
   enabled?: boolean;
+  appointmentDate?: Date;
 }

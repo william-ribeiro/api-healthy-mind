@@ -6,4 +6,5 @@ export interface ICreateSession {
   duration: string;
   type: string;
   comments: string;
+  appointmentDate: Date;
 }

@@ -46,6 +46,9 @@ export class Session implements ISession {
   @Column({ default: true })
   public enabled: boolean;
 
+  @Column()
+  public appointmentDate: Date;
+
   @OneToOne(() => User)
   @JoinColumn({ name: 'userId' })
   user: User;

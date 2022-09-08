@@ -29,7 +29,8 @@ export class PatientRepository implements IPatientRepository {
   async getAllPatients(userId: string, skip: number): Promise<[IPatient[], number]> {
     return this.repository
       .createQueryBuilder()
-      .where('"userId"=:userId', { userId, enabled: true })
+      .where('"userId"=:userId', { userId })
+      .andWhere('enabled=:enabled', { enabled: true })
       .skip(skip)
       .take(PAGINATION.PER_PAGE)
       .getManyAndCount();

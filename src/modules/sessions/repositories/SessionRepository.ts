@@ -18,7 +18,8 @@ export class SessionRepository implements ISessionRepository {
   async getAllSessions(userId: string, skip: number): Promise<[ISession[], number]> {
     return this.sessionRepository
       .createQueryBuilder()
-      .where('"userId"=:userId', { userId, enabled: true })
+      .where('"userId"=:userId', { userId })
+      .andWhere('enabled=:enabled', { enabled: true })
       .skip(skip)
       .take(PAGINATION.PER_PAGE)
       .getManyAndCount();

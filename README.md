@@ -1,24 +1,20 @@
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/william-ribeiro/api-healthy-mind?color=%2304D361">
-
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/william-ribeiro/api-healthy-mind">
-
   <a href="https://github.com/william-ribeiro/api-healthy-mind/commits/main">
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/william-ribeiro/api-healthy-mind">
-  </a>
-    
+  </a>    
    <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
-   <a href="https://github.com/william-ribeiro/api-healthy-mind/stargazers">
-    <img alt="Stargazers" src="https://img.shields.io/github/stars/william-ribeiro/api-healthy-mind?style=social">
-  </a>
-
-  <a href="https://www.gama.academy/">
-    <img alt="Desafio proposto pela Gama Academy" src="https://img.shields.io/badge/proposto%20pela-Gama Academy-%237519C1">
-  </a>
-  
+  <a href="http://commitizen.github.io/cz-cli/">
+    <img alt="Commitizen" src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg"> 
+    </a>
   <a href="https://www.gama.academy/gama-station">
     <img alt="NaveTeam" src="https://img.shields.io/badge/Gama-Academy-%237159c1?style=flat&logo=ghost">
-    </a>
+    </a>    
+  <a href="https://github.com/william-ribeiro/api-healthy-mind/stargazers">
+  <a href="https://www.codefactor.io/repository/github/william-ribeiro/api-healthy-mind"><img src="https://www.codefactor.io/repository/github/william-ribeiro/api-healthy-mind/badge" alt="CodeFactor" /></a>
+    <img alt="Stargazers" src="https://img.shields.io/github/stars/william-ribeiro/api-healthy-mind?style=social">
+  </a>
     
   <div align="center" style="margin-bottom: 20px;">
 <img src="https://e3ba6e8732e83984.cdn.gocache.net/uploads/image/file/2538167/large_1921aa6c4ada2058f41bf79d80b1e22c.png" alt="" width="700" height="250"/>
@@ -133,9 +129,20 @@ Foi utilizado na aplicação as seguintes tecnologias
 
 1. Faça um **fork** do projeto.
 2. Crie uma nova branch com as suas alterações: `git checkout -b my-feature`
-3. Salve as alterações e crie uma mensagem de commit contando o que você fez: `git commit -m "feature: My new feature"`
+3. Salve as alterações e crie uma mensagem de commit contando o que você fez: `git commit -S -m "feature: My new feature"`
 4. Envie as suas alterações: `git push origin my-feature`
    > Caso tenha alguma dúvida confira este [guia de como contribuir no GitHub](https://docs.github.com/pt/get-started/quickstart/contributing-to-projects)
+
+---
+
+## 🛠 Se você for um colaborador
+
+1. Crie uma nova issue, incluindo o label correspondente.
+2. Crie a branch atraves da issue
+3. Salve as alterações e crie uma mensagem de commit contando o que você fez: `git commit -S -m "feature: My new feature"`
+4. Envie as suas alterações: `git push origin my-feature`
+5. Abra um pull request
+   > Caso tenha alguma dúvida confira este [Como criar uma solicitação de pull](https://docs.github.com/pt/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
 
 ---
 

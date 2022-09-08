@@ -66,13 +66,13 @@ A API é um desafio prosposto durante a jornada Dev For Tech proposto pela [Gama
 Clone este repositório:
 
 ```console
-$ git clone git@github.com:william-ribeiro/api-healthy-mind.git
+git clone git@github.com:william-ribeiro/api-healthy-mind.git
 ```
 
 Acesse a pasta do projeto no terminal/cmd:
 
 ```console
-$ cd api-healthy-mind
+cd api-healthy-mind
 ```
 
 Crie um arquivo .env com base no env.example
@@ -88,16 +88,27 @@ SECRET_ACCESS_TOKEN="crie-seu-secret"
 SECRET_REFRESH_TOKEN="crie-seu-secret"
 ```
 
-Execute o comando `yarn docker:start` para:
+Execute o comando NO LINUX `yarn docker:linux-start` ou no Windows/Mac `yarn docker:start` para:
 
 - Instalar as dependências;
 - Instanciar o servidor e o banco de dados
 - Executar as migrações
-- Executar os testes
+- Executar os testes automaticament (apenas linux)
 - Subir o servidor
 
 ```console
-$ yarn docker:start
+yarn docker:start
+```
+
+Para parar o servidor primeiro execute no Linux/Windows `ctrl+c` , no Mac `command+c` e logo após:
+
+```console
+yarn docker:stop
+```
+
+Para rodar os testes unitários
+```console
+yarn docker:tests
 ```
 
 #### Acesse o endpoint para testar a API

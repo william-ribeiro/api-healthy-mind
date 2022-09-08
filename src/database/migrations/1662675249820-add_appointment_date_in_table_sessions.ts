@@ -6,7 +6,7 @@ export class addAppointmentDateInTableSessions1662675249820 implements Migration
     await queryRunner.addColumn(
       DATABASE.SESSIONS,
       new TableColumn({
-        name: 'appoitmentDate',
+        name: 'appointmentDate',
         type: 'timestamp',
       }),
     );

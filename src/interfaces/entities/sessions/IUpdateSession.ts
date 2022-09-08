@@ -1,5 +1,3 @@
-import { Moment } from 'moment';
-
 export interface IUpdateSession {
   userId?: string;
   patientId?: string;
@@ -9,5 +7,5 @@ export interface IUpdateSession {
   type?: string;
   comments?: string;
   enabled?: boolean;
-  appointmentDate?: Moment;
+  appointmentDate?: Date;
 }

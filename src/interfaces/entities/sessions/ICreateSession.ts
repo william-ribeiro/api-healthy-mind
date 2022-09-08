@@ -1,5 +1,3 @@
-import { Moment } from 'moment';
-
 export interface ICreateSession {
   userId: string;
   patientId: string;
@@ -8,5 +6,5 @@ export interface ICreateSession {
   duration: string;
   type: string;
   comments: string;
-  appointmentDate: Moment;
+  appointmentDate: Date;
 }

@@ -15,6 +15,7 @@ export const fakeSession: ISession[] = [
     type: 'Individual',
     comments: 'Agendamento de sessão',
     enabled: true,
+    appointmentDate: new Date('2022-09-10T00:00:00.000Z'),
   } as ISession,
   {
     id: 1,
@@ -28,6 +29,7 @@ export const fakeSession: ISession[] = [
     type: 'Individual',
     comments: 'Entrevista inicial',
     enabled: true,
+    appointmentDate: new Date('2022-09-10T00:00:00.000Z'),
   } as ISession,
   {
     id: 2,
@@ -41,6 +43,7 @@ export const fakeSession: ISession[] = [
     type: 'Casal',
     comments: 'Resolução de conflito',
     enabled: true,
+    appointmentDate: new Date('2022-09-10T00:00:00.000Z'),
   } as ISession,
   {
     id: 3,
@@ -54,6 +57,7 @@ export const fakeSession: ISession[] = [
     type: 'Casal',
     comments: 'Resolução de conflito',
     enabled: false,
+    appointmentDate: new Date('2022-09-10T00:00:00.000Z'),
   } as ISession,
   {
     id: 4,
@@ -67,6 +71,7 @@ export const fakeSession: ISession[] = [
     type: 'Individual',
     comments: 'Agendamento de sessão',
     enabled: true,
+    appointmentDate: new Date('2022-09-10T00:00:00.000Z'),
   } as ISession,
   {
     id: 5,
@@ -80,6 +85,7 @@ export const fakeSession: ISession[] = [
     type: 'Individual',
     comments: 'Entrevista inicial',
     enabled: true,
+    appointmentDate: new Date('2022-09-10T00:00:00.000Z'),
   } as ISession,
   {
     id: 6,
@@ -93,6 +99,7 @@ export const fakeSession: ISession[] = [
     type: 'Casal',
     comments: 'Resolução de conflito',
     enabled: true,
+    appointmentDate: new Date('2022-09-10T00:00:00.000Z'),
   } as ISession,
   {
     id: 7,
@@ -106,6 +113,7 @@ export const fakeSession: ISession[] = [
     type: 'Casal',
     comments: 'Resolução de conflito',
     enabled: true,
+    appointmentDate: new Date('2022-09-10T00:00:00.000Z'),
   } as ISession,
   {
     id: 8,
@@ -119,6 +127,7 @@ export const fakeSession: ISession[] = [
     type: 'Individual',
     comments: 'Agendamento de sessão',
     enabled: true,
+    appointmentDate: new Date('2022-09-10T00:00:00.000Z'),
   } as ISession,
   {
     id: 9,
@@ -132,6 +141,7 @@ export const fakeSession: ISession[] = [
     type: 'Individual',
     comments: 'Entrevista inicial',
     enabled: true,
+    appointmentDate: new Date('2022-09-10T00:00:00.000Z'),
   } as ISession,
   {
     id: 10,
@@ -145,6 +155,7 @@ export const fakeSession: ISession[] = [
     type: 'Casal',
     comments: 'Resolução de conflito',
     enabled: false,
+    appointmentDate: new Date('2022-09-10T00:00:00.000Z'),
   } as ISession,
   {
     id: 11,
@@ -158,5 +169,6 @@ export const fakeSession: ISession[] = [
     type: 'Casal',
     comments: 'Resolução de conflito',
     enabled: false,
+    appointmentDate: new Date('2022-09-10T00:00:00.000Z'),
   } as ISession,
 ];

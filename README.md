@@ -88,17 +88,21 @@ SECRET_ACCESS_TOKEN="crie-seu-secret"
 SECRET_REFRESH_TOKEN="crie-seu-secret"
 ```
 
-Execute o comando NO LINUX `yarn docker:linux-start` ou no Windows/Mac `yarn docker:start` para:
-
-- Instalar as dependências;
-- Instanciar o servidor e o banco de dados
-- Executar as migrações
-- Executar os testes automaticament (apenas linux)
-- Subir o servidor
-
-```console
+Execute o comando NO LINUX 
+```console 
+yarn docker:linux-start
+``` 
+ou no Windows/Mac 
+```console 
 yarn docker:start
-```
+``` 
+
+- Instala as dependências;
+- Instancia o servidor e o banco de dados
+- Executa as migrações
+- Executa os testes automaticamente (apenas linux)
+- Sobe o servidor
+
 
 Para parar o servidor primeiro execute no Linux/Windows `ctrl+c` , no Mac `command+c` e logo após:
 

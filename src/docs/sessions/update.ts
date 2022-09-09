@@ -31,7 +31,7 @@ export const update = {
                 duration: { type: 'string' },
                 type: { type: 'string' },
                 comments: { type: 'string' },
-                appointmentDate: { type: 'string' },
+                appointmentDate: { type: 'timestamp' },
               },
               example: {
                 patientId: 'HERE PATIENT ID',

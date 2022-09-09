@@ -21,7 +21,7 @@ export const create = {
                 duration: { type: 'string' },
                 type: { type: 'string' },
                 comments: { type: 'string' },
-                appointmentDate: { type: 'string' },
+                appointmentDate: { type: 'timestamp' },
               },
               required: [
                 'patientId',

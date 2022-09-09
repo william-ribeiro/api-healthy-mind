@@ -1,15 +1,15 @@
 _type: export
 __export_format: 4
-__export_date: 2022-09-03T22:22:48.676Z
+__export_date: 2022-09-09T02:31:14.115Z
 __export_source: insomnia.desktop.app:v2021.7.2
 resources:
   - _id: req_d773c9373ae2406c9be533ab7b1b1a17
     parentId: fld_3622009f74614a48a1ffb1e2573b961d
-    modified: 1662242973387
+    modified: 1662690446754
     created: 1661639024655
-    url: "{{ _.BASE_URL }}/signin"
+    url: '{{ _.BASE_URL }}/signin'
     name: Signin
-    description: ""
+    description: ''
     method: POST
     body:
       mimeType: application/json
@@ -40,7 +40,7 @@ resources:
     modified: 1662000752664
     created: 1662000752664
     name: Authenticate
-    description: ""
+    description: ''
     environment: {}
     environmentPropertyOrder: null
     metaSortKey: -1662000752664
@@ -59,11 +59,11 @@ resources:
     _type: workspace
   - _id: req_7512a0ba3c61434c9330a700d37a13b3
     parentId: fld_3622009f74614a48a1ffb1e2573b961d
-    modified: 1662243706188
+    modified: 1662690448103
     created: 1661996175769
-    url: "{{ _.BASE_URL }}/refresh-token"
+    url: '{{ _.BASE_URL }}/refresh-token'
     name: Refresh-token
-    description: ""
+    description: ''
     method: POST
     body:
       mimeType: application/json
@@ -92,11 +92,11 @@ resources:
     _type: request
   - _id: req_258d14d2758e4558830926cf13593f19
     parentId: fld_e58e3a939eb049ed8426f4d0d2996f7f
-    modified: 1662242969802
+    modified: 1662690449605
     created: 1661639024654
-    url: "{{ _.BASE_URL }}/signup"
+    url: '{{ _.BASE_URL }}/signup'
     name: Signup
-    description: ""
+    description: ''
     method: POST
     body:
       mimeType: application/json
@@ -127,18 +127,18 @@ resources:
     modified: 1661639024653
     created: 1661639024653
     name: Users
-    description: ""
+    description: ''
     environment: {}
     environmentPropertyOrder: null
     metaSortKey: -1625272794893
     _type: request_group
   - _id: req_58b13c2104354434b88fbe59d8e5d2ce
     parentId: fld_e58e3a939eb049ed8426f4d0d2996f7f
-    modified: 1662242985030
+    modified: 1662690450995
     created: 1661654195788
-    url: "{{ _.BASE_URL }}/users/update"
+    url: '{{ _.BASE_URL }}/users/update'
     name: Updatee
-    description: ""
+    description: ''
     method: PUT
     body:
       mimeType: application/json
@@ -156,7 +156,7 @@ resources:
         name: Authorization
         value: Bearer
           eyJhbGciOiJIUzI1NiIsInR5cCI6IkFUK0pXVCJ9.eyJpYXQiOjE2NjE5ODUwMzgsImV4cCI6MTY2MTk4NTA1Mywic3ViIjoiNjE4NWVhMDItMjMwZi00NGI1LWI5ODYtMjM0ODQzZGQyMDE3In0.VTO1kwcRQeruzgIMP1shI9xQPfCW77pn4ZuiqTdaUII
-        description: ""
+        description: ''
         disabled: true
       - name: Content-Type
         value: application/json
@@ -176,9 +176,9 @@ resources:
     _type: request
   - _id: req_60e1d13f64bd4635b5c155e51c363416
     parentId: fld_e58e3a939eb049ed8426f4d0d2996f7f
-    modified: 1662243126479
+    modified: 1662690451831
     created: 1661660184364
-    url: "{{ _.BASE_URL }}/users/remove"
+    url: '{{ _.BASE_URL }}/users/remove'
     name: Remove
     description: This route is for account deletion, it receives by default the id
       of the logged in user
@@ -201,11 +201,11 @@ resources:
     _type: request
   - _id: req_bd27a82cea4144c6bfa505197732d0fa
     parentId: fld_9da25977339d4276a5752b7fd5f68f28
-    modified: 1662243277874
+    modified: 1662690453418
     created: 1662083932935
-    url: "{{ _.BASE_URL }}/address"
+    url: '{{ _.BASE_URL }}/address'
     name: Create
-    description: ""
+    description: ''
     method: POST
     body:
       mimeType: application/json
@@ -243,20 +243,20 @@ resources:
     modified: 1662083932929
     created: 1662083932929
     name: Address
-    description: ""
+    description: ''
     environment: {}
     environmentPropertyOrder: null
     metaSortKey: -1624808009030.5625
     _type: request_group
   - _id: req_b72e5d607be84988b10b346f71a15ed0
     parentId: fld_9da25977339d4276a5752b7fd5f68f28
-    modified: 1662243493467
+    modified: 1662690455434
     created: 1662083932947
     url: "{{ _.BASE_URL }}/address/update/{% response 'body',
       'req_bd27a82cea4144c6bfa505197732d0fa', 'b64::JC5pZA==::46b', 'never', 60
       %}"
     name: Update
-    description: ""
+    description: ''
     method: PUT
     body:
       mimeType: application/json
@@ -273,9 +273,9 @@ resources:
         }
     parameters:
       - id: pair_5b8d77ecc2c0406e938f523c66885ef5
-        name: ""
-        value: ""
-        description: ""
+        name: ''
+        value: ''
+        description: ''
     headers:
       - name: Content-Type
         value: application/json
@@ -301,7 +301,7 @@ resources:
       'req_bd27a82cea4144c6bfa505197732d0fa', 'b64::JC5pZA==::46b', 'never', 60
       %}"
     name: Remove
-    description: ""
+    description: ''
     method: DELETE
     body: {}
     parameters: []
@@ -321,14 +321,19 @@ resources:
     _type: request
   - _id: req_5cca42e7190843e69343a85046ec8b89
     parentId: fld_b643294fb6214760aff937188a0172cf
-    modified: 1662243529491
+    modified: 1662690478163
     created: 1662202752049
-    url: "{{ _.BASE_URL }}/patients/list"
+    url: '{{ _.BASE_URL }}/patients/list'
     name: List all
-    description: ""
+    description: ''
     method: GET
     body: {}
-    parameters: []
+    parameters:
+      - id: pair_6fcc0ccdae16450e92e15e8773b99ea2
+        name: page
+        value: '1'
+        description: ''
+        disabled: false
     headers: []
     authentication:
       type: bearer
@@ -348,18 +353,18 @@ resources:
     modified: 1662160697449
     created: 1662160697449
     name: Patients
-    description: ""
+    description: ''
     environment: {}
     environmentPropertyOrder: null
     metaSortKey: -1624575616099.3438
     _type: request_group
   - _id: req_98fbd57fced74e9595dbf5175102cf28
     parentId: fld_b643294fb6214760aff937188a0172cf
-    modified: 1662243626018
+    modified: 1662690487362
     created: 1662187949153
-    url: "{{ _.BASE_URL }}/patients"
+    url: '{{ _.BASE_URL }}/patients'
     name: Create
-    description: ""
+    description: ''
     method: POST
     body:
       mimeType: application/json
@@ -367,8 +372,8 @@ resources:
         {
         	"addressId": "{% response 'body', 'req_bd27a82cea4144c6bfa505197732d0fa', 'b64::JC5pZA==::46b', 'never', 60 %}",
         	"name": "Pacient test",
-        	"email": "pacienttest@email.com",
-        	"document": "documenttest",
+        	"email": "pacientte111311111s1t@email.com",
+        	"document": "documen111131111t1test",
         	"gender": "gendertest",
         	"birthDate": "18/10/1998",
         	"phone": "53900000000"
@@ -393,13 +398,13 @@ resources:
     _type: request
   - _id: req_61327e93b5cf4a808fe8a247a533e18b
     parentId: fld_b643294fb6214760aff937188a0172cf
-    modified: 1662243644186
+    modified: 1662690489189
     created: 1662160697471
     url: "{{ _.BASE_URL }}/patients/update/{% response 'body',
       'req_98fbd57fced74e9595dbf5175102cf28', 'b64::JC5pZA==::46b', 'never', 60
       %}"
     name: Update
-    description: ""
+    description: ''
     method: PUT
     body:
       mimeType: application/json
@@ -419,7 +424,7 @@ resources:
         name: Authorization
         value: Bearer
           eyJhbGciOiJIUzI1NiIsInR5cCI6IkFUK0pXVCJ9.eyJpYXQiOjE2NjE5ODUwMzgsImV4cCI6MTY2MTk4NTA1Mywic3ViIjoiNjE4NWVhMDItMjMwZi00NGI1LWI5ODYtMjM0ODQzZGQyMDE3In0.VTO1kwcRQeruzgIMP1shI9xQPfCW77pn4ZuiqTdaUII
-        description: ""
+        description: ''
         disabled: true
       - name: Content-Type
         value: application/json
@@ -445,7 +450,7 @@ resources:
       'req_98fbd57fced74e9595dbf5175102cf28', 'b64::JC5pZA==::46b', 'never', 60
       %}"
     name: Remove
-    description: ""
+    description: ''
     method: DELETE
     body: {}
     parameters: []
@@ -465,18 +470,23 @@ resources:
     _type: request
   - _id: req_55bcfb9ca46b4ef1bec53b81629a9a8f
     parentId: fld_96aca3a1049d4a379cb3be297dbefc7c
-    modified: 1662243697134
+    modified: 1662690481496
     created: 1662195715454
-    url: "{{ _.BASE_URL }}/sessions/list"
+    url: '{{ _.BASE_URL }}/sessions/list'
     name: List all
-    description: ""
+    description: ''
     method: GET
     body: {}
-    parameters: []
+    parameters:
+      - id: pair_a40fa9e76fb543968bf1432155521444
+        name: page
+        value: '1'
+        description: ''
+        disabled: false
     headers: []
     authentication:
       type: bearer
-      token: "{% response 'body', 'req_d773c9373ae2406c9be533ab7b1b1a17',
+      token: "{% response 'body', 'req_7512a0ba3c61434c9330a700d37a13b3',
         'b64::JC5hY2Nlc3NUb2tlbg==::46b', 'never', 60 %}"
     metaSortKey: -1625270115936.7495
     isPrivate: false
@@ -492,29 +502,30 @@ resources:
     modified: 1662187949151
     created: 1662187949151
     name: Sessions
-    description: ""
+    description: ''
     environment: {}
     environmentPropertyOrder: null
     metaSortKey: -1624459419633.7344
     _type: request_group
   - _id: req_19b9366d00964a2f9a8b0e7d8f0a1b75
     parentId: fld_96aca3a1049d4a379cb3be297dbefc7c
-    modified: 1662243677927
+    modified: 1662690490762
     created: 1662160697460
-    url: "{{ _.BASE_URL }}/sessions"
+    url: '{{ _.BASE_URL }}/sessions'
     name: Create
-    description: ""
+    description: ''
     method: POST
     body:
       mimeType: application/json
       text: >-
-        {	
-        	"patientId":"{% response 'body', 'req_98fbd57fced74e9595dbf5175102cf28', 'b64::JC5pZA==::46b', 'never', 60 %}",
-           "status": "Agendado",
-           "subject": "Conflito",
-           "duration": "00:30",
-           "type": "Individual",
-           "comments": "Agendamento de sessão"
+        {
+        	"patientId": "{% response 'body', 'req_98fbd57fced74e9595dbf5175102cf28', 'b64::JC5pZA==::46b', 'never', 60 %}",
+        	"status": "Agendado",
+        	"subject": "Conflito",
+        	"duration": "00:30",
+        	"type": "Individual",
+        	"comments": "Agendamento de sessão",
+        	"appointmentDate": "2022-09-10 22:55"
         }
     parameters: []
     headers:
@@ -536,13 +547,13 @@ resources:
     _type: request
   - _id: req_28048e5d3afa4059a336275c18f93010
     parentId: fld_96aca3a1049d4a379cb3be297dbefc7c
-    modified: 1662243688755
+    modified: 1662690502527
     created: 1662187949156
     url: "{{ _.BASE_URL }}/sessions/update/{% response 'body',
       'req_19b9366d00964a2f9a8b0e7d8f0a1b75', 'b64::JC5pZA==::46b', 'never', 60
       %}"
     name: Update
-    description: ""
+    description: ''
     method: PUT
     body:
       mimeType: application/json
@@ -554,7 +565,8 @@ resources:
            "subject": "updateConflito",
            "duration": "update 00:30",
            "type": "updateIndividual",
-           "comments": "Agendamento de sessão"
+           "comments": "Agendamento de sessão",
+        	"appointmentDate":"2022-09-12 23:10"
         }
     parameters: []
     headers:
@@ -562,7 +574,7 @@ resources:
         name: Authorization
         value: Bearer
           eyJhbGciOiJIUzI1NiIsInR5cCI6IkFUK0pXVCJ9.eyJpYXQiOjE2NjE5ODUwMzgsImV4cCI6MTY2MTk4NTA1Mywic3ViIjoiNjE4NWVhMDItMjMwZi00NGI1LWI5ODYtMjM0ODQzZGQyMDE3In0.VTO1kwcRQeruzgIMP1shI9xQPfCW77pn4ZuiqTdaUII
-        description: ""
+        description: ''
         disabled: true
       - name: Content-Type
         value: application/json
@@ -582,13 +594,13 @@ resources:
     _type: request
   - _id: req_9021fed3d88143c3842dc289cf9dce4c
     parentId: fld_96aca3a1049d4a379cb3be297dbefc7c
-    modified: 1662194775526
+    modified: 1662690500225
     created: 1662187949157
     url: "{{ _.BASE_URL }}/sessions/remove/{% response 'body',
       'req_19b9366d00964a2f9a8b0e7d8f0a1b75', 'b64::JC5pZA==::46b', 'never', 60
       %}"
     name: Remove
-    description: ""
+    description: ''
     method: DELETE
     body: {}
     parameters: []
@@ -631,7 +643,7 @@ resources:
         hostOnly: true
         creation: 2021-11-20T23:24:31.488Z
         lastAccessed: 2022-03-18T01:08:03.337Z
-        id: "4929555956373577"
+        id: '4929555956373577'
       - key: connect.sid
         value: s%3AlH8tolZxTOD6xMqPx_EC-hxgeFAEb0cr.Npv7UX27Mce5XCqQUjhKQolXCi%2FdNogjdNFfNzWNHQU
         domain: accounts.google.com
@@ -640,7 +652,7 @@ resources:
         hostOnly: true
         creation: 2021-11-21T00:31:38.598Z
         lastAccessed: 2021-11-21T00:31:38.598Z
-        id: "6139951701899695"
+        id: '6139951701899695'
       - key: __Host-GAPS
         value: 1:caOrruSVPxejNouulMd4Jgcxz91NrA:rbcRmovHdXrrUuZi
         expires: 2023-12-07T09:08:18.000Z
@@ -653,7 +665,7 @@ resources:
         hostOnly: true
         creation: 2021-11-21T00:31:38.599Z
         lastAccessed: 2021-12-07T09:08:19.130Z
-        id: "7666785900253426"
+        id: '7666785900253426'
       - key: connect.sid
         value: s%3An_a7oFxGcf_TbeZjWhVERlC22qHjgJpi.q%2FqZSFqwJ3aJ0K1MGmFoi47sLvnkpLwzJlNhVU7Kf3A
         domain: api-heelpy.herokuapp.com
@@ -662,7 +674,7 @@ resources:
         hostOnly: true
         creation: 2021-11-21T01:43:04.796Z
         lastAccessed: 2022-03-18T01:14:08.120Z
-        id: "7761485128908303"
+        id: '7761485128908303'
       - key: GEM
         value: CgptaW51dGVtYWlkEMG4mqHZLw==
         domain: accounts.google.com
@@ -672,14 +684,14 @@ resources:
         hostOnly: true
         creation: 2021-12-07T09:08:19.131Z
         lastAccessed: 2021-12-07T09:08:19.131Z
-        id: "7287863159528689"
+        id: '7287863159528689'
     _type: cookie_jar
   - _id: spc_30404c029ae74ebaa76ea3440be42305
     parentId: wrk_6c58b9fec6a4495797289831ffeb6946
     modified: 1661639024755
     created: 1661639024651
     fileName: API-Healthy
-    contents: ""
+    contents: ''
     contentType: yaml
     _type: api_spec
   - _id: env_931c184138df46de97a4084ac97b33ab
@@ -690,9 +702,9 @@ resources:
     data:
       BASE_URL: https://api-heelpy.herokuapp.com
     dataPropertyOrder:
-      "&":
+      '&':
         - BASE_URL
-    color: "#ff0000"
+    color: '#ff0000'
     isPrivate: false
     metaSortKey: 1615000645494
     _type: environment
@@ -704,9 +716,9 @@ resources:
     data:
       BASE_URL: http://localhost:4000
     dataPropertyOrder:
-      "&":
+      '&':
         - BASE_URL
-    color: "#007bff"
+    color: '#007bff'
     isPrivate: false
     metaSortKey: 1616032935812.5
     _type: environment
@@ -718,9 +730,9 @@ resources:
     data:
       BASE_URL: https://codedropstotalzero.herokuapp.com
     dataPropertyOrder:
-      "&":
+      '&':
         - BASE_URL
-    color: "#66ff00"
+    color: '#66ff00'
     isPrivate: false
     metaSortKey: 1615516790653.25
     _type: environment
@@ -732,9 +744,9 @@ resources:
     data:
       BASE_URL: https://api-healthy-mind.herokuapp.com
     dataPropertyOrder:
-      "&":
+      '&':
         - BASE_URL
-    color: "#ee9417"
+    color: '#ee9417'
     isPrivate: false
     metaSortKey: 1662077463990
     _type: environment

@@ -1,3 +1,4 @@
+import moment from 'moment';
 import * as yup from 'yup';
 
 export class Validators {
@@ -34,6 +35,12 @@ export class Validators {
     duration: yup.string().required('Invalid duration'),
     type: yup.string().required('Invalid type'),
     comments: yup.string().required('Invalid comments'),
+    appointmentDate: yup
+      .date()
+      .required('Invalid Date')
+      .test('min_date', 'Invalid Date', (value) => {
+        return moment().isBefore(value);
+      }),
   });
 
   email = yup.string().email('Invalid email');

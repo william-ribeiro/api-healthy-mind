@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { inject, injectable } from 'tsyringe';
 import {
   IPatientRepository,
@@ -28,6 +29,12 @@ export class UpdateSessionUseCase {
     const patient = await this.patientRepository.getPatientById(payload.patientId, userId);
 
     if (!patient) throw new AppError('Patient not found', 404);
+
+    if (
+      payload.appointmentDate &&
+      moment(payload.appointmentDate).isBefore(moment(patient.createdAt))
+    )
+      throw new AppError('Invalid date', 400);
 
     return this.sessionRepository.update(sessionId, userId, {
       ...filterDefinedProperties(payload),

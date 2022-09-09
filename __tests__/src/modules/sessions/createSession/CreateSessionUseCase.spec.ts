@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { fakePatients, fakeUsers, PatientsRepositoryMock } from '../../../../mocks';
 import { CreateSessionUseCase } from '../../../../../src/modules';
 import { SessionRepositoryMock } from '../../../../mocks/sessions';
@@ -16,6 +17,7 @@ beforeEach(() => {
     duration: '00:30',
     type: 'testing typ',
     comments: 'testing comments',
+    appointmentDate: moment().add(1, 'd').format(),
   };
 
   patientRepositoryMock = new PatientsRepositoryMock();

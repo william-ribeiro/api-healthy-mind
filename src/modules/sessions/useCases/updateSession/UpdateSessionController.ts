@@ -17,7 +17,7 @@ export class UpdateSessionController {
 
       logger.info(`${timeBr} | [UPDATED SESSION] => ${JSON.stringify(createSession)}`);
 
-      return response.status(201).json(createSession);
+      return response.json(createSession);
     } catch (err: Error | any) {
       logger.error(`${timeBr} | [SESSION NOT UPDATED] => ${JSON.stringify(payload)}`);
 

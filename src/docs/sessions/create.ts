@@ -39,7 +39,7 @@ export const create = {
                 duration: '00:30',
                 type: 'Individual',
                 comments: 'Agendamento de sessão',
-                appointmentDate: '2022-09-15 16:00',
+                appointmentDate: '2199-09-15 16:00',
               },
             },
           },

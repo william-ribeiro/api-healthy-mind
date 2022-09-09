@@ -110,9 +110,18 @@ Para parar o servidor primeiro execute no Linux/Windows `ctrl+c` , no Mac `comma
 yarn docker:stop
 ```
 
-Para rodar os testes unitários
+Outros comandos:
+- Rodar os testes unitários
 ```console
 yarn docker:tests
+```
+- Executar migrações
+```console
+yarn docker:migrate
+```
+- Reverter a ultima migração
+```console
+yarn docker:revert
 ```
 
 #### Acesse o endpoint para testar a API

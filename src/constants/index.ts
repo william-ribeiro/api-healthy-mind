@@ -8,6 +8,7 @@ export const CONTAINER = {
 
 export const DATABASE = {
   ADDRESS: 'address',
+  ROLES: 'roles',
   PATIENTS: 'patients',
   SESSIONS: 'sessions',
   USERS: 'users',

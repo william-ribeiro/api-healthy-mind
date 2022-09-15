@@ -12,6 +12,7 @@ export const DATABASE = {
   ROLES: 'roles',
   PATIENTS: 'patients',
   SESSIONS: 'sessions',
+  RESOURCES: 'resources',
   USERS: 'users',
   USER_CREDENTIALS: 'user_credentials',
 };

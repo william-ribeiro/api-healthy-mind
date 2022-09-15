@@ -1,4 +1,3 @@
-import moment from 'moment';
 import { ISession } from '../../../src/interfaces';
 import { fakePatients } from '../patients';
 import { fakeUsers } from '../users';

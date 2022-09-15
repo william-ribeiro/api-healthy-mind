@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { rolesRoutes } from './roles/index';
 
 import { ensureAuthenticated, getIp } from '../middlewares';
 import { addressRoutes } from './address';
@@ -20,5 +21,6 @@ routes.use('/users', userRoutes);
 routes.use('/address', addressRoutes);
 routes.use('/patients', patientsRouter);
 routes.use('/sessions', sessionsRoutes);
+routes.use('/roles', rolesRoutes);
 
 export default routes;

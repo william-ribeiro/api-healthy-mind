@@ -2,6 +2,7 @@ export const CONTAINER = {
   ADDRESS_REPOSITORY: 'AddressRepository',
   PATIENT_REPOSITORY: 'PatientRepository',
   SESSIONS_REPOSITORY: 'SessionRepository',
+  ROLE_REPOSITORY: 'RoleRepository',
   USER_CREDENTIALS_REPOSITORY: 'UserCredentialsRepository',
   USERS_REPOSITORY: 'UsersRepository',
 };
@@ -52,4 +53,10 @@ export const SERVERS = {
     url: 'http://localhost:4000',
     description: 'Local Server',
   },
+};
+
+export const ROLE_PROTECTED = {
+  Admin: 'Admin',
+  Professional: 'Professional',
+  Patient: 'Patient',
 };

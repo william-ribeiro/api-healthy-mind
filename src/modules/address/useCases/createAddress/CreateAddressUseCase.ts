@@ -1,8 +1,8 @@
 import { inject, injectable } from 'tsyringe';
 
-import { CONTAINER } from './../../../../constants';
-import { IAddress, IAddressRepository, ICreateAddress } from '../../../../interfaces';
 import { AppError } from '../../../../errors';
+import { IAddress, IAddressRepository, ICreateAddress } from '../../../../interfaces';
+import { CONTAINER } from './../../../../constants';
 import { Validators } from './../../../../shared/validators';
 
 @injectable()
@@ -14,7 +14,7 @@ export class CreateAddressUseCase {
 
   async execute(payload: ICreateAddress): Promise<IAddress> {
     try {
-      await new Validators().createAddres.validate(payload, { abortEarly: true });
+      await new Validators().address.validate(payload, { abortEarly: true });
 
       return this.addressRepository.create({ ...payload });
     } catch (err: Error | any) {

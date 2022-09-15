@@ -7,10 +7,12 @@ export class Validators {
     email: yup.string().email('Invalid email').required(),
     password: yup.string().required('Invalid password').min(6, 'Minimum 6 characters'),
   });
+
   updateUser = yup.object().shape({
     password: yup.string().min(6, 'Minimum 6 characters'),
   });
-  createAddres = yup.object().shape({
+
+  address = yup.object().shape({
     postalCode: yup.string().required('Invalid postalCode'),
     street: yup.string().required('Invalid street'),
     number: yup.string().required('Invalid number'),
@@ -19,6 +21,7 @@ export class Validators {
     state: yup.string().required('Invalid state'),
     country: yup.string().required('Invalid country'),
   });
+
   patient = yup.object().shape({
     userId: yup.string().required('Invalid userId'),
     addressId: yup.string().required('Invalid addressId'),
@@ -28,6 +31,7 @@ export class Validators {
     birthDate: yup.string().label('Invalid birthDate'),
     phone: yup.string().label('Invalid phone'),
   });
+
   session = yup.object().shape({
     patientId: yup.string().required('Invalid patientId'),
     status: yup.string().required('Invalid status'),
@@ -41,6 +45,10 @@ export class Validators {
       .test('min_date', 'Invalid Date', (value) => {
         return moment().isBefore(value);
       }),
+  });
+
+  role = yup.object().shape({
+    name: yup.string().required('Invalid name'),
   });
 
   email = yup.string().email('Invalid email');

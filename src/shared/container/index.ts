@@ -1,14 +1,16 @@
 import { container, delay } from 'tsyringe';
 import { CONTAINER } from '../../constants';
 import {
-  IUsersRepository,
-  IUserCredentialsRepository,
   IAddressRepository,
   IPatientRepository,
+  IRoleRepository,
   ISessionRepository,
+  IUserCredentialsRepository,
+  IUsersRepository,
 } from '../../interfaces';
 import { AddressRepository } from '../../modules/address';
 import { PatientRepository } from '../../modules/patients';
+import { RoleRepository } from '../../modules/roles';
 import { SessionRepository } from '../../modules/sessions';
 import { UserCredentialsRepository } from '../../modules/userCredentials';
 import { UsersRepository } from '../../modules/users';
@@ -36,4 +38,9 @@ container.registerSingleton<IPatientRepository>(
 container.registerSingleton<ISessionRepository>(
   CONTAINER.SESSIONS_REPOSITORY,
   delay(() => SessionRepository),
+);
+
+container.registerSingleton<IRoleRepository>(
+  CONTAINER.ROLE_REPOSITORY,
+  delay(() => RoleRepository),
 );

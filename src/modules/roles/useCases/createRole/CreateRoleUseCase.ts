@@ -25,7 +25,7 @@ export class CreateRoleUseCase {
 
     const { name } = payload;
 
-    const role = await this.roleRepository.getRoleByName(name);
+    const role = await this.roleRepository.getRoleByName(parseName(name));
 
     if (role) throw new AppError('Role already exists', 409);
 

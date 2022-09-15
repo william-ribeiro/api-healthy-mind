@@ -26,6 +26,13 @@ export class UpdateRoleUseCase {
     } catch (err: Error | any) {
       throw new AppError(err.errors[0]);
     }
+    const { name } = payload;
+
+    if (name && parseName(name) !== role.name) {
+      await this.repository.getRoleByName(parseName(name)).then((result) => {
+        if (result) throw new AppError('Role already exists', 409);
+      });
+    }
 
     const payload_ = { ...payload, name: parseName(payload.name) };
 

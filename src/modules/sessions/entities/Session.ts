@@ -3,12 +3,14 @@ import {
   CreateDateColumn,
   Entity,
   JoinColumn,
+  ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { DATABASE } from '../../../constants';
 import { ISession } from '../../../interfaces/entities';
 import { Patient } from '../../patients';
+import { Resource } from '../../resources';
 import { User } from '../../users';
 
 @Entity(DATABASE.SESSIONS)
@@ -49,6 +51,12 @@ export class Session implements ISession {
   @Column()
   public appointmentDate: Date;
 
+  @Column()
+  public resourceId: number;
+
+  @Column()
+  public service: string;
+
   @OneToOne(() => User)
   @JoinColumn({ name: 'userId' })
   user: User;
@@ -56,4 +64,7 @@ export class Session implements ISession {
   @OneToOne(() => Patient)
   @JoinColumn({ name: 'patientId' })
   patient: Patient;
+
+  @ManyToOne(() => Resource, (resource) => resource.sessions)
+  resource: Resource;
 }

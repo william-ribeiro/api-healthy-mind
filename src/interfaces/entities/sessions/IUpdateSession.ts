@@ -8,4 +8,6 @@ export interface IUpdateSession {
   comments?: string;
   enabled?: boolean;
   appointmentDate?: Date;
+  resourceId?: number;
+  service?: string;
 }

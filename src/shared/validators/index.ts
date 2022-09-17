@@ -45,6 +45,8 @@ export class Validators {
       .test('min_date', 'Invalid Date', (value) => {
         return moment().isBefore(value);
       }),
+    resourceId: yup.number().required('Invalid resourceId'),
+    service: yup.string().required('Invalid service'),
   });
 
   role = yup.object().shape({

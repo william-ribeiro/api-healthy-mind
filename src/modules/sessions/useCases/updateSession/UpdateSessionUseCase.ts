@@ -1,14 +1,15 @@
 import moment from 'moment';
 import { inject, injectable } from 'tsyringe';
+import { AppError } from '../../../../errors';
 import {
   IPatientRepository,
+  IResourceRepository,
   ISession,
   ISessionRepository,
   IUpdateSession,
 } from '../../../../interfaces';
+import { filterDefinedProperties, payloadValidate } from '../../../../utils';
 import { CONTAINER } from './../../../../constants';
-import { AppError } from '../../../../errors';
-import { filterDefinedProperties } from '../../../../utils';
 
 @injectable()
 export class UpdateSessionUseCase {
@@ -17,10 +18,12 @@ export class UpdateSessionUseCase {
     private sessionRepository: ISessionRepository,
     @inject(CONTAINER.PATIENT_REPOSITORY)
     private patientRepository: IPatientRepository,
+    @inject(CONTAINER.RESOURCE_REPOSITORY)
+    private resourceRepository: IResourceRepository,
   ) {}
 
   async execute(sessionId: number, userId: string, payload: IUpdateSession): Promise<ISession> {
-    if (typeof 'object' && !Object.values(payload).length) throw new AppError('Invalid payload');
+    payloadValidate(payload);
 
     const session = await this.sessionRepository.getSessionById(sessionId, userId);
 
@@ -30,9 +33,17 @@ export class UpdateSessionUseCase {
 
     if (!patient) throw new AppError('Patient not found', 404);
 
+    const resource = await this.resourceRepository.getResourceById({
+      resourceId: payload.resourceId,
+      userId,
+    });
+
+    if (!resource) throw new AppError('Resource not found', 404);
+
     if (
-      payload.appointmentDate &&
-      moment(payload.appointmentDate).isBefore(moment(patient.createdAt))
+      (payload.appointmentDate &&
+        moment(payload.appointmentDate).isBefore(moment(patient.createdAt))) ||
+      moment(payload.appointmentDate).isBefore(moment(session.createdAt))
     )
       throw new AppError('Invalid date', 400);
 

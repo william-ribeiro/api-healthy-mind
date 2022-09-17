@@ -1,10 +1,11 @@
 import { ISession } from '../../../src/interfaces';
 import { fakePatients } from '../patients';
 import { fakeUsers } from '../users';
+import { fakeResources } from './../resources/fakeResources';
 
 export const fakeSession: ISession[] = [
   {
-    id: 0,
+    id: 1,
     userId: fakeUsers[0].id,
     patientId: fakePatients[0].id,
     createdAt: new Date('2022-09-02T23:32:10.466Z'),
@@ -15,10 +16,17 @@ export const fakeSession: ISession[] = [
     type: 'Individual',
     comments: 'Agendamento de sessão',
     enabled: true,
+    service: 'remote',
+    resourceId: fakeResources[0].id,
+    resource: {
+      category: fakeResources[0].category,
+      title: fakeResources[0].title,
+      description: fakeResources[0].description,
+    },
     appointmentDate: new Date(),
   } as ISession,
   {
-    id: 1,
+    id: 2,
     userId: fakeUsers[0].id,
     patientId: fakePatients[1].id,
     createdAt: new Date('2022-09-02T23:32:10.466Z'),
@@ -29,20 +37,13 @@ export const fakeSession: ISession[] = [
     type: 'Individual',
     comments: 'Entrevista inicial',
     enabled: true,
-    appointmentDate: new Date(),
-  } as ISession,
-  {
-    id: 2,
-    userId: fakeUsers[0].id,
-    patientId: fakePatients[2].id,
-    createdAt: new Date('2022-09-02T23:32:10.466Z'),
-    updatedAt: new Date('2022-09-02T23:32:10.466Z'),
-    status: 'Atendido',
-    subject: 'Conflito Matrimonial',
-    duration: '01:00',
-    type: 'Casal',
-    comments: 'Resolução de conflito',
-    enabled: true,
+    service: 'remote',
+    resourceId: fakeResources[0].id,
+    resource: {
+      category: fakeResources[0].category,
+      title: fakeResources[0].title,
+      description: fakeResources[0].description,
+    },
     appointmentDate: new Date(),
   } as ISession,
   {
@@ -56,11 +57,39 @@ export const fakeSession: ISession[] = [
     duration: '01:00',
     type: 'Casal',
     comments: 'Resolução de conflito',
-    enabled: false,
+    enabled: true,
+    service: 'remote',
+    resourceId: fakeResources[0].id,
+    resource: {
+      category: fakeResources[0].category,
+      title: fakeResources[0].title,
+      description: fakeResources[0].description,
+    },
     appointmentDate: new Date(),
   } as ISession,
   {
     id: 4,
+    userId: fakeUsers[0].id,
+    patientId: fakePatients[2].id,
+    createdAt: new Date('2022-09-02T23:32:10.466Z'),
+    updatedAt: new Date('2022-09-02T23:32:10.466Z'),
+    status: 'Atendido',
+    subject: 'Conflito Matrimonial',
+    duration: '01:00',
+    type: 'Casal',
+    comments: 'Resolução de conflito',
+    enabled: false,
+    service: 'remote',
+    resourceId: fakeResources[0].id,
+    resource: {
+      category: fakeResources[0].category,
+      title: fakeResources[0].title,
+      description: fakeResources[0].description,
+    },
+    appointmentDate: new Date(),
+  } as ISession,
+  {
+    id: 44,
     userId: fakeUsers[0].id,
     patientId: fakePatients[0].id,
     createdAt: new Date('2022-09-02T23:32:10.466Z'),
@@ -71,6 +100,13 @@ export const fakeSession: ISession[] = [
     type: 'Individual',
     comments: 'Agendamento de sessão',
     enabled: true,
+    service: 'remote',
+    resourceId: fakeResources[0].id,
+    resource: {
+      category: fakeResources[0].category,
+      title: fakeResources[0].title,
+      description: fakeResources[0].description,
+    },
     appointmentDate: new Date(),
   } as ISession,
   {
@@ -85,6 +121,13 @@ export const fakeSession: ISession[] = [
     type: 'Individual',
     comments: 'Entrevista inicial',
     enabled: true,
+    service: 'remote',
+    resourceId: fakeResources[0].id,
+    resource: {
+      category: fakeResources[0].category,
+      title: fakeResources[0].title,
+      description: fakeResources[0].description,
+    },
     appointmentDate: new Date(),
   } as ISession,
   {
@@ -99,6 +142,13 @@ export const fakeSession: ISession[] = [
     type: 'Casal',
     comments: 'Resolução de conflito',
     enabled: true,
+    service: 'remote',
+    resourceId: fakeResources[0].id,
+    resource: {
+      category: fakeResources[0].category,
+      title: fakeResources[0].title,
+      description: fakeResources[0].description,
+    },
     appointmentDate: new Date(),
   } as ISession,
   {
@@ -113,6 +163,13 @@ export const fakeSession: ISession[] = [
     type: 'Casal',
     comments: 'Resolução de conflito',
     enabled: true,
+    service: 'remote',
+    resourceId: fakeResources[0].id,
+    resource: {
+      category: fakeResources[0].category,
+      title: fakeResources[0].title,
+      description: fakeResources[0].description,
+    },
     appointmentDate: new Date(),
   } as ISession,
   {
@@ -127,6 +184,13 @@ export const fakeSession: ISession[] = [
     type: 'Individual',
     comments: 'Agendamento de sessão',
     enabled: true,
+    service: 'remote',
+    resourceId: fakeResources[0].id,
+    resource: {
+      category: fakeResources[0].category,
+      title: fakeResources[0].title,
+      description: fakeResources[0].description,
+    },
     appointmentDate: new Date(),
   } as ISession,
   {
@@ -141,6 +205,13 @@ export const fakeSession: ISession[] = [
     type: 'Individual',
     comments: 'Entrevista inicial',
     enabled: true,
+    service: 'remote',
+    resourceId: fakeResources[0].id,
+    resource: {
+      category: fakeResources[0].category,
+      title: fakeResources[0].title,
+      description: fakeResources[0].description,
+    },
     appointmentDate: new Date(),
   } as ISession,
   {
@@ -155,6 +226,13 @@ export const fakeSession: ISession[] = [
     type: 'Casal',
     comments: 'Resolução de conflito',
     enabled: false,
+    service: 'remote',
+    resourceId: fakeResources[0].id,
+    resource: {
+      category: fakeResources[0].category,
+      title: fakeResources[0].title,
+      description: fakeResources[0].description,
+    },
     appointmentDate: new Date(),
   } as ISession,
   {
@@ -169,6 +247,13 @@ export const fakeSession: ISession[] = [
     type: 'Casal',
     comments: 'Resolução de conflito',
     enabled: false,
+    service: 'remote',
+    resourceId: fakeResources[0].id,
+    resource: {
+      category: fakeResources[0].category,
+      title: fakeResources[0].title,
+      description: fakeResources[0].description,
+    },
     appointmentDate: new Date(),
   } as ISession,
 ];

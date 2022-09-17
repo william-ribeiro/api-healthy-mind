@@ -10,6 +10,7 @@ export class createTableResources1663282373858 implements MigrationInterface {
           {
             name: 'id',
             type: 'integer',
+            isPrimary: true,
             isGenerated: true,
           },
           {

@@ -20,7 +20,10 @@ export class UpdateResourceUseCase {
 
     const { title } = payload;
 
-    if (title && title !== resource.title) {
+    if (
+      title &&
+      removeSpecialCharactersFromString(title) !== removeSpecialCharactersFromString(resource.title)
+    ) {
       const resourceAlreadyExists = await this.resourceRepository.getResourceByTitle({
         title: removeSpecialCharactersFromString(title),
         userId,

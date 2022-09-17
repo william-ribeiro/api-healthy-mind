@@ -65,10 +65,10 @@ describe('Testing updateResourceUseCase', () => {
     try {
       return expect(
         await updateResourceUseCase.execute({
-          resourceId: payload.id,
+          resourceId: fakeResources[1].id,
           userId: payload.userId,
           payload: {
-            title: fakeResources[0].title.toLowerCase(),
+            title: fakeResources[0].title,
           },
         }),
       ).toBeUndefined();
@@ -81,10 +81,10 @@ describe('Testing updateResourceUseCase', () => {
     try {
       return expect(
         await updateResourceUseCase.execute({
-          resourceId: payload.id,
+          resourceId: fakeResources[1].id,
           userId: payload.userId,
           payload: {
-            title: fakeResources[0].title.toLowerCase(),
+            title: fakeResources[0].title,
           },
         }),
       ).toBeUndefined();

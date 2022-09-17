@@ -18,7 +18,7 @@ export class SessionRepository implements ISessionRepository {
   async getAllSessions(userId: string, skip: number): Promise<[ISession[], number]> {
     return this.sessionRepository
       .createQueryBuilder(DATABASE.SESSIONS)
-      .innerJoinAndSelect(DATABASE.JOIN.SESSION_RESOURCE, DATABASE.ALIAS.SESSION)
+      .leftJoinAndSelect(DATABASE.JOIN.SESSION_RESOURCE, DATABASE.ALIAS.SESSION)
       .select([
         DATABASE.SESSIONS,
         SELECT_FIELDS.SESSION.CATEGORY,

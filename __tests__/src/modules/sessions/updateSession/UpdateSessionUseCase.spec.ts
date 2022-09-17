@@ -1,11 +1,12 @@
-import { UpdateSessionUseCase } from '../..//../../../src/modules';
-import { fakeSession, SessionRepositoryMock } from '../../../../mocks/sessions';
 import { ISession } from '../../../../../src/interfaces';
-import { PatientsRepositoryMock } from '../../../../mocks';
+import { fakePatients, PatientsRepositoryMock, ResourceRepositoryMock } from '../../../../mocks';
+import { fakeSession, SessionRepositoryMock } from '../../../../mocks/sessions';
+import { UpdateSessionUseCase } from '../..//../../../src/modules';
 
 let updateSessionUseCase: UpdateSessionUseCase;
 let sessionRepositoryMock: SessionRepositoryMock;
 let patientRepositoryMock: PatientsRepositoryMock;
+let resourceRepositoryMock: ResourceRepositoryMock;
 let payload: ISession;
 
 beforeEach(() => {
@@ -13,7 +14,12 @@ beforeEach(() => {
 
   sessionRepositoryMock = new SessionRepositoryMock();
   patientRepositoryMock = new PatientsRepositoryMock();
-  updateSessionUseCase = new UpdateSessionUseCase(sessionRepositoryMock, patientRepositoryMock);
+  resourceRepositoryMock = new ResourceRepositoryMock();
+  updateSessionUseCase = new UpdateSessionUseCase(
+    sessionRepositoryMock,
+    patientRepositoryMock,
+    resourceRepositoryMock,
+  );
 });
 
 describe('Testing updateSessionUseCase', () => {
@@ -50,6 +56,20 @@ describe('Testing updateSessionUseCase', () => {
       ).toBeUndefined();
     } catch (err) {
       return expect(err.message).toBe('Patient not found');
+    }
+  });
+
+  it('must return update session error when passed invalid resourceId ', async () => {
+    try {
+      return expect(
+        await updateSessionUseCase.execute(payload.id, payload.userId, {
+          resourceId: 999,
+          patientId: fakePatients[1].id,
+          status: 'update status',
+        }),
+      ).toBeUndefined();
+    } catch (err) {
+      return expect(err.message).toBe('Resource not found');
     }
   });
 

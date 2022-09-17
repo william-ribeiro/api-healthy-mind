@@ -7,4 +7,6 @@ export interface ICreateSession {
   type: string;
   comments: string;
   appointmentDate: Date;
+  resourceId: number;
+  service: string;
 }

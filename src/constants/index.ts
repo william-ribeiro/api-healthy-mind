@@ -16,6 +16,20 @@ export const DATABASE = {
   SESSIONS: 'sessions',
   USERS: 'users',
   USER_CREDENTIALS: 'user_credentials',
+  JOIN: {
+    SESSION_RESOURCE: 'sessions.resource',
+  },
+  ALIAS: {
+    SESSION: 'session',
+  },
+};
+
+export const SELECT_FIELDS = {
+  SESSION: {
+    CATEGORY: `${DATABASE.ALIAS.SESSION}.category`,
+    TITLE: `${DATABASE.ALIAS.SESSION}.title`,
+    DESCRIPTION: `${DATABASE.ALIAS.SESSION}.description`,
+  },
 };
 
 export const JWT = {

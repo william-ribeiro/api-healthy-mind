@@ -1,6 +1,6 @@
 import lodash from 'lodash';
-import { PAGINATION } from '../constants';
 import util from 'util';
+import { PAGINATION } from '../constants';
 import { AppError } from '../errors';
 
 export const parsePage = (page: string) => {
@@ -83,10 +83,11 @@ export const buildClusters = (elements: any, clusterLength = 10) => {
 
 export const payloadValidate = (payload: any) => {
   if (typeof 'object' && !Object.values(payload).length) throw new AppError('Invalid payload');
-
   const keys = Object.keys(payload);
 
   Object.values(payload).map((value, index) => {
-    if (!value) throw new Error(`Invalid ${keys[index]}`);
+    if (keys[index] !== 'enabled') {
+      if (!value) throw new Error(`Invalid ${keys[index]}`);
+    }
   });
 };

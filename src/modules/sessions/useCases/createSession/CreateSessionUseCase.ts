@@ -1,13 +1,14 @@
 import { inject, injectable } from 'tsyringe';
+import { AppError } from '../../../../errors';
 import {
   ICreateSession,
   IPatientRepository,
+  IResourceRepository,
   ISession,
   ISessionRepository,
 } from '../../../../interfaces';
-import { CONTAINER } from './../../../../constants';
-import { AppError } from '../../../../errors';
 import { Validators } from '../../../../shared';
+import { CONTAINER } from './../../../../constants';
 
 @injectable()
 export class CreateSessionUseCase {
@@ -16,6 +17,8 @@ export class CreateSessionUseCase {
     private sessionRepository: ISessionRepository,
     @inject(CONTAINER.PATIENT_REPOSITORY)
     private patientRepository: IPatientRepository,
+    @inject(CONTAINER.RESOURCE_REPOSITORY)
+    private resourceRepository: IResourceRepository,
   ) {}
 
   async execute(userId: string, payload: ICreateSession): Promise<ISession> {
@@ -30,6 +33,13 @@ export class CreateSessionUseCase {
     const patient = await this.patientRepository.getPatientById(payload.patientId, userId);
 
     if (!patient) throw new AppError('Patient not found', 404);
+
+    const resource = await this.resourceRepository.getResourceById({
+      resourceId: payload.resourceId,
+      userId,
+    });
+
+    if (!resource) throw new AppError('Resource not found', 404);
 
     return this.sessionRepository.create({ ...payload, userId });
   }

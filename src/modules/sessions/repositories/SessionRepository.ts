@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { getRepository, Repository } from 'typeorm';
-import { PAGINATION } from '../../../constants';
+import { DATABASE, PAGINATION, SELECT_FIELDS } from '../../../constants';
 import { ICreateSession, ISession, ISessionRepository, IUpdateSession } from '../../../interfaces';
 import { Session } from '../entities';
 
@@ -17,9 +17,18 @@ export class SessionRepository implements ISessionRepository {
 
   async getAllSessions(userId: string, skip: number): Promise<[ISession[], number]> {
     return this.sessionRepository
-      .createQueryBuilder()
-      .where('"userId"=:userId', { userId })
-      .andWhere('enabled=:enabled', { enabled: true })
+      .createQueryBuilder(DATABASE.SESSIONS)
+      .innerJoinAndSelect(DATABASE.JOIN.SESSION_RESOURCE, DATABASE.ALIAS.SESSION)
+      .select([
+        DATABASE.SESSIONS,
+        SELECT_FIELDS.SESSION.CATEGORY,
+        SELECT_FIELDS.SESSION.TITLE,
+        SELECT_FIELDS.SESSION.DESCRIPTION,
+      ])
+
+      .where('sessions.userId = :userId', { userId })
+      .andWhere('sessions.enabled = :enabled', { enabled: true })
+
       .skip(skip)
       .take(PAGINATION.PER_PAGE)
       .getManyAndCount();

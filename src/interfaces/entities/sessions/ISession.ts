@@ -11,4 +11,6 @@ export abstract class ISession {
   public comments: string;
   public enabled: boolean;
   public appointmentDate: Date;
+  public resourceId: number;
+  public service: string;
 }

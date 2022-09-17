@@ -1,11 +1,18 @@
 import moment from 'moment';
-import { fakePatients, fakeUsers, PatientsRepositoryMock } from '../../../../mocks';
 import { CreateSessionUseCase } from '../../../../../src/modules';
+import {
+  fakePatients,
+  fakeResources,
+  fakeUsers,
+  PatientsRepositoryMock,
+  ResourceRepositoryMock,
+} from '../../../../mocks';
 import { SessionRepositoryMock } from '../../../../mocks/sessions';
 
 let createSessionUseCase: CreateSessionUseCase;
 let sessionRepositoryMock: SessionRepositoryMock;
 let patientRepositoryMock: PatientsRepositoryMock;
+let resourceRepositoryMock: ResourceRepositoryMock;
 let payload: any;
 
 beforeEach(() => {
@@ -17,12 +24,19 @@ beforeEach(() => {
     duration: '00:30',
     type: 'testing typ',
     comments: 'testing comments',
+    service: 'remote testing',
+    resourceId: fakeResources[0].id,
     appointmentDate: moment().add(1, 'd').format(),
   };
 
   patientRepositoryMock = new PatientsRepositoryMock();
   sessionRepositoryMock = new SessionRepositoryMock();
-  createSessionUseCase = new CreateSessionUseCase(sessionRepositoryMock, patientRepositoryMock);
+  resourceRepositoryMock = new ResourceRepositoryMock();
+  createSessionUseCase = new CreateSessionUseCase(
+    sessionRepositoryMock,
+    patientRepositoryMock,
+    resourceRepositoryMock,
+  );
 });
 
 describe('Testing createSessionUseCase', () => {
@@ -69,6 +83,19 @@ describe('Testing createSessionUseCase', () => {
       ).toBeUndefined();
     } catch (err) {
       return expect(err.message).toBe('Patient not found');
+    }
+  });
+
+  it('must return create session error when resource not found', async () => {
+    payload.resourceId = 999;
+    try {
+      return expect(
+        await createSessionUseCase.execute(payload.userId, {
+          ...payload,
+        }),
+      ).toBeUndefined();
+    } catch (err) {
+      return expect(err.message).toBe('Resource not found');
     }
   });
 });

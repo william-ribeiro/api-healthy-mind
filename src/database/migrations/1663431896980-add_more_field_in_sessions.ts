@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, TableColumn } from 'typeorm';
+import { MigrationInterface, QueryRunner, TableColumn, TableForeignKey } from 'typeorm';
 import { DATABASE } from '../../constants';
 
 export class addMoreFieldInSessions1663431896980 implements MigrationInterface {
@@ -15,6 +15,18 @@ export class addMoreFieldInSessions1663431896980 implements MigrationInterface {
         isNullable: true,
       }),
     ]);
+
+    await queryRunner.createForeignKey(
+      DATABASE.SESSIONS,
+      new TableForeignKey({
+        name: 'fk_resources',
+        referencedTableName: DATABASE.RESOURCES,
+        referencedColumnNames: ['id'],
+        columnNames: ['resourceId'],
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+      }),
+    );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {

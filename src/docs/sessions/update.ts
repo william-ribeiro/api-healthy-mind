@@ -31,6 +31,8 @@ export const update = {
                 duration: { type: 'string' },
                 type: { type: 'string' },
                 comments: { type: 'string' },
+                service: { type: 'string' },
+                resourceId: { type: 'integer' },
                 appointmentDate: { type: 'timestamp' },
               },
               example: {
@@ -40,6 +42,8 @@ export const update = {
                 duration: 'update duration',
                 type: 'update type',
                 comments: 'update comments',
+                service: 'Presential',
+                resourceId: 1,
                 appointmentDate: '2199-09-15 22:00',
               },
             },

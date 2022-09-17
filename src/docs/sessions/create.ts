@@ -1,6 +1,7 @@
 import { components } from '../config';
 
-const { createdResponse, badRequestError, unauthorizedError, internalError } = components.responses;
+const { createdResponse, badRequestError, notFoundError, unauthorizedError, internalError } =
+  components.responses;
 
 export const create = {
   '/sessions': {
@@ -21,6 +22,8 @@ export const create = {
                 duration: { type: 'string' },
                 type: { type: 'string' },
                 comments: { type: 'string' },
+                service: { type: 'string' },
+                resourceId: { type: 'integer' },
                 appointmentDate: { type: 'timestamp' },
               },
               required: [
@@ -30,6 +33,8 @@ export const create = {
                 'duration',
                 'type',
                 'comments',
+                'service',
+                'resourceId',
                 'appointmentDate',
               ],
               example: {
@@ -39,6 +44,8 @@ export const create = {
                 duration: '00:30',
                 type: 'Individual',
                 comments: 'Agendamento de sessão',
+                service: 'Remote',
+                resourceId: 1,
                 appointmentDate: '2199-09-15 16:00',
               },
             },
@@ -48,6 +55,7 @@ export const create = {
       responses: {
         '201': createdResponse,
         '400': badRequestError,
+        '404': notFoundError,
         '401': unauthorizedError,
         '500': internalError,
       },

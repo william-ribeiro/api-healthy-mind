@@ -3,11 +3,13 @@ import { CONTAINER } from '../../constants';
 import {
   IAddressRepository,
   IPatientRepository,
+  IResourceRepository,
   IRoleRepository,
   ISessionRepository,
   IUserCredentialsRepository,
   IUsersRepository,
 } from '../../interfaces';
+import { ResourceRepository } from '../../modules';
 import { AddressRepository } from '../../modules/address';
 import { PatientRepository } from '../../modules/patients';
 import { RoleRepository } from '../../modules/roles';
@@ -43,4 +45,9 @@ container.registerSingleton<ISessionRepository>(
 container.registerSingleton<IRoleRepository>(
   CONTAINER.ROLE_REPOSITORY,
   delay(() => RoleRepository),
+);
+
+container.registerSingleton<IResourceRepository>(
+  CONTAINER.RESOURCE_REPOSITORY,
+  delay(() => ResourceRepository),
 );

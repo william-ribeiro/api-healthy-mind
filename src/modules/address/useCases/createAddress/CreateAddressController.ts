@@ -3,10 +3,10 @@ import { container } from 'tsyringe';
 import { AppError } from '../../../../errors';
 import { logger, timeBr } from '../../../../shared';
 import { CreateAddressUseCase } from './CreateAddressUseCase';
-
 export class CreateAddressController {
   async handle(request: Request, response: Response): Promise<Response> {
     const payload = request.body;
+
     try {
       const createAddressUseCase = container.resolve(CreateAddressUseCase);
 

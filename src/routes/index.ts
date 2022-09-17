@@ -6,6 +6,7 @@ import { addressRoutes } from './address';
 import { authenticateRoutes } from './authenticate';
 import { patientsRouter } from './patients';
 import { refreshTokenRoutes } from './refreshToken';
+import { resourceRoutes } from './resource';
 import { sessionsRoutes } from './sessions';
 import { userRoutes } from './users';
 
@@ -22,5 +23,6 @@ routes.use('/address', addressRoutes);
 routes.use('/patients', patientsRouter);
 routes.use('/sessions', sessionsRoutes);
 routes.use('/roles', rolesRoutes);
+routes.use('/resources', resourceRoutes);
 
 export default routes;

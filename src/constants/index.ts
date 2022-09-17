@@ -1,18 +1,19 @@
 export const CONTAINER = {
   ADDRESS_REPOSITORY: 'AddressRepository',
   PATIENT_REPOSITORY: 'PatientRepository',
-  SESSIONS_REPOSITORY: 'SessionRepository',
   ROLE_REPOSITORY: 'RoleRepository',
+  RESOURCE_REPOSITORY: 'ResourceRepository',
+  SESSIONS_REPOSITORY: 'SessionRepository',
   USER_CREDENTIALS_REPOSITORY: 'UserCredentialsRepository',
   USERS_REPOSITORY: 'UsersRepository',
 };
 
 export const DATABASE = {
   ADDRESS: 'address',
-  ROLES: 'roles',
   PATIENTS: 'patients',
-  SESSIONS: 'sessions',
   RESOURCES: 'resources',
+  ROLES: 'roles',
+  SESSIONS: 'sessions',
   USERS: 'users',
   USER_CREDENTIALS: 'user_credentials',
 };

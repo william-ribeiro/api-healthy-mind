@@ -51,5 +51,12 @@ export class Validators {
     name: yup.string().required('Invalid name'),
   });
 
+  resource = yup.object().shape({
+    userId: yup.string().required('Invalid userId'),
+    category: yup.string().required('Invalid category'),
+    title: yup.string().required('Invalid title'),
+    description: yup.string().required('Invalid description'),
+  });
+
   email = yup.string().email('Invalid email');
 }

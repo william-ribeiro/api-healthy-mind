@@ -2,32 +2,29 @@ import { container, inject, injectable } from 'tsyringe';
 
 import {
   IAuthenticateUser,
-  IUserCredentialsRepository,
+  ICredentialsRepository,
   IUsersRepository,
 } from '../../../../interfaces';
 
+import { compare } from 'bcryptjs';
+import moment from 'moment';
 import { CONTAINER, JWT } from '../../../../constants';
 import { AppError } from '../../../../errors';
-import { compare } from 'bcryptjs';
 import { generateToken } from '../../../../utils';
-import {
-  CreateUserCredentialsUseCase,
-  UpdateUserCredentialsUseCase,
-} from '../../../userCredentials';
-import moment from 'moment';
+import { CreateCredentialsUseCase, UpdateCredentialsUseCase } from '../../../credentials';
 
 @injectable()
 export class AuthenticateUserUseCase {
   constructor(
     @inject(CONTAINER.USERS_REPOSITORY)
     private userRepository: IUsersRepository,
-    @inject(CONTAINER.USER_CREDENTIALS_REPOSITORY)
-    private userCredentialsRepository: IUserCredentialsRepository,
+    @inject(CONTAINER.CREDENTIALS_REPOSITORY)
+    private credentialsRepository: ICredentialsRepository,
   ) {}
 
   async execute({ email, password }): Promise<IAuthenticateUser> {
-    const createUserCredentialsUseCase = container.resolve(CreateUserCredentialsUseCase);
-    const updateUserCredentialsUseCase = container.resolve(UpdateUserCredentialsUseCase);
+    const createCredentialsUseCase = container.resolve(CreateCredentialsUseCase);
+    const updateCredentialsUseCase = container.resolve(UpdateCredentialsUseCase);
 
     const user = await this.userRepository.getByEmail(email.toLowerCase().trim());
 
@@ -43,26 +40,25 @@ export class AuthenticateUserUseCase {
       type: JWT.TYPE.REFRESH_TOKEN,
     });
 
-    const userCredentials = await this.userCredentialsRepository.getCredentialByUserId(user.id);
+    const userCredentials = await this.credentialsRepository.getCredentialByOwnerId(user.id);
 
     if (!userCredentials) {
       const createCredentials = {
-        userId: user.id,
+        ownerId: user.id,
         accessToken,
         refreshToken,
         expiresIn: moment().add(JWT.EXPIRATION_RT_DAYS, 'days'),
       };
 
-      await createUserCredentialsUseCase.execute(createCredentials);
+      await createCredentialsUseCase.execute(createCredentials);
 
       return { id: user.id, name: user.name, email, accessToken, refreshToken };
     }
 
-    if (userCredentials.isValid)
-      await updateUserCredentialsUseCase.execute(user.id, { accessToken });
+    if (userCredentials.isValid) await updateCredentialsUseCase.execute(user.id, { accessToken });
 
     if (!userCredentials.isValid)
-      await updateUserCredentialsUseCase.execute(user.id, {
+      await updateCredentialsUseCase.execute(user.id, {
         accessToken,
         refreshToken,
         expiresIn: moment().add(JWT.EXPIRATION_RT_DAYS, 'days'),

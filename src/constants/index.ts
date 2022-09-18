@@ -4,7 +4,7 @@ export const CONTAINER = {
   ROLE_REPOSITORY: 'RoleRepository',
   RESOURCE_REPOSITORY: 'ResourceRepository',
   SESSIONS_REPOSITORY: 'SessionRepository',
-  USER_CREDENTIALS_REPOSITORY: 'UserCredentialsRepository',
+  CREDENTIALS_REPOSITORY: 'CredentialsRepository',
   USERS_REPOSITORY: 'UsersRepository',
 };
 
@@ -16,6 +16,7 @@ export const DATABASE = {
   SESSIONS: 'sessions',
   USERS: 'users',
   USER_CREDENTIALS: 'user_credentials',
+  CREDENTIALS: 'credentials',
   JOIN: {
     SESSION_RESOURCE: 'sessions.resource',
   },

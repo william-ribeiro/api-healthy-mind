@@ -1,8 +1,8 @@
-export abstract class IUserCredentials {
+export abstract class ICredentials {
   public readonly id: number;
   public createdAt: Date;
   public updatedAt: Date;
-  public userId: string;
+  public ownerId: string;
   public accessToken: string;
   public refreshToken: string;
   public expiresIn: Date;

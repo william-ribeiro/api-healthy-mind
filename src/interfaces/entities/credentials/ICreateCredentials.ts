@@ -1,7 +1,7 @@
 import { Moment } from 'moment';
 
-export interface ICreateUserCredentials {
-  userId: string;
+export interface ICreateCredentials {
+  ownerId: string;
   accessToken: string;
   refreshToken: string;
   expiresIn: Moment;

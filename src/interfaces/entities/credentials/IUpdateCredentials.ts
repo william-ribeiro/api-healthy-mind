@@ -1,6 +1,6 @@
 import { Moment } from 'moment';
 
-export interface IUpdateUserCredentials {
+export interface IUpdateCredentials {
   accessToken?: string;
   refreshToken?: string;
   expiresIn?: Moment;

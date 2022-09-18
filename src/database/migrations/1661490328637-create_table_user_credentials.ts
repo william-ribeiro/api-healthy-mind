@@ -59,6 +59,6 @@ export class createTableUserCredentials1661490328637 implements MigrationInterfa
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('user_credentials');
+    await queryRunner.dropTable(DATABASE.USER_CREDENTIALS);
   }
 }

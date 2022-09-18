@@ -1,16 +1,15 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 import { DATABASE } from '../../constants';
 
-export class createTableAddress1661489275684 implements MigrationInterface {
+export class createTablePatientCredentials1663509838594 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: DATABASE.ADDRESS,
+        name: DATABASE.PATIENT_CREDENTIALS,
         columns: [
           {
             name: 'id',
             type: 'integer',
-            isPrimary: true,
             isGenerated: true,
           },
           {
@@ -24,43 +23,35 @@ export class createTableAddress1661489275684 implements MigrationInterface {
             default: 'now()',
           },
           {
-            name: 'postalCode',
+            name: 'patientId',
             type: 'varchar',
           },
           {
-            name: 'street',
+            name: 'accessToken',
             type: 'varchar',
           },
           {
-            name: 'number',
+            name: 'refreshToken',
             type: 'varchar',
           },
           {
-            name: 'details',
-            type: 'varchar',
-            isNullable: true,
-            default: null,
+            name: 'expiresIn',
+            type: 'timestamp',
           },
           {
-            name: 'district',
-            type: 'varchar',
-          },
-          {
-            name: 'city',
-            type: 'varchar',
-          },
-          {
-            name: 'state',
-            type: 'varchar',
-          },
-          {
-            name: 'country',
-            type: 'varchar',
-          },
-          {
-            name: 'enabled',
+            name: 'isValid',
             type: 'boolean',
             default: true,
+          },
+        ],
+        foreignKeys: [
+          {
+            name: 'fk_user',
+            referencedTableName: DATABASE.PATIENTS,
+            referencedColumnNames: ['id'],
+            columnNames: ['patientId'],
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE',
           },
         ],
       }),
@@ -68,6 +59,6 @@ export class createTableAddress1661489275684 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable(DATABASE.ADDRESS);
+    await queryRunner.dropTable(DATABASE.PATIENT_CREDENTIALS);
   }
 }

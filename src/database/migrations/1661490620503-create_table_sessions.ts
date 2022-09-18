@@ -1,5 +1,5 @@
-import { DATABASE } from './../../constants/index';
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
+import { DATABASE } from './../../constants/index';
 
 export class createTableSessions1661490620503 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -79,6 +79,6 @@ export class createTableSessions1661490620503 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('sessions');
+    await queryRunner.dropTable(DATABASE.SESSIONS);
   }
 }

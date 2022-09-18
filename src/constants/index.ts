@@ -5,6 +5,7 @@ export const CONTAINER = {
   RESOURCE_REPOSITORY: 'ResourceRepository',
   SESSIONS_REPOSITORY: 'SessionRepository',
   USER_CREDENTIALS_REPOSITORY: 'UserCredentialsRepository',
+  PATIENT_CREDENTIALS_REPOSITORY: 'PatientCredentialsRepository',
   USERS_REPOSITORY: 'UsersRepository',
 };
 
@@ -16,6 +17,7 @@ export const DATABASE = {
   SESSIONS: 'sessions',
   USERS: 'users',
   USER_CREDENTIALS: 'user_credentials',
+  PATIENT_CREDENTIALS: 'patients_credentials',
   JOIN: {
     SESSION_RESOURCE: 'sessions.resource',
   },

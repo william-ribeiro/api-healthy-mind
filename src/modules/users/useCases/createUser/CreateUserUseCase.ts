@@ -4,8 +4,11 @@ import { CONTAINER } from '../../../../constants';
 import { AppError } from '../../../../errors';
 import { ICreateUser, IUser, IUsersRepository } from '../../../../interfaces';
 import { Validators } from '../../../../shared';
-import { parseName, removeSpecialCharactersFromString } from '../../../../utils';
-import { generatePasswordHash } from '../../utils';
+import {
+  generatePasswordHash,
+  parseName,
+  removeSpecialCharactersFromString,
+} from '../../../../utils';
 
 @injectable()
 export class CreateUserUseCase {

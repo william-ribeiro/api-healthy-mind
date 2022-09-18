@@ -1,6 +1,7 @@
+import { hash } from 'bcryptjs';
 import lodash from 'lodash';
 import util from 'util';
-import { PAGINATION } from '../constants';
+import { CONFIG_PASSWORD, PAGINATION } from '../constants';
 import { AppError } from '../errors';
 
 export const parsePage = (page: string) => {
@@ -91,3 +92,6 @@ export const payloadValidate = (payload: any) => {
     }
   });
 };
+
+export const generatePasswordHash = (password: string) =>
+  hash(password.trim(), CONFIG_PASSWORD.SALT);

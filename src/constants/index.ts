@@ -76,3 +76,7 @@ export const ROLE_PROTECTED = {
   Professional: 'Professional',
   Patient: 'Patient',
 };
+
+export const CONFIG_PASSWORD = {
+  SALT: 8,
+};

@@ -1,9 +1,7 @@
-import { hash } from 'bcryptjs';
-import { AppError } from '../../../errors';
-import { IUpdateUser } from '../../../interfaces';
-import { Validators } from '../../../shared';
-
-export const generatePasswordHash = (password: string) => hash(password.trim(), 8);
+import { AppError } from '../errors';
+import { IUpdateUser } from '../interfaces';
+import { Validators } from '../shared';
+import { generatePasswordHash } from './helpers';
 
 export const makePasswordUpdate = async (payload: IUpdateUser) => {
   const isPassword = Object.keys(payload).find((data) => {

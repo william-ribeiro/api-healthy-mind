@@ -11,6 +11,7 @@ import { v4 as uuidV4 } from 'uuid';
 import { DATABASE } from '../../../constants';
 import { IPatient, IUser } from '../../../interfaces';
 import { Address } from '../../address';
+import { Role } from '../../roles';
 import { User } from '../../users';
 
 @Entity(DATABASE.PATIENTS)
@@ -37,7 +38,6 @@ export class Patient implements IPatient {
   public name: string;
 
   @Column({ unique: true })
-  @Column()
   public email: string;
 
   @Column({ unique: true })
@@ -55,6 +55,15 @@ export class Patient implements IPatient {
   @Column({ default: true })
   public enabled: boolean;
 
+  @Column()
+  public roleId: number;
+
+  @Column()
+  public password: string;
+
+  @Column({ default: true })
+  public isFirstLogin: boolean;
+
   @ManyToOne(() => User, (user) => user.patient)
   @JoinColumn({ name: 'userId', referencedColumnName: 'id' })
   user: IUser;
@@ -62,4 +71,7 @@ export class Patient implements IPatient {
   @OneToOne(() => Address)
   @JoinColumn({ name: 'addressId' })
   address: Address;
+
+  @ManyToOne(() => Role, (role) => role.patients)
+  role: Role;
 }

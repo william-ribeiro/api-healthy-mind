@@ -1,5 +1,5 @@
-import { fakeUsers, PatientsRepositoryMock } from '../../../../mocks';
 import { CreatePatientUseCase } from '../../../../../src/modules/patients';
+import { fakeUsers, PatientsRepositoryMock } from '../../../../mocks';
 import { AddressRepositoryMock, fakeAddress } from '../../../../mocks/address';
 
 let createPatientUseCase: CreatePatientUseCase;
@@ -17,6 +17,9 @@ beforeEach(() => {
     gender: 'gender testing',
     birthDate: 'birthDate testing',
     phone: 'phone testing',
+    password: 'firstLogin',
+    isFirstLogin: true,
+    roleId: 3,
   };
 
   patientRepositoryMock = new PatientsRepositoryMock();

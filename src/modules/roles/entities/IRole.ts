@@ -1,6 +1,7 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { DATABASE } from '../../../constants';
 import { IRole } from '../../../interfaces';
+import { Patient } from '../../patients';
 
 @Entity(DATABASE.ROLES)
 export class Role implements IRole {
@@ -18,4 +19,7 @@ export class Role implements IRole {
 
   @Column({ default: true })
   public enabled: boolean;
+
+  @OneToMany(() => Patient, (patient) => patient.role)
+  patients?: Patient[];
 }

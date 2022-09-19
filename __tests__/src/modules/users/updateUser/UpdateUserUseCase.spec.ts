@@ -1,6 +1,6 @@
-import { fakeUsers, UsersRepositoryMock } from '../../../../mocks';
-import { UpdateUserUseCase } from '../../../../../src/modules/users';
 import { IUser } from '../../../../../src/interfaces';
+import { UpdateUserUseCase } from '../../../../../src/modules/users';
+import { fakeUsers, UsersRepositoryMock } from '../../../../mocks';
 
 let updateUserUseCase: UpdateUserUseCase;
 let usersRepositoryMock: UsersRepositoryMock;
@@ -16,6 +16,7 @@ beforeEach(() => {
 describe('Testing updateUserUseCase', () => {
   it('must return updated user when a passed valid payload', async () => {
     payload.name = 'Update User';
+    delete payload.password;
 
     const updateUser = await updateUserUseCase.execute(payload.id, payload);
 
@@ -35,8 +36,9 @@ describe('Testing updateUserUseCase', () => {
   it('must return update user error when password mismatch', async () => {
     try {
       return expect(
-        await updateUserUseCase.execute(payload.id, {
-          password: '123456',
+        await updateUserUseCase.execute(fakeUsers[1].id, {
+          password: '12345678',
+          newPassword: '1234567',
           confirmPassword: '12345678',
         }),
       ).toBeUndefined();
@@ -48,8 +50,9 @@ describe('Testing updateUserUseCase', () => {
   it('must return user update error when password less than 6 characters', async () => {
     try {
       return expect(
-        await updateUserUseCase.execute(payload.id, {
-          password: '123',
+        await updateUserUseCase.execute(fakeUsers[2].id, {
+          password: '12345678',
+          newPassword: '123',
           confirmPassword: '123',
         }),
       ).toBeUndefined();

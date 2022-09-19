@@ -8,4 +8,8 @@ export interface IUpdatePatient {
   birthDate?: string;
   phone?: string;
   enabled?: boolean;
+  password?: string;
+  newPassword?: string;
+  confirmPassword?: string;
+  isFirstLogin?: boolean;
 }

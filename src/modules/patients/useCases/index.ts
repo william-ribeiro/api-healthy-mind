@@ -1,3 +1,4 @@
+export * from './authenticatePatient';
 export * from './createPatient';
 export * from './filterPatients';
 export * from './listPatients';

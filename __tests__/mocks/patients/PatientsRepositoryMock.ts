@@ -60,6 +60,7 @@ export class PatientsRepositoryMock implements IPatientRepository {
       id: uuidV4(),
       ...payload,
       enabled: true,
+      isFirstLogin: true,
       createdAt: new Date(),
       updatedAt: new Date(),
     });

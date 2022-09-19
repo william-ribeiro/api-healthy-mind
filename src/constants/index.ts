@@ -93,3 +93,9 @@ export const ROLE_PROTECTED = {
 export const CONFIG_PASSWORD = {
   SALT: 8,
 };
+
+export const ROLE_IDS = {
+  ADMIN: 1,
+  PROFESSIONAL: 2,
+  PATIENT: 3,
+};

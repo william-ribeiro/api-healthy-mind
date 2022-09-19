@@ -11,4 +11,7 @@ export abstract class IPatient {
   public birthDate: string;
   public phone: string;
   public enabled: boolean;
+  public roleId: number;
+  public password: string;
+  public isFirstLogin: boolean;
 }

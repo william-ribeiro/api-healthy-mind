@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { rolesRoutes } from './roles/index';
 
 import { ensureAuthenticated, getIp } from '../middlewares';
+import { AuthenticatePatientController } from '../modules';
 import { addressRoutes } from './address';
 import { authenticateRoutes } from './authenticate';
 import { patientsRouter } from './patients';
@@ -16,6 +17,7 @@ routes.use(getIp);
 routes.use('/signup', userRoutes);
 routes.use('/signin', authenticateRoutes);
 routes.use('/refresh-token', refreshTokenRoutes);
+routes.post('/patients/signin', new AuthenticatePatientController().handle);
 
 routes.use(ensureAuthenticated);
 routes.use('/users', userRoutes);

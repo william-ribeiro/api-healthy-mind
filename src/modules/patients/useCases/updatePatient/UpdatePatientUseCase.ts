@@ -1,17 +1,18 @@
 import { inject, injectable } from 'tsyringe';
+import { AppError } from '../../../../errors';
 import {
   IAddressRepository,
   IPatient,
   IPatientRepository,
   IUpdatePatient,
 } from '../../../../interfaces';
+import { Validators } from '../../../../shared';
+import { makePasswordUpdate } from '../../../../utils';
+import { CONTAINER } from './../../../../constants';
 import {
   filterDefinedProperties,
   removeSpecialCharactersFromString,
 } from './../../../../utils/helpers';
-import { CONTAINER } from './../../../../constants';
-import { AppError } from '../../../../errors';
-import { Validators } from '../../../../shared';
 
 @injectable()
 export class UpdatePatientUseCase {
@@ -24,9 +25,12 @@ export class UpdatePatientUseCase {
 
   async execute(patientId: string, userId: string, payload: IUpdatePatient): Promise<IPatient> {
     if (!Object.values(payload).length || !patientId) throw new AppError('Invalid payload');
+
     const patient = await this.patientRepository.getPatientById(patientId, userId);
 
     if (!patient) throw new AppError('Patient not found', 404);
+
+    if (patient.isFirstLogin && !payload.password) throw new AppError('Password must be changed');
 
     const { addressId, email, document } = payload;
 
@@ -57,8 +61,20 @@ export class UpdatePatientUseCase {
         if (result) throw new AppError('Patient already exists', 409);
       });
 
-    return this.patientRepository.update(patientId, userId, {
-      ...filterDefinedProperties(payload),
-    });
+    const isUpdatePassword = await makePasswordUpdate(payload, patient.password);
+
+    const payload_ = isUpdatePassword
+      ? { ...filterDefinedProperties(isUpdatePassword) }
+      : { ...filterDefinedProperties(payload) };
+
+    return this.patientRepository
+      .update(patientId, userId, {
+        ...payload_,
+        isFirstLogin: false,
+      })
+      .then((data) => {
+        delete data.password;
+        return data;
+      });
   }
 }

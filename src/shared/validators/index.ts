@@ -9,7 +9,7 @@ export class Validators {
   });
 
   updateUser = yup.object().shape({
-    password: yup.string().min(6, 'Minimum 6 characters'),
+    newPassword: yup.string().min(6, 'Minimum 6 characters'),
   });
 
   address = yup.object().shape({
@@ -30,6 +30,8 @@ export class Validators {
     gender: yup.string().label('Invalid gender'),
     birthDate: yup.string().label('Invalid birthDate'),
     phone: yup.string().label('Invalid phone'),
+    password: yup.string().required('Invalid password').min(6, 'Minimum 6 characters'),
+    roleId: yup.number().required('Invalid roleId'),
   });
 
   session = yup.object().shape({

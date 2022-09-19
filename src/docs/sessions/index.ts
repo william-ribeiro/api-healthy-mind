@@ -1,6 +1,7 @@
+import { create } from './create';
+import { filter } from './filter';
 import { listAll } from './listAll';
 import { remove } from './remove';
-import { create } from './create';
 import { update } from './update';
 
-export const sessions = { ...listAll, ...create, ...update, ...remove };
+export const sessions = { ...listAll, ...filter, ...create, ...update, ...remove };

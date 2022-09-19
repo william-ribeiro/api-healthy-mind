@@ -18,6 +18,22 @@ export class SessionRepositoryMock implements ISessionRepository {
     );
   }
 
+  async filterSessions(userId: string, field: string, skip: number): Promise<[ISession[], number]> {
+    const sessions = fakeSession.filter(
+      (session) =>
+        (session.userId === userId && session.enabled && session.subject.includes(field)) ||
+        (session.userId === userId && session.enabled && session.service.includes(field)),
+    );
+
+    const total = sessions.length;
+
+    const paginateSessions = !sessions.length
+      ? []
+      : buildClusters(sessions.slice(skip), PAGINATION.PER_PAGE)[0];
+
+    return [paginateSessions, total];
+  }
+
   async getAllSessions(userId: string, skip: number): Promise<[ISession[], number]> {
     const sessions = fakeSession.filter((session) => session.userId === userId && session.enabled);
 

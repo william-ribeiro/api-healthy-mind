@@ -5,6 +5,8 @@ export interface ISessionRepository {
 
   getAllSessions(userId: string, skip: number): Promise<[ISession[], number]>;
 
+  filterSessions(userId: string, field: string, skip: number): Promise<[ISession[], number]>;
+
   create(payload: ICreateSession): Promise<ISession>;
 
   update(sessionId: number, userId: string, payload: IUpdateSession): Promise<ISession>;

@@ -1,4 +1,5 @@
 export * from './createPatient';
+export * from './filterPatients';
 export * from './listPatients';
-export * from './updatePatient';
 export * from './removePatient';
+export * from './updatePatient';

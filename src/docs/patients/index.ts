@@ -1,6 +1,7 @@
-import { remove } from './remove';
 import { create } from './create';
-import { update } from './update';
+import { filter } from './filter';
 import { listAll } from './listAll';
+import { remove } from './remove';
+import { update } from './update';
 
-export const patients = { ...listAll, ...create, ...update, ...remove };
+export const patients = { ...listAll, ...filter, ...create, ...update, ...remove };

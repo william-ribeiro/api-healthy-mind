@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/require-await */
 
 import { v4 as uuidV4 } from 'uuid';
+import { PAGINATION } from '../../../src/constants';
 import {
   ICreatePatient,
   IGetPatientByAttribute,
@@ -10,7 +11,6 @@ import {
   IUpdatePatient,
 } from '../../../src/interfaces';
 import { buildClusters } from '../../../src/utils';
-import { PAGINATION } from '../../../src/constants';
 
 import { fakePatients } from './fakePatients';
 
@@ -25,6 +25,22 @@ export class PatientsRepositoryMock implements IPatientRepository {
     if (attribute.email) return fakePatients.find((patient) => patient.email === attribute.email);
 
     return fakePatients.find((patient) => patient.document === attribute.document);
+  }
+
+  async filterPatients(userId: string, field: string, skip: number): Promise<[IPatient[], number]> {
+    const patients = fakePatients.filter(
+      (patient) =>
+        (patient.userId === userId && patient.enabled && patient.name.includes(field)) ||
+        (patient.userId === userId && patient.enabled && patient.email.includes(field)),
+    );
+
+    const total = patients.length;
+
+    const paginatePatients = !patients.length
+      ? []
+      : buildClusters(patients.slice(skip), PAGINATION.PER_PAGE)[0];
+
+    return [paginatePatients, total];
   }
 
   async getAllPatients(userId: string, skip: number): Promise<[IPatient[], number]> {

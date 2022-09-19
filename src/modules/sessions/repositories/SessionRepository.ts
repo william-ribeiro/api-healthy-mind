@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { getRepository, Repository } from 'typeorm';
+import { getRepository, Raw, Repository } from 'typeorm';
 import { DATABASE, PAGINATION, SELECT_FIELDS } from '../../../constants';
 import { ICreateSession, ISession, ISessionRepository, IUpdateSession } from '../../../interfaces';
 import { Session } from '../entities';
@@ -13,6 +13,33 @@ export class SessionRepository implements ISessionRepository {
 
   async getSessionById(sessionId: number, userId: string): Promise<ISession> {
     return this.sessionRepository.findOne({ id: sessionId, userId, enabled: true });
+  }
+
+  async filterSessions(userId: string, field: string, skip: number): Promise<[ISession[], number]> {
+    return this.sessionRepository
+      .createQueryBuilder(DATABASE.SESSIONS)
+      .leftJoinAndSelect(DATABASE.JOIN.SESSION_RESOURCE, DATABASE.ALIAS.SESSION)
+      .select([
+        DATABASE.SESSIONS,
+        SELECT_FIELDS.SESSION.CATEGORY,
+        SELECT_FIELDS.SESSION.TITLE,
+        SELECT_FIELDS.SESSION.DESCRIPTION,
+      ])
+
+      .where({
+        subject: Raw((alias) => `${alias} ILIKE '%${field.trim()}%'`),
+        userId,
+        enabled: true,
+      })
+      .orWhere({
+        service: Raw((alias) => `${alias} ILIKE '%${field.trim()}%'`),
+        userId,
+        enabled: true,
+      })
+
+      .skip(skip)
+      .take(PAGINATION.PER_PAGE)
+      .getManyAndCount();
   }
 
   async getAllSessions(userId: string, skip: number): Promise<[ISession[], number]> {

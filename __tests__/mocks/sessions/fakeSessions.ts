@@ -79,7 +79,7 @@ export const fakeSession: ISession[] = [
     type: 'Casal',
     comments: 'Resolução de conflito',
     enabled: false,
-    service: 'remote',
+    service: 'presential',
     resourceId: fakeResources[0].id,
     resource: {
       category: fakeResources[0].category,
@@ -100,7 +100,7 @@ export const fakeSession: ISession[] = [
     type: 'Individual',
     comments: 'Agendamento de sessão',
     enabled: true,
-    service: 'remote',
+    service: 'presential',
     resourceId: fakeResources[0].id,
     resource: {
       category: fakeResources[0].category,
@@ -121,7 +121,7 @@ export const fakeSession: ISession[] = [
     type: 'Individual',
     comments: 'Entrevista inicial',
     enabled: true,
-    service: 'remote',
+    service: 'presential',
     resourceId: fakeResources[0].id,
     resource: {
       category: fakeResources[0].category,

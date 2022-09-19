@@ -19,9 +19,11 @@ export const DATABASE = {
   CREDENTIALS: 'credentials',
   JOIN: {
     SESSION_RESOURCE: 'sessions.resource',
+    PATIENT_ADDRESS: 'patients.address',
   },
   ALIAS: {
     SESSION: 'session',
+    PATIENT: 'patient',
   },
 };
 
@@ -30,6 +32,16 @@ export const SELECT_FIELDS = {
     CATEGORY: `${DATABASE.ALIAS.SESSION}.category`,
     TITLE: `${DATABASE.ALIAS.SESSION}.title`,
     DESCRIPTION: `${DATABASE.ALIAS.SESSION}.description`,
+  },
+  PATIENT: {
+    POSTAL_CODE: `${DATABASE.ALIAS.PATIENT}.postalCode`,
+    STREET: `${DATABASE.ALIAS.PATIENT}.street`,
+    NUMBER: `${DATABASE.ALIAS.PATIENT}.number`,
+    DETAILS: `${DATABASE.ALIAS.PATIENT}.details`,
+    DISTRICT: `${DATABASE.ALIAS.PATIENT}.district`,
+    CITY: `${DATABASE.ALIAS.PATIENT}.city`,
+    STATE: `${DATABASE.ALIAS.PATIENT}.state`,
+    COUNTRY: `${DATABASE.ALIAS.PATIENT}.country`,
   },
 };
 

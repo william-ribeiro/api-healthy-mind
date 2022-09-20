@@ -1,5 +1,5 @@
 import { inject, injectable } from 'tsyringe';
-import { CONTAINER, PAGINATION } from '../../../../constants';
+import { CONTAINER, PAGINATION, ROLE_IDS } from '../../../../constants';
 import { IPaginate, ISession, ISessionRepository } from '../../../../interfaces';
 import { parsePage } from '../../../../utils';
 
@@ -10,13 +10,18 @@ export class FilterSessionsUseCase {
     private sessionRespository: ISessionRepository,
   ) {}
 
-  async execute({ userId, field = '', query }): Promise<IPaginate<ISession[]>> {
+  async execute({ userId, field = '', query, roleId }): Promise<IPaginate<ISession[]>> {
     const { page = PAGINATION.PAGE } = query;
 
+    const where =
+      roleId === ROLE_IDS.PROFESSIONAL
+        ? { userId, enabled: true }
+        : { patientId: userId, enabled: true };
+
     const [response, total] = await this.sessionRespository.filterSessions(
-      userId,
       field,
       (parsePage(page) - 1) * PAGINATION.PER_PAGE,
+      where,
     );
 
     const totalPages = Math.ceil(total / PAGINATION.PER_PAGE);

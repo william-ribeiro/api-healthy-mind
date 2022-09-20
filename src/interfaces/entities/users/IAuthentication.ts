@@ -4,4 +4,5 @@ export interface IAuthentication {
   email: string;
   accessToken: string;
   refreshToken: string;
+  isFirstLogin?: boolean;
 }

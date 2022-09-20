@@ -22,6 +22,10 @@ export class PatientRepository implements IPatientRepository {
     return this.repository.findOne({ id: patientId, userId, enabled: true });
   }
 
+  async getLoginPatientById(patientId: string): Promise<IPatient> {
+    return this.repository.findOne({ id: patientId, enabled: true });
+  }
+
   async getPatientByAttribute(attribute: IGetPatientByAttribute): Promise<IPatient> {
     return this.repository.findOne({ ...attribute, enabled: true });
   }

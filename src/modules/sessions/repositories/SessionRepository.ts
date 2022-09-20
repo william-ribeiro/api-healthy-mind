@@ -15,7 +15,7 @@ export class SessionRepository implements ISessionRepository {
     return this.sessionRepository.findOne({ id: sessionId, userId, enabled: true });
   }
 
-  async filterSessions(userId: string, field: string, skip: number): Promise<[ISession[], number]> {
+  async filterSessions(field: string, skip: number, where: any): Promise<[ISession[], number]> {
     return this.sessionRepository
       .createQueryBuilder(DATABASE.SESSIONS)
       .leftJoinAndSelect(DATABASE.JOIN.SESSION_RESOURCE, DATABASE.ALIAS.SESSION)
@@ -28,13 +28,11 @@ export class SessionRepository implements ISessionRepository {
 
       .where({
         subject: Raw((alias) => `${alias} ILIKE '%${field.trim()}%'`),
-        userId,
-        enabled: true,
+        ...where,
       })
       .orWhere({
         service: Raw((alias) => `${alias} ILIKE '%${field.trim()}%'`),
-        userId,
-        enabled: true,
+        ...where,
       })
 
       .skip(skip)
@@ -42,7 +40,7 @@ export class SessionRepository implements ISessionRepository {
       .getManyAndCount();
   }
 
-  async getAllSessions(userId: string, skip: number): Promise<[ISession[], number]> {
+  async getAllSessions(skip: number, where: any): Promise<[ISession[], number]> {
     return this.sessionRepository
       .createQueryBuilder(DATABASE.SESSIONS)
       .leftJoinAndSelect(DATABASE.JOIN.SESSION_RESOURCE, DATABASE.ALIAS.SESSION)
@@ -53,7 +51,7 @@ export class SessionRepository implements ISessionRepository {
         SELECT_FIELDS.SESSION.DESCRIPTION,
       ])
 
-      .where('sessions.userId = :userId', { userId })
+      .where(where)
       .andWhere('sessions.enabled = :enabled', { enabled: true })
 
       .skip(skip)

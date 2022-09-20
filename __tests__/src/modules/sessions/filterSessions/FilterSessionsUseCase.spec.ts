@@ -19,6 +19,7 @@ describe('Testing filterSessionsUseCase', () => {
       userId: fakeUsers[0].id,
       field,
       query: { page },
+      roleId: 2,
     });
 
     const total_ = fakeSession.filter(
@@ -48,7 +49,12 @@ describe('Testing filterSessionsUseCase', () => {
     const page = 1;
     const field = 'notfound';
     return expect(
-      await filterSessionsUseCase.execute({ userId: fakeUsers[3].id, field, query: { page } }),
+      await filterSessionsUseCase.execute({
+        userId: fakeUsers[3].id,
+        field,
+        query: { page },
+        roleId: 2,
+      }),
     ).toEqual({
       response: [],
       page,

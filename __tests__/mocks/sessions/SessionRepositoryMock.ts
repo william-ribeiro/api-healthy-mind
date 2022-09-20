@@ -18,12 +18,24 @@ export class SessionRepositoryMock implements ISessionRepository {
     );
   }
 
-  async filterSessions(userId: string, field: string, skip: number): Promise<[ISession[], number]> {
-    const sessions = fakeSession.filter(
-      (session) =>
-        (session.userId === userId && session.enabled && session.subject.includes(field)) ||
-        (session.userId === userId && session.enabled && session.service.includes(field)),
-    );
+  async filterSessions(field: string, skip: number, where: any): Promise<[ISession[], number]> {
+    const sessions = fakeSession.filter((session) => {
+      if (where.userId) {
+        return (
+          (session.userId === where.userId && session.enabled && session.subject.includes(field)) ||
+          (session.userId === where.userId && session.enabled && session.service.includes(field))
+        );
+      } else {
+        return (
+          (session.patientId === where.patientId &&
+            session.enabled &&
+            session.subject.includes(field)) ||
+          (session.patientId === where.patientId &&
+            session.enabled &&
+            session.service.includes(field))
+        );
+      }
+    });
 
     const total = sessions.length;
 
@@ -34,8 +46,14 @@ export class SessionRepositoryMock implements ISessionRepository {
     return [paginateSessions, total];
   }
 
-  async getAllSessions(userId: string, skip: number): Promise<[ISession[], number]> {
-    const sessions = fakeSession.filter((session) => session.userId === userId && session.enabled);
+  async getAllSessions(skip: number, where: any): Promise<[ISession[], number]> {
+    const sessions = fakeSession.filter((session) => {
+      if (where.userId) {
+        return session.userId === where.userId && session.enabled;
+      } else {
+        return session.patientId === where.patientId && session.enabled;
+      }
+    });
 
     const total = sessions.length;
     const paginateSessions = !sessions.length

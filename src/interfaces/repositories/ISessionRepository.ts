@@ -3,9 +3,9 @@ import { ICreateSession, ISession, IUpdateSession } from '../entities/sessions';
 export interface ISessionRepository {
   getSessionById(sessionId: number, userId: string): Promise<ISession>;
 
-  getAllSessions(userId: string, skip: number): Promise<[ISession[], number]>;
+  getAllSessions(skip: number, query: any): Promise<[ISession[], number]>;
 
-  filterSessions(userId: string, field: string, skip: number): Promise<[ISession[], number]>;
+  filterSessions(field: string, skip: number, roleId: any): Promise<[ISession[], number]>;
 
   create(payload: ICreateSession): Promise<ISession>;
 

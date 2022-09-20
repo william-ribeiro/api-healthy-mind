@@ -1,6 +1,7 @@
 import { compare } from 'bcryptjs';
 import moment from 'moment';
 import { container, inject, injectable } from 'tsyringe';
+import { ROLE_IDS } from './../../constants/index';
 
 import { CONTAINER, JWT, ROLE_PROTECTED } from '../../constants';
 import { AppError } from '../../errors';
@@ -30,21 +31,29 @@ export class AuthenticationUseCase {
 
     const { type = ROLE_PROTECTED.Professional } = query;
 
-    const owner =
+    const owner: any =
       type.toLowerCase() === ROLE_PROTECTED.Patient.toLowerCase()
         ? await this.patientRepository.getPatientByAttribute({ email: email.toLowerCase().trim() })
         : await this.userRepository.getByEmail(email.toLowerCase().trim());
 
-    if (!owner) throw new AppError('User or password incorrect');
+    if (!owner) throw new AppError('User or password incorrect', 401);
 
     const passwordMatch = await compare(password, owner.password);
 
-    if (!passwordMatch) throw new AppError('User or password incorrect');
+    if (!passwordMatch) throw new AppError('User or password incorrect', 401);
 
-    const accessToken = generateToken({ id: owner.id, type: JWT.TYPE.ACCESS_TOKEN });
+    if (owner.isFirstLogin) throw new AppError('Password must be changed', 400);
+
+    const roleId =
+      type.toLowerCase() === ROLE_PROTECTED.Patient.toLowerCase()
+        ? ROLE_IDS.PATIENT
+        : ROLE_IDS.PROFESSIONAL;
+
+    const accessToken = generateToken({ id: owner.id, type: JWT.TYPE.ACCESS_TOKEN, roleId });
     const refreshToken = generateToken({
       id: owner.id,
       type: JWT.TYPE.REFRESH_TOKEN,
+      roleId,
     });
 
     const ownerCredentials = await this.credentialsRepository.getCredentialByOwnerId(owner.id);

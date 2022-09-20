@@ -6,13 +6,18 @@ import { FilterSessionsUseCase } from './FilterSessionsUseCase';
 
 export class FilterSessionsController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { id: userId } = response.locals;
+    const { id: userId, roleId } = response.locals;
     const { field } = request.query;
-    console.log(request.query);
+
     try {
       const filterSessionsUseCase = container.resolve(FilterSessionsUseCase);
 
-      const sessions = await filterSessionsUseCase.execute({ userId, field, query: request.query });
+      const sessions = await filterSessionsUseCase.execute({
+        userId,
+        field: field?.toString(),
+        query: request.query,
+        roleId,
+      });
 
       logger.info(`${timeBr} | [TOTAL FILTER SESSIONS] => ${sessions.response.legth}`);
 

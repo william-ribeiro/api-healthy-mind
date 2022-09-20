@@ -31,7 +31,7 @@ export class UpdatePatientUseCase {
 
     if (!patient) throw new AppError('Patient not found', 404);
 
-    if (patient.isFirstLogin && !payload.password) throw new AppError('Password must be changed');
+    if (patient?.isFirstLogin && !payload.password) throw new AppError('Password must be changed');
 
     const { addressId, email, document } = payload;
 

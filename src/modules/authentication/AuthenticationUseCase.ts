@@ -42,7 +42,7 @@ export class AuthenticationUseCase {
 
     if (!passwordMatch) throw new AppError('User or password incorrect', 401);
 
-    if (owner.isFirstLogin) throw new AppError('Password must be changed', 400);
+    if (owner?.isFirstLogin) throw new AppError('Password must be changed', 400);
 
     const roleId =
       type.toLowerCase() === ROLE_PROTECTED.Patient.toLowerCase()

@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 import { CONTAINER, PAGINATION } from '../../../../constants';
-import { IPatient, IPaginate, IPatientRepository } from '../../../../interfaces';
-import { parsePage } from '../../../../utils';
+import { IPaginate, IPatient, IPatientRepository } from '../../../../interfaces';
+import { deletedPasswordResponse, parsePage } from '../../../../utils';
 
 @injectable()
 export class ListPatientsUseCase {
@@ -20,8 +20,10 @@ export class ListPatientsUseCase {
 
     const totalPages = Math.ceil(total / PAGINATION.PER_PAGE);
 
+    const patients = deletedPasswordResponse(response);
+
     return {
-      response,
+      response: patients,
       page,
       count: response.length,
       perPage: PAGINATION.PER_PAGE,

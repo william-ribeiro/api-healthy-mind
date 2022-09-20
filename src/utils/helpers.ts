@@ -102,3 +102,15 @@ export const generatedPassword = () => {
     .map(() => Math.floor(Math.random() * (Math.floor(9) - Math.ceil(1)) + 1))
     .join('');
 };
+
+export const deletedPasswordResponse = (data: any) => {
+  if (typeof 'object' && !data.length) {
+    delete data.password;
+    return [{ ...data }];
+  }
+
+  return data.map((field: any) => {
+    delete field.password;
+    return { ...field };
+  });
+};

@@ -1,6 +1,6 @@
-import { fakePatients, PatientsRepositoryMock } from '../../../../mocks';
 import { IPatient } from '../../../../../src/interfaces';
 import { UpdatePatientUseCase } from '../../../../../src/modules/patients';
+import { fakePatients, PatientsRepositoryMock } from '../../../../mocks';
 import { AddressRepositoryMock } from '../../../../mocks/address';
 
 let updatePatientUseCase: UpdatePatientUseCase;

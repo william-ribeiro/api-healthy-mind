@@ -9,7 +9,11 @@ import {
 } from '../../../../interfaces';
 import { Validators } from '../../../../shared';
 import { parseName, payloadValidate, removeSpecialCharactersFromString } from '../../../../utils';
-import { generatedPassword, generatePasswordHash } from './../../../../utils/helpers';
+import {
+  deletedPasswordResponse,
+  generatedPassword,
+  generatePasswordHash,
+} from './../../../../utils/helpers';
 
 @injectable()
 export class CreatePatientUseCase {
@@ -54,6 +58,8 @@ export class CreatePatientUseCase {
     payload.name = parseName(name);
     payload.email = removeSpecialCharactersFromString(email);
 
-    return this.patientRepository.create(payload);
+    const patient_ = await this.patientRepository.create(payload);
+
+    return deletedPasswordResponse(patient_)[0];
   }
 }

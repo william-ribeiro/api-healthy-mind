@@ -10,6 +10,7 @@ import { Validators } from '../../../../shared';
 import { makePasswordUpdate } from '../../../../utils';
 import { CONTAINER } from './../../../../constants';
 import {
+  deletedPasswordResponse,
   filterDefinedProperties,
   removeSpecialCharactersFromString,
 } from './../../../../utils/helpers';
@@ -67,14 +68,11 @@ export class UpdatePatientUseCase {
       ? { ...filterDefinedProperties(isUpdatePassword) }
       : { ...filterDefinedProperties(payload) };
 
-    return this.patientRepository
-      .update(patientId, userId, {
-        ...payload_,
-        isFirstLogin: false,
-      })
-      .then((data) => {
-        delete data.password;
-        return data;
-      });
+    const updatePatient = await this.patientRepository.update(patientId, userId, {
+      ...payload_,
+      isFirstLogin: false,
+    });
+
+    return deletedPasswordResponse(updatePatient)[0];
   }
 }

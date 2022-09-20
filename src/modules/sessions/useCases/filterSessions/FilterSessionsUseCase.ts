@@ -10,7 +10,7 @@ export class FilterSessionsUseCase {
     private sessionRespository: ISessionRepository,
   ) {}
 
-  async execute({ userId, field, query }): Promise<IPaginate<ISession[]>> {
+  async execute({ userId, field = '', query }): Promise<IPaginate<ISession[]>> {
     const { page = PAGINATION.PAGE } = query;
 
     const [response, total] = await this.sessionRespository.filterSessions(

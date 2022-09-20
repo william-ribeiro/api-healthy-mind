@@ -68,6 +68,6 @@ export class createTableAddress1661489275684 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('address');
+    await queryRunner.dropTable(DATABASE.ADDRESS);
   }
 }

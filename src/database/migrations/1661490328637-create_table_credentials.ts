@@ -1,16 +1,15 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 import { DATABASE } from '../../constants';
 
-export class createTableResources1663282373858 implements MigrationInterface {
+export class createTableCredentials1661490328637 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: DATABASE.RESOURCES,
+        name: DATABASE.CREDENTIALS,
         columns: [
           {
             name: 'id',
             type: 'integer',
-            isPrimary: true,
             isGenerated: true,
           },
           {
@@ -24,35 +23,25 @@ export class createTableResources1663282373858 implements MigrationInterface {
             default: 'now()',
           },
           {
-            name: 'userId',
+            name: 'ownerId',
             type: 'varchar',
           },
           {
-            name: 'category',
+            name: 'accessToken',
             type: 'varchar',
           },
           {
-            name: 'title',
+            name: 'refreshToken',
             type: 'varchar',
           },
           {
-            name: 'description',
-            type: 'varchar',
+            name: 'expiresIn',
+            type: 'timestamp',
           },
           {
-            name: 'enabled',
+            name: 'isValid',
             type: 'boolean',
             default: true,
-          },
-        ],
-        foreignKeys: [
-          {
-            name: 'fk_user',
-            referencedTableName: DATABASE.USERS,
-            referencedColumnNames: ['id'],
-            columnNames: ['userId'],
-            onDelete: 'CASCADE',
-            onUpdate: 'CASCADE',
           },
         ],
       }),
@@ -60,6 +49,6 @@ export class createTableResources1663282373858 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable(DATABASE.RESOURCES);
+    await queryRunner.dropTable(DATABASE.CREDENTIALS);
   }
 }

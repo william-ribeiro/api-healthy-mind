@@ -1,5 +1,5 @@
-import { DATABASE } from './../../constants/index';
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
+import { DATABASE } from './../../constants/index';
 
 export class createTableSessions1661490620503 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -51,6 +51,19 @@ export class createTableSessions1661490620503 implements MigrationInterface {
             type: 'varchar',
           },
           {
+            name: 'resourceId',
+            type: 'integer',
+          },
+          {
+            name: 'service',
+            type: 'varchar',
+            isNullable: true,
+          },
+          {
+            name: 'appointmentDate',
+            type: 'timestamp',
+          },
+          {
             name: 'enabled',
             type: 'boolean',
             default: true,
@@ -73,12 +86,20 @@ export class createTableSessions1661490620503 implements MigrationInterface {
             onDelete: 'CASCADE',
             onUpdate: 'CASCADE',
           },
+          {
+            name: 'fk_resources',
+            referencedTableName: DATABASE.RESOURCES,
+            referencedColumnNames: ['id'],
+            columnNames: ['resourceId'],
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE',
+          },
         ],
       }),
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('sessions');
+    await queryRunner.dropTable(DATABASE.SESSIONS);
   }
 }

@@ -1,15 +1,16 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 import { DATABASE } from '../../constants';
 
-export class createTableUserCredentials1661490328637 implements MigrationInterface {
+export class createTableResources1661490620500 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: DATABASE.USER_CREDENTIALS,
+        name: DATABASE.RESOURCES,
         columns: [
           {
             name: 'id',
             type: 'integer',
+            isPrimary: true,
             isGenerated: true,
           },
           {
@@ -27,19 +28,19 @@ export class createTableUserCredentials1661490328637 implements MigrationInterfa
             type: 'varchar',
           },
           {
-            name: 'accessToken',
+            name: 'category',
             type: 'varchar',
           },
           {
-            name: 'refreshToken',
+            name: 'title',
             type: 'varchar',
           },
           {
-            name: 'expiresIn',
-            type: 'timestamp',
+            name: 'description',
+            type: 'varchar',
           },
           {
-            name: 'isValid',
+            name: 'enabled',
             type: 'boolean',
             default: true,
           },
@@ -59,6 +60,6 @@ export class createTableUserCredentials1661490328637 implements MigrationInterfa
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('user_credentials');
+    await queryRunner.dropTable(DATABASE.RESOURCES);
   }
 }

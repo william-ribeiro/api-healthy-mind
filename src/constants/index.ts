@@ -15,7 +15,6 @@ export const DATABASE = {
   ROLES: 'roles',
   SESSIONS: 'sessions',
   USERS: 'users',
-  USER_CREDENTIALS: 'user_credentials',
   CREDENTIALS: 'credentials',
   JOIN: {
     SESSION_RESOURCE: 'sessions.resource',

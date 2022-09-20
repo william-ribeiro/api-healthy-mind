@@ -36,9 +36,28 @@ export class createTableUsers1661488925783 implements MigrationInterface {
             type: 'varchar',
           },
           {
+            name: 'roleId',
+            type: 'integer',
+          },
+          {
             name: 'enabled',
             type: 'boolean',
             default: true,
+          },
+          {
+            name: 'professionalRecord',
+            type: 'varchar',
+            isNullable: true,
+          },
+        ],
+        foreignKeys: [
+          {
+            name: 'fk_roles',
+            referencedTableName: DATABASE.ROLES,
+            referencedColumnNames: ['id'],
+            columnNames: ['roleId'],
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE',
           },
         ],
       }),
@@ -46,6 +65,6 @@ export class createTableUsers1661488925783 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('users');
+    await queryRunner.dropTable(DATABASE.USERS);
   }
 }

@@ -1,7 +1,7 @@
-import { DATABASE } from './../../constants';
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
+import { DATABASE } from '../../constants';
 
-export class createTableRoles1662854525153 implements MigrationInterface {
+export class createTableRoles1661488925780 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({

@@ -63,6 +63,20 @@ export class createTablePatients1661489883008 implements MigrationInterface {
             default: null,
           },
           {
+            name: 'roleId',
+            type: 'integer',
+          },
+          {
+            name: 'password',
+            type: 'varchar',
+          },
+          {
+            name: 'isFirstLogin',
+            type: 'boolean',
+            default: true,
+          },
+
+          {
             name: 'enabled',
             type: 'boolean',
             default: true,
@@ -85,12 +99,20 @@ export class createTablePatients1661489883008 implements MigrationInterface {
             onDelete: 'CASCADE',
             onUpdate: 'CASCADE',
           },
+          {
+            name: 'fk_roles',
+            referencedTableName: DATABASE.ROLES,
+            referencedColumnNames: ['id'],
+            columnNames: ['roleId'],
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE',
+          },
         ],
       }),
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('patients');
+    await queryRunner.dropTable(DATABASE.PATIENTS);
   }
 }

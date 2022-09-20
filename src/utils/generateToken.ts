@@ -1,8 +1,8 @@
 import { sign } from 'jsonwebtoken';
-import { IToken } from './../interfaces';
 import { JWT } from '../constants';
+import { IToken } from './../interfaces';
 
-export const generateToken = ({ id, type }: IToken) => {
+export const generateToken = ({ id, type, roleId }: IToken) => {
   let secret: string;
   let expiresIn: string;
 
@@ -23,8 +23,9 @@ export const generateToken = ({ id, type }: IToken) => {
       break;
   }
 
-  return sign({}, secret, {
+  return sign({ roleId }, secret, {
     subject: id,
+
     expiresIn,
     header: { alg: JWT.ALG, typ: type },
   });

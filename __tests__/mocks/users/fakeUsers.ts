@@ -7,6 +7,7 @@ export const fakeUsers: IUser[] = [
     email: 'email@test1.com',
     createdAt: new Date('2021-10-27 00:35:07.294'),
     updatedAt: new Date('2021-10-27 00:35:07.294'),
+    password: '$2a$08$AmbqU3T5tTdKu1fOXhOWZOAcYWNF90YqqNDqvPDjlmMqNI2re6BMq',
     enabled: true,
   } as IUser,
   {
@@ -15,6 +16,7 @@ export const fakeUsers: IUser[] = [
     email: 'email@test2.com',
     createdAt: new Date('2021-10-27 00:35:07.294'),
     updatedAt: new Date('2021-10-27 00:35:07.294'),
+    password: '$2a$08$AmbqU3T5tTdKu1fOXhOWZOAcYWNF90YqqNDqvPDjlmMqNI2re6BMq',
     enabled: true,
   } as IUser,
   {
@@ -23,6 +25,7 @@ export const fakeUsers: IUser[] = [
     email: 'email@test3.com',
     createdAt: new Date('2021-10-27 00:35:07.294'),
     updatedAt: new Date('2021-10-27 00:35:07.294'),
+    password: '$2a$08$AmbqU3T5tTdKu1fOXhOWZOAcYWNF90YqqNDqvPDjlmMqNI2re6BMq',
     enabled: true,
   } as IUser,
   {
@@ -31,6 +34,7 @@ export const fakeUsers: IUser[] = [
     email: '87454_email@test4.com',
     createdAt: new Date('2021-10-27 00:35:07.294'),
     updatedAt: new Date('2021-10-27 00:35:07.294'),
+    password: '$2a$08$AmbqU3T5tTdKu1fOXhOWZOAcYWNF90YqqNDqvPDjlmMqNI2re6BMq',
     enabled: false,
   } as IUser,
 ];

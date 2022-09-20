@@ -7,4 +7,6 @@ export interface ICreatePatient {
   gender: string;
   birthDate: string;
   phone: string;
+  roleId: number;
+  password: string;
 }

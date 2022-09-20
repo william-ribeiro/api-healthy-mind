@@ -45,7 +45,7 @@ export class UpdateUserUseCase {
       payload.email = removeSpecialCharactersFromString(email);
     }
 
-    const isUpdatePassword = await makePasswordUpdate(payload);
+    const isUpdatePassword = await makePasswordUpdate(payload, user.password);
 
     const payload_ = isUpdatePassword
       ? { ...filterDefinedProperties(isUpdatePassword) }

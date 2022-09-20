@@ -6,12 +6,12 @@ import { ListSessionsUseCase } from './ListSessionsUseCase';
 
 export class ListSessionsController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { id: userId } = response.locals;
+    const { id: userId, roleId } = response.locals;
 
     try {
       const listSessionUseCase = container.resolve(ListSessionsUseCase);
 
-      const sessions = await listSessionUseCase.execute({ userId, query: request.query });
+      const sessions = await listSessionUseCase.execute({ userId, query: request.query, roleId });
 
       logger.info(`${timeBr} | [TOTAL SESSIONS] => ${sessions.response.length}`);
 

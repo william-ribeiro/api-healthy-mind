@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 import { CONTAINER, PAGINATION } from '../../../../constants';
 import { IPaginate, IPatient, IPatientRepository } from '../../../../interfaces';
-import { parsePage } from '../../../../utils';
+import { deletedPasswordResponse, parsePage } from '../../../../utils';
 
 @injectable()
 export class FilterPatientsUseCase {
@@ -10,7 +10,7 @@ export class FilterPatientsUseCase {
     private patientRespository: IPatientRepository,
   ) {}
 
-  async execute({ userId, field, query }): Promise<IPaginate<IPatient[]>> {
+  async execute({ userId, field = '', query }): Promise<IPaginate<IPatient[]>> {
     const { page = PAGINATION.PAGE } = query;
 
     const [response, total] = await this.patientRespository.filterPatients(
@@ -21,8 +21,10 @@ export class FilterPatientsUseCase {
 
     const totalPages = Math.ceil(total / PAGINATION.PER_PAGE);
 
+    const patients = deletedPasswordResponse(response);
+
     return {
-      response,
+      response: patients,
       page,
       count: response.length,
       perPage: PAGINATION.PER_PAGE,

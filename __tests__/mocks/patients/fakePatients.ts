@@ -15,6 +15,8 @@ export const fakePatients: IPatient[] = [
     gender: 'Masculino',
     birthDate: '18/10/1998',
     phone: '53900000000',
+    roleId: 3,
+    isFirstLogin: false,
     enabled: true,
   } as IPatient,
   {
@@ -29,6 +31,8 @@ export const fakePatients: IPatient[] = [
     gender: 'Masculino',
     birthDate: '18/10/1998',
     phone: '53900000000',
+    roleId: 3,
+    isFirstLogin: false,
     enabled: true,
   } as IPatient,
   {
@@ -43,6 +47,8 @@ export const fakePatients: IPatient[] = [
     gender: 'Masculino',
     birthDate: '18/10/1998',
     phone: '53900000000',
+    roleId: 3,
+    isFirstLogin: false,
     enabled: true,
   } as IPatient,
   {
@@ -57,6 +63,8 @@ export const fakePatients: IPatient[] = [
     gender: 'Masculino',
     birthDate: '18/10/1998',
     phone: '53900000000',
+    roleId: 3,
+    isFirstLogin: false,
     enabled: false,
   } as IPatient,
   {
@@ -71,6 +79,8 @@ export const fakePatients: IPatient[] = [
     gender: 'Masculino',
     birthDate: '18/10/1998',
     phone: '53900000000',
+    roleId: 3,
+    isFirstLogin: false,
     enabled: true,
   } as IPatient,
   {
@@ -85,6 +95,8 @@ export const fakePatients: IPatient[] = [
     gender: 'Masculino',
     birthDate: '18/10/1998',
     phone: '53900000000',
+    roleId: 3,
+    isFirstLogin: false,
     enabled: true,
   } as IPatient,
   {
@@ -99,6 +111,8 @@ export const fakePatients: IPatient[] = [
     gender: 'Masculino',
     birthDate: '18/10/1998',
     phone: '53900000000',
+    roleId: 3,
+    isFirstLogin: false,
     enabled: true,
   } as IPatient,
   {
@@ -113,6 +127,8 @@ export const fakePatients: IPatient[] = [
     gender: 'Masculino',
     birthDate: '18/10/1998',
     phone: '53900000000',
+    roleId: 3,
+    isFirstLogin: false,
     enabled: true,
   } as IPatient,
   {
@@ -127,6 +143,8 @@ export const fakePatients: IPatient[] = [
     gender: 'Masculino',
     birthDate: '18/10/1998',
     phone: '53900000000',
+    roleId: 3,
+    isFirstLogin: false,
     enabled: true,
   } as IPatient,
   {
@@ -141,6 +159,8 @@ export const fakePatients: IPatient[] = [
     gender: 'Masculino',
     birthDate: '18/10/1998',
     phone: '53900000000',
+    roleId: 3,
+    isFirstLogin: false,
     enabled: true,
   } as IPatient,
   {
@@ -155,6 +175,8 @@ export const fakePatients: IPatient[] = [
     gender: 'Masculino',
     birthDate: '18/10/1998',
     phone: '53900000000',
+    roleId: 3,
+    isFirstLogin: false,
     enabled: true,
   } as IPatient,
   {
@@ -169,6 +191,8 @@ export const fakePatients: IPatient[] = [
     gender: 'Masculino',
     birthDate: '18/10/1998',
     phone: '53900000000',
+    roleId: 3,
+    isFirstLogin: false,
     enabled: true,
   } as IPatient,
   {
@@ -183,6 +207,8 @@ export const fakePatients: IPatient[] = [
     gender: 'Masculino',
     birthDate: '18/10/1998',
     phone: '53900000000',
+    roleId: 3,
+    isFirstLogin: false,
     enabled: false,
   } as IPatient,
 ];

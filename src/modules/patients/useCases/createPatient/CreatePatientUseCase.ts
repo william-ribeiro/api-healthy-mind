@@ -1,5 +1,5 @@
 import { inject, injectable } from 'tsyringe';
-import { CONTAINER } from '../../../../constants';
+import { CONTAINER, ROLE_IDS } from '../../../../constants';
 import { AppError } from '../../../../errors';
 import {
   IAddressRepository,
@@ -8,7 +8,12 @@ import {
   IPatientRepository,
 } from '../../../../interfaces';
 import { Validators } from '../../../../shared';
-import { parseName, removeSpecialCharactersFromString } from '../../../../utils';
+import { parseName, payloadValidate, removeSpecialCharactersFromString } from '../../../../utils';
+import {
+  deletedPasswordResponse,
+  generatedPassword,
+  generatePasswordHash,
+} from './../../../../utils/helpers';
 
 @injectable()
 export class CreatePatientUseCase {
@@ -20,16 +25,23 @@ export class CreatePatientUseCase {
   ) {}
 
   async execute(payload: ICreatePatient): Promise<IPatient> {
-    if (typeof 'object' && !Object.values(payload).length) throw new AppError('Invalid payload');
+    payloadValidate(payload);
 
-    const address = await this.addressRepository.getAddressById(payload.addressId);
+    const password = generatedPassword();
+    payload.password = await generatePasswordHash(password);
+    console.log({ password });
 
-    if (!address) throw new AppError('Address not found', 404);
+    payload.roleId = ROLE_IDS.PATIENT;
+
     try {
       await new Validators().patient.validate(payload, { abortEarly: true });
     } catch (err) {
       throw new AppError(err.errors[0]);
     }
+
+    const address = await this.addressRepository.getAddressById(payload.addressId);
+
+    if (!address) throw new AppError('Address not found', 404);
 
     const { name, email, document } = payload;
 
@@ -46,6 +58,8 @@ export class CreatePatientUseCase {
     payload.name = parseName(name);
     payload.email = removeSpecialCharactersFromString(email);
 
-    return this.patientRepository.create(payload);
+    const patient_ = await this.patientRepository.create(payload);
+
+    return deletedPasswordResponse(patient_)[0];
   }
 }

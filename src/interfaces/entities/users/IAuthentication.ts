@@ -1,7 +1,8 @@
-export interface IAuthenticateUser {
+export interface IAuthentication {
   id: string;
   name: string;
   email: string;
   accessToken: string;
   refreshToken: string;
+  isFirstLogin?: boolean;
 }

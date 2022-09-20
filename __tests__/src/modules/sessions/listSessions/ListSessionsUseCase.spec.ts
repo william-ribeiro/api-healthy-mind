@@ -1,7 +1,7 @@
-import { PAGINATION } from './../../../../../src/constants/index';
 import { ListSessionsUseCase } from '../../../../../src/modules';
 import { fakeUsers } from '../../../../mocks';
 import { fakeSession, SessionRepositoryMock } from '../../../../mocks/sessions';
+import { PAGINATION } from './../../../../../src/constants/index';
 
 let listSessionUseCase: ListSessionsUseCase;
 let sessionRpositoryMock: SessionRepositoryMock;
@@ -17,6 +17,7 @@ describe('Testing listSessionsSessionUseCase', () => {
     const sessions = await listSessionUseCase.execute({
       userId: fakeUsers[0].id,
       query: { page },
+      roleId: 2,
     });
 
     const total_ = fakeSession.filter(
@@ -42,7 +43,7 @@ describe('Testing listSessionsSessionUseCase', () => {
   it('must return empty list if sessions not found', async () => {
     const page = 1;
     return expect(
-      await listSessionUseCase.execute({ userId: fakeUsers[3].id, query: { page } }),
+      await listSessionUseCase.execute({ userId: fakeUsers[3].id, query: { page }, roleId: 2 }),
     ).toEqual({
       response: [],
       page,

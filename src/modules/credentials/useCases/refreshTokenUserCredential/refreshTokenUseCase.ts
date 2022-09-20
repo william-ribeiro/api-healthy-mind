@@ -17,13 +17,16 @@ export class RefreshTokenUseCase {
   async execute(refreshToken: string): Promise<IRefreshToken> {
     try {
       if (!refreshToken) throw new AppError('Invalid refreshToken');
-      const { sub: ownerId } = verify(refreshToken, process.env.SECRET_REFRESH_TOKEN) as IPayload;
+      const { sub: ownerId, roleId } = verify(
+        refreshToken,
+        process.env.SECRET_REFRESH_TOKEN,
+      ) as IPayload;
 
       const credential = await this.credentialsRepository.getCredentialByOwnerId(ownerId);
 
       if (!credential) throw new AppError('Login again');
 
-      const accessToken = generateToken({ id: ownerId, type: JWT.TYPE.ACCESS_TOKEN });
+      const accessToken = generateToken({ id: ownerId, type: JWT.TYPE.ACCESS_TOKEN, roleId });
 
       const newAccessToken = await this.credentialsRepository.update(ownerId, {
         accessToken,

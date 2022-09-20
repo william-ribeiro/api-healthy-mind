@@ -8,11 +8,15 @@ export class FilterPatientsController {
   async handle(request: Request, response: Response): Promise<Response> {
     const { id: userId } = response.locals;
     const { field } = request.query;
-    console.log(request.query);
+
     try {
       const filterPatientsUseCase = container.resolve(FilterPatientsUseCase);
 
-      const patients = await filterPatientsUseCase.execute({ userId, field, query: request.query });
+      const patients = await filterPatientsUseCase.execute({
+        userId,
+        field: field?.toString(),
+        query: request.query,
+      });
 
       logger.info(`${timeBr} | [TOTAL FILTER PATIENTS] => ${patients.response.legth}`);
 

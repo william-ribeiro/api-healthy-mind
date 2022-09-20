@@ -21,6 +21,10 @@ export class PatientsRepositoryMock implements IPatientRepository {
     );
   }
 
+  async getLoginPatientById(patientId: string): Promise<IPatient> {
+    return fakePatients.find((patient) => patient.id === patientId && patient.enabled);
+  }
+
   async getPatientByAttribute(attribute: IGetPatientByAttribute): Promise<IPatient> {
     if (attribute.email) return fakePatients.find((patient) => patient.email === attribute.email);
 
@@ -60,6 +64,7 @@ export class PatientsRepositoryMock implements IPatientRepository {
       id: uuidV4(),
       ...payload,
       enabled: true,
+      isFirstLogin: true,
       createdAt: new Date(),
       updatedAt: new Date(),
     });

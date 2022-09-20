@@ -95,3 +95,22 @@ export const payloadValidate = (payload: any) => {
 
 export const generatePasswordHash = (password: string) =>
   hash(password.trim(), CONFIG_PASSWORD.SALT);
+
+export const generatedPassword = () => {
+  return Array(6)
+    .fill(null)
+    .map(() => Math.floor(Math.random() * (Math.floor(9) - Math.ceil(1)) + 1))
+    .join('');
+};
+
+export const deletedPasswordResponse = (data: any) => {
+  if (typeof 'object' && !data.length) {
+    delete data.password;
+    return [{ ...data }];
+  }
+
+  return data.map((field: any) => {
+    delete field.password;
+    return { ...field };
+  });
+};

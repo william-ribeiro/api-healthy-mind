@@ -6,8 +6,21 @@ export const signIn = {
   '/signin': {
     post: {
       tags: ['Login'],
-      summary: 'Authenticate user',
-      description: 'Here you can authenticate user',
+      summary: 'Authenticate users and patients',
+      description: 'Here you can authenticate user or patient',
+      parameters: [
+        {
+          in: 'query',
+          name: 'type',
+          required: true,
+          schema: { type: 'string' },
+
+          examples: {
+            professional: { value: 'professional' },
+            patient: { value: 'patient' },
+          },
+        },
+      ],
       requestBody: {
         content: {
           'application/json': {

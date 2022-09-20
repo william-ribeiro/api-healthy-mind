@@ -1,5 +1,5 @@
-import { UsersRepositoryMock } from '../../../../mocks';
 import { CreateUserUseCase } from '../../../../../src/modules/users';
+import { UsersRepositoryMock } from '../../../../mocks';
 
 let createUserUseCase: CreateUserUseCase;
 let usersRepositoryMock: UsersRepositoryMock;
@@ -24,7 +24,6 @@ describe('Testing createUserUseCase', () => {
     });
 
     const expectResponse = await usersRepositoryMock.getById(createUser.id);
-
     expect(createUser).toEqual(expectResponse);
   });
 

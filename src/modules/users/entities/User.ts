@@ -1,8 +1,9 @@
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryColumn } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 import { DATABASE } from '../../../constants';
 import { IPatient, IUser } from '../../../interfaces/entities';
 import { Patient } from '../../patients';
+import { Role } from '../../roles';
 
 @Entity(DATABASE.USERS)
 export class User implements IUser {
@@ -31,6 +32,15 @@ export class User implements IUser {
   @Column({ default: true })
   public enabled: boolean;
 
+  @Column()
+  public roleId: number;
+
+  @Column({ nullable: true })
+  public professionalRecord: string;
+
   @OneToMany(() => Patient, (patient) => patient.user)
   patient: IPatient[];
+
+  @ManyToOne(() => Role, (role) => role.patients)
+  role: Role;
 }

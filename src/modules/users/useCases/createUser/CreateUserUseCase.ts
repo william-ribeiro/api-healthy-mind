@@ -1,6 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 
-import { CONTAINER } from '../../../../constants';
+import { CONTAINER, ROLE_IDS } from '../../../../constants';
 import { AppError } from '../../../../errors';
 import { ICreateUser, IUser, IUsersRepository } from '../../../../interfaces';
 import { Validators } from '../../../../shared';
@@ -37,6 +37,7 @@ export class CreateUserUseCase {
     payload.name = parseName(name);
     payload.email = removeSpecialCharactersFromString(email);
     payload.password = await generatePasswordHash(password);
+    payload.roleId = ROLE_IDS.PROFESSIONAL;
 
     const response = await this.userRepository.create(payload);
 

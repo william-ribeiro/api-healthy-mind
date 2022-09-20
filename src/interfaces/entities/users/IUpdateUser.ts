@@ -5,4 +5,5 @@ export interface IUpdateUser {
   newPassword?: string;
   confirmPassword?: string;
   enabled?: boolean;
+  professionalRecord?: string;
 }

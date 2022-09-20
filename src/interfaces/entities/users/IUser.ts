@@ -6,4 +6,6 @@ export abstract class IUser {
   public email: string;
   public password: string;
   public enabled: boolean;
+  public roleId: number;
+  public professionalRecord: string;
 }

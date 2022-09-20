@@ -37,7 +37,7 @@ describe('Testing createPatientUseCase', () => {
 
     const expectResponse = await patientRepositoryMock.getPatientById(patient.id, patient.userId);
 
-    expect(patient).toEqual(expectResponse);
+    expect(patient).toEqual({ ...expectResponse, password: patient.password });
   });
 
   it('must return create patient error when passed invalid payload', async () => {

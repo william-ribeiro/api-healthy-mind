@@ -9,6 +9,8 @@ export const fakeUsers: IUser[] = [
     updatedAt: new Date('2021-10-27 00:35:07.294'),
     password: '$2a$08$AmbqU3T5tTdKu1fOXhOWZOAcYWNF90YqqNDqvPDjlmMqNI2re6BMq',
     enabled: true,
+    roleId: 2,
+    professionalRecord: '12345',
   } as IUser,
   {
     id: '07350d40-9bb9-4dd0-b63f-ce2f9c77cfa0',
@@ -18,6 +20,8 @@ export const fakeUsers: IUser[] = [
     updatedAt: new Date('2021-10-27 00:35:07.294'),
     password: '$2a$08$AmbqU3T5tTdKu1fOXhOWZOAcYWNF90YqqNDqvPDjlmMqNI2re6BMq',
     enabled: true,
+    roleId: 2,
+    professionalRecord: '12345',
   } as IUser,
   {
     id: 'a3640f12-563c-4031-b3a1-9958f3fe2b05',
@@ -27,6 +31,8 @@ export const fakeUsers: IUser[] = [
     updatedAt: new Date('2021-10-27 00:35:07.294'),
     password: '$2a$08$AmbqU3T5tTdKu1fOXhOWZOAcYWNF90YqqNDqvPDjlmMqNI2re6BMq',
     enabled: true,
+    roleId: 2,
+    professionalRecord: '12345',
   } as IUser,
   {
     id: 'a3640f12-563c-4031-b3a1-9958f3fe2b55',
@@ -36,5 +42,7 @@ export const fakeUsers: IUser[] = [
     updatedAt: new Date('2021-10-27 00:35:07.294'),
     password: '$2a$08$AmbqU3T5tTdKu1fOXhOWZOAcYWNF90YqqNDqvPDjlmMqNI2re6BMq',
     enabled: false,
+    roleId: 2,
+    professionalRecord: '12345',
   } as IUser,
 ];

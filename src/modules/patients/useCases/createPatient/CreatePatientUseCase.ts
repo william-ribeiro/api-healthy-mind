@@ -21,6 +21,10 @@ export class CreatePatientUseCase {
   ) {}
 
   async execute(payload: ICreatePatient): Promise<IPatient> {
+    const addressPayload = payload.address;
+
+    if (payload.address) delete payload.address;
+
     payloadValidate(payload);
 
     const password = generatedPassword();
@@ -35,10 +39,6 @@ export class CreatePatientUseCase {
       throw new AppError(err.errors[0]);
     }
 
-    const address = await this.addressRepository.getAddressById(payload.addressId);
-
-    if (!address) throw new AppError('Address not found', 404);
-
     const { name, email, document } = payload;
 
     const patient = await this.patientRepository
@@ -51,10 +51,20 @@ export class CreatePatientUseCase {
 
     if (patient) throw new AppError('Patient already exists', 409);
 
+    try {
+      await new Validators().address.validate(addressPayload, { abortEarly: true });
+    } catch (err) {
+      throw new AppError(err.errors[0]);
+    }
+
+    const { id: addressId } = await this.addressRepository.create(addressPayload);
+
+    if (!addressId) throw new AppError('Address not created', 400);
+
     payload.name = parseName(name);
     payload.email = removeSpecialCharactersFromString(email);
 
-    const patient_ = await this.patientRepository.create(payload);
+    const patient_ = await this.patientRepository.create({ ...payload, addressId });
 
     delete patient_.password;
     patient_.password = password;

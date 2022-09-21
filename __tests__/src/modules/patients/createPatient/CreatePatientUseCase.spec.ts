@@ -1,6 +1,6 @@
 import { CreatePatientUseCase } from '../../../../../src/modules/patients';
 import { fakeUsers, PatientsRepositoryMock } from '../../../../mocks';
-import { AddressRepositoryMock, fakeAddress } from '../../../../mocks/address';
+import { AddressRepositoryMock } from '../../../../mocks/address';
 
 let createPatientUseCase: CreatePatientUseCase;
 let patientRepositoryMock: PatientsRepositoryMock;
@@ -10,7 +10,6 @@ let payload: any;
 beforeEach(() => {
   payload = {
     userId: fakeUsers[0].id,
-    addressId: fakeAddress[0].id,
     name: 'Pacient testing',
     email: 'pacienttesting@email.com',
     document: 'documenttesting',
@@ -20,6 +19,16 @@ beforeEach(() => {
     password: 'firstLogin',
     isFirstLogin: true,
     roleId: 3,
+    address: {
+      postalCode: '11111-111',
+      street: 'test street',
+      number: 'test number',
+      details: 'test details',
+      district: 'test centro',
+      city: 'test city',
+      state: 'test state',
+      country: 'test country',
+    },
   };
 
   patientRepositoryMock = new PatientsRepositoryMock();
@@ -63,20 +72,6 @@ describe('Testing createPatientUseCase', () => {
       ).toBeUndefined();
     } catch (err) {
       return expect(err.message).toBe('Patient already exists');
-    }
-  });
-
-  it('must return create patient error when address not found', async () => {
-    try {
-      payload.addressId = 999;
-
-      return expect(
-        await createPatientUseCase.execute({
-          ...payload,
-        }),
-      ).toBeUndefined();
-    } catch (err) {
-      return expect(err.message).toBe('Address not found');
     }
   });
 });

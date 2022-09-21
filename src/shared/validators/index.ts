@@ -24,7 +24,6 @@ export class Validators {
 
   patient = yup.object().shape({
     userId: yup.string().required('Invalid userId'),
-    addressId: yup.string().required('Invalid addressId'),
     name: yup.string().required('Invalid name'),
     email: yup.string().email('Invalid email').required(),
     gender: yup.string().label('Invalid gender'),

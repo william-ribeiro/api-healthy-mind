@@ -1,3 +1,4 @@
+import { ICreateAddress } from './../address/ICreateAddress';
 export interface ICreatePatient {
   userId: string;
   addressId: number;
@@ -9,4 +10,5 @@ export interface ICreatePatient {
   phone: string;
   roleId: number;
   password: string;
+  address?: ICreateAddress;
 }

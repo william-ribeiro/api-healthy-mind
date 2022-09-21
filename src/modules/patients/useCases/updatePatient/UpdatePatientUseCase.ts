@@ -26,7 +26,11 @@ export class UpdatePatientUseCase {
   async execute(patientId: string, userId: string, payload: IUpdatePatient): Promise<IPatient> {
     if (!Object.values(payload).length || !patientId) throw new AppError('Invalid payload');
 
-    const patient = await this.patientRepository.getPatientById(patientId, userId);
+    const patient = await this.patientRepository
+      .getPatientById(patientId, userId)
+      .then(async (result) => {
+        if (!result) return this.patientRepository.getLoginPatientById(patientId);
+      });
 
     if (!patient) throw new AppError('Patient not found', 404);
 
@@ -67,12 +71,12 @@ export class UpdatePatientUseCase {
       ? { ...filterDefinedProperties(isUpdatePassword) }
       : { ...filterDefinedProperties(payload) };
 
-    const updatePatient = await this.patientRepository.update(patientId, userId, {
+    const updatePatient = await this.patientRepository.update(patientId, patient.userId, {
       ...payload_,
       isFirstLogin: false,
     });
 
-    delete updatePatient.password;
+    delete updatePatient?.password;
 
     return updatePatient;
   }

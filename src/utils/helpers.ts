@@ -111,6 +111,6 @@ export const deletedPasswordResponse = (data: any) => {
 
   return data.map((field: any) => {
     delete field.password;
-    return { ...field };
+    return field;
   });
 };

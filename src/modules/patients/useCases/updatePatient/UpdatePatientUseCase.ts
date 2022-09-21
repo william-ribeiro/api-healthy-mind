@@ -10,7 +10,6 @@ import { Validators } from '../../../../shared';
 import { makePasswordUpdate } from '../../../../utils';
 import { CONTAINER } from './../../../../constants';
 import {
-  deletedPasswordResponse,
   filterDefinedProperties,
   removeSpecialCharactersFromString,
 } from './../../../../utils/helpers';
@@ -73,6 +72,8 @@ export class UpdatePatientUseCase {
       isFirstLogin: false,
     });
 
-    return deletedPasswordResponse(updatePatient)[0];
+    delete updatePatient.password;
+
+    return updatePatient;
   }
 }

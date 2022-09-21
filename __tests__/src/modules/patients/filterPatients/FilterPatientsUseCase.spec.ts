@@ -49,7 +49,7 @@ describe('Testing filterPatientsUseCase', () => {
     return expect(
       await filterPatientsUseCase.execute({ userId: fakeUsers[3].id, field, query: { page } }),
     ).toEqual({
-      response: [{} as any],
+      response: [],
       page,
       count: 0,
       perPage: PAGINATION.PER_PAGE,

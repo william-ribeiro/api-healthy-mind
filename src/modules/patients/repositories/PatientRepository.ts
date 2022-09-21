@@ -98,7 +98,7 @@ export class PatientRepository implements IPatientRepository {
       .returning('*')
       .execute();
 
-    return updatePatient;
+    return updatePatient[0];
   }
 
   async remove(patientId: string, userId: string, payload: IRemovePatient): Promise<void> {

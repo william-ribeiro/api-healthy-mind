@@ -57,6 +57,7 @@ export class CreatePatientUseCase {
     const patient_ = await this.patientRepository.create(payload);
 
     delete patient_.password;
+    patient_.password = password;
 
     return patient_;
   }

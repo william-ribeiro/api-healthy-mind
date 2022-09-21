@@ -23,7 +23,6 @@ export const filter = {
         {
           in: 'query',
           name: 'field',
-          required: true,
           schema: { type: 'string' },
 
           examples: {

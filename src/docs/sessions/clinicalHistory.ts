@@ -4,7 +4,7 @@ const { successResponse, badRequestError, unauthorizedError, internalError } = c
 
 export const clinicalHistory = {
   '/sessions/{patientId}': {
-    delete: {
+    get: {
       tags: ['Sessions'],
       security: [{ bearerAuth: [] }],
       summary: 'Clinical History',

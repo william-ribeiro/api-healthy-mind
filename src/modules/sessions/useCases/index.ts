@@ -1,3 +1,4 @@
+export * from './clinicalHistory';
 export * from './createSession';
 export * from './filterSessions';
 export * from './listSessions';

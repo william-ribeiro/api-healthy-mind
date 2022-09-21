@@ -1,7 +1,9 @@
+import { fakeClinicalHistory } from './fakeClinicalHistory';
 /* eslint-disable @typescript-eslint/require-await */
 
 import { PAGINATION } from '../../../src/constants';
 import {
+  IClinicalHistory,
   ICreateSession,
   ISession,
   ISessionRepository,
@@ -44,6 +46,12 @@ export class SessionRepositoryMock implements ISessionRepository {
       : buildClusters(sessions.slice(skip), PAGINATION.PER_PAGE)[0];
 
     return [paginateSessions, total];
+  }
+
+  async getClinicalHistoryByPatientId(patientId: string): Promise<IClinicalHistory[]> {
+    const clinicalHistory = fakeClinicalHistory.find((history) => history.patientId === patientId);
+
+    return [clinicalHistory];
   }
 
   async getAllSessions(skip: number, where: any): Promise<[ISession[], number]> {

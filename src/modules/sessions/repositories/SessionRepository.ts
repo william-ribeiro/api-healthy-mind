@@ -1,14 +1,23 @@
 import moment from 'moment';
 import { getRepository, Raw, Repository } from 'typeorm';
 import { DATABASE, PAGINATION, SELECT_FIELDS } from '../../../constants';
-import { ICreateSession, ISession, ISessionRepository, IUpdateSession } from '../../../interfaces';
+import {
+  IClinicalHistory,
+  ICreateSession,
+  ISession,
+  ISessionRepository,
+  IUpdateSession,
+} from '../../../interfaces';
 import { Session } from '../entities';
+import { ClinicalHistory } from '../views';
 
 export class SessionRepository implements ISessionRepository {
   private sessionRepository: Repository<ISession>;
+  private viewClinicalHistory: Repository<IClinicalHistory>;
 
   constructor() {
     this.sessionRepository = getRepository(Session);
+    this.viewClinicalHistory = getRepository(ClinicalHistory);
   }
 
   async getSessionById(sessionId: number, userId: string): Promise<ISession> {
@@ -38,6 +47,12 @@ export class SessionRepository implements ISessionRepository {
       .skip(skip)
       .take(PAGINATION.PER_PAGE)
       .getManyAndCount();
+  }
+
+  async getClinicalHistoryByPatientId(patientId: string): Promise<IClinicalHistory[]> {
+    return this.viewClinicalHistory.find({
+      where: { patientId },
+    });
   }
 
   async getAllSessions(skip: number, where: any): Promise<[ISession[], number]> {

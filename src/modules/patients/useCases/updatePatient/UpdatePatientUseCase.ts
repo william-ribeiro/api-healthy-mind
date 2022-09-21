@@ -30,6 +30,7 @@ export class UpdatePatientUseCase {
       .getPatientById(patientId, userId)
       .then(async (result) => {
         if (!result) return this.patientRepository.getLoginPatientById(patientId);
+        return result;
       });
 
     if (!patient) throw new AppError('Patient not found', 404);

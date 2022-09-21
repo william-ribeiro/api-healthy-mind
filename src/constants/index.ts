@@ -24,6 +24,9 @@ export const DATABASE = {
     SESSION: 'session',
     PATIENT: 'patient',
   },
+  VIEWS: {
+    CLINICAL_HISTORY: 'clinical_history',
+  },
 };
 
 export const SELECT_FIELDS = {

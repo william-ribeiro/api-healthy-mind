@@ -42,14 +42,15 @@ export class AuthenticationUseCase {
 
     if (!passwordMatch) throw new AppError('User or password incorrect', 401);
 
-    if (owner?.isFirstLogin) throw new AppError('Password must be changed', 400);
-
     const roleId =
       type.toLowerCase() === ROLE_PROTECTED.Patient.toLowerCase()
         ? ROLE_IDS.PATIENT
         : ROLE_IDS.PROFESSIONAL;
 
     const accessToken = generateToken({ id: owner.id, type: JWT.TYPE.ACCESS_TOKEN, roleId });
+
+    if (owner?.isFirstLogin) throw new AppError('Password must be changed', 400, accessToken);
+
     const refreshToken = generateToken({
       id: owner.id,
       type: JWT.TYPE.REFRESH_TOKEN,

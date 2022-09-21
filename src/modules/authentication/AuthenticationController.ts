@@ -23,6 +23,9 @@ export class AuthenticationController {
 
       if (err.statusCode === 401) throw new AppError(err.message, err.statusCode);
 
+      if (err.message === 'Password must be changed')
+        throw new AppError(err.message, err?.statusCode, err.token);
+
       throw new AppError(err.message, err?.statusCode);
     }
   }

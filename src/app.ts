@@ -5,15 +5,15 @@ import 'reflect-metadata';
 import './database';
 import './shared';
 
+import cors from 'cors';
 import express, { NextFunction, Request, Response } from 'express';
 import helmet from 'helmet';
-import cors from 'cors';
 import morgan from 'morgan';
 import swaggerUi from 'swagger-ui-express';
 import { apiDocs } from './docs/apiDocs';
-import { logger } from './shared';
 import { AppError } from './errors';
 import router from './routes';
+import { logger } from './shared';
 
 const app = express();
 app.use(express.json());
@@ -45,6 +45,7 @@ app.use((err: Error, _request: Request, response: Response, _next: NextFunction)
   if (err instanceof AppError) {
     return response.status(Number(err.statusCode)).json({
       message: err.message,
+      token: err.token,
     });
   }
   return response.status(500).json({

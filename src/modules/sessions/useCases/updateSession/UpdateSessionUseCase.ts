@@ -29,16 +29,19 @@ export class UpdateSessionUseCase {
 
     if (!session) throw new AppError('Session not found', 404);
 
-    const patient = await this.patientRepository.getPatientById(payload.patientId, userId);
+    const patientId = payload.patientId || session.patientId;
+    const patient = await this.patientRepository.getPatientById(patientId, userId);
 
     if (!patient) throw new AppError('Patient not found', 404);
 
-    const resource = await this.resourceRepository.getResourceById({
-      resourceId: payload.resourceId,
-      userId,
-    });
+    if (payload.resourceId) {
+      const resource = await this.resourceRepository.getResourceById({
+        resourceId: payload.resourceId,
+        userId,
+      });
 
-    if (!resource) throw new AppError('Resource not found', 404);
+      if (!resource) throw new AppError('Resource not found', 404);
+    }
 
     if (
       (payload.appointmentDate &&

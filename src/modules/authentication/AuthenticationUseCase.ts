@@ -69,7 +69,14 @@ export class AuthenticationUseCase {
 
       await createCredentialsUseCase.execute(createCredentials);
 
-      return { id: owner.id, name: owner.name, email, accessToken, refreshToken };
+      return {
+        id: owner.id,
+        roleId: owner.role.id,
+        name: owner.name,
+        email,
+        accessToken,
+        refreshToken,
+      };
     }
 
     if (ownerCredentials.isValid) await updateCredentialsUseCase.execute(owner.id, { accessToken });
@@ -84,6 +91,7 @@ export class AuthenticationUseCase {
 
     return {
       id: owner.id,
+      roleId: owner.roleId,
       name: owner.name,
       email,
       accessToken,

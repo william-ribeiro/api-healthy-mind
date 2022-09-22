@@ -1,4 +1,5 @@
-import moment from 'moment';
+import moment from 'moment-timezone';
+
 import { inject, injectable } from 'tsyringe';
 import { AppError } from '../../../../errors';
 import {
@@ -43,12 +44,16 @@ export class UpdateSessionUseCase {
       if (!resource) throw new AppError('Resource not found', 404);
     }
 
-    if (
-      (payload.appointmentDate &&
-        moment(payload.appointmentDate).isBefore(moment(patient.createdAt))) ||
-      moment(payload.appointmentDate).isBefore(moment(session.createdAt))
-    )
-      throw new AppError('Invalid date', 400);
+    if (payload.appointmentDate) {
+      const now = moment();
+      now.format();
+
+      const value_ = moment(payload.appointmentDate);
+      value_.format();
+      console.log(now, value_);
+
+      if (!now.isBefore(value_)) throw new AppError('Invalid date', 400);
+    }
 
     return this.sessionRepository.update(sessionId, userId, {
       ...filterDefinedProperties(payload),

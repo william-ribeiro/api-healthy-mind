@@ -1,4 +1,5 @@
-import moment from 'moment';
+import moment from 'moment-timezone';
+
 import * as yup from 'yup';
 
 export class Validators {
@@ -44,7 +45,13 @@ export class Validators {
       .date()
       .required('Invalid Date')
       .test('min_date', 'Invalid Date', (value) => {
-        return moment().isBefore(value);
+        const now = moment();
+        now.format();
+
+        const value_ = moment(value).add(3, 'h');
+        value_.format();
+
+        return now.isBefore(value_);
       }),
     resourceId: yup.number().required('Invalid resourceId'),
     service: yup.string().required('Invalid service'),

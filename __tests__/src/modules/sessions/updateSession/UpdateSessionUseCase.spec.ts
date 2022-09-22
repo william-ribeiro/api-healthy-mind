@@ -1,4 +1,4 @@
-import { ISession } from '../../../../../src/interfaces';
+import moment from 'moment';
 import { fakePatients, PatientsRepositoryMock, ResourceRepositoryMock } from '../../../../mocks';
 import { fakeSession, SessionRepositoryMock } from '../../../../mocks/sessions';
 import { UpdateSessionUseCase } from '../..//../../../src/modules';
@@ -7,7 +7,7 @@ let updateSessionUseCase: UpdateSessionUseCase;
 let sessionRepositoryMock: SessionRepositoryMock;
 let patientRepositoryMock: PatientsRepositoryMock;
 let resourceRepositoryMock: ResourceRepositoryMock;
-let payload: ISession;
+let payload: any;
 
 beforeEach(() => {
   payload = fakeSession[0];
@@ -25,6 +25,7 @@ beforeEach(() => {
 describe('Testing updateSessionUseCase', () => {
   it('must return updated session when a passed valid payload', async () => {
     payload.status = 'Update status';
+    payload.appointmentDate = moment().add(1, 'd').format();
 
     const updateStatus = await updateSessionUseCase.execute(payload.id, payload.userId, payload);
 

@@ -1,10 +1,21 @@
+import { fakeDashboard } from './fakeDashboard';
 /* eslint-disable @typescript-eslint/require-await */
 import { v4 as uuidV4 } from 'uuid';
 
-import { ICreateUser, IUpdateUser, IUser, IUsersRepository } from '../../../src/interfaces';
+import {
+  ICreateUser,
+  IDashboard,
+  IUpdateUser,
+  IUser,
+  IUsersRepository,
+} from '../../../src/interfaces';
 import { fakeUsers } from './fakeUsers';
 
 export class UsersRepositoryMock implements IUsersRepository {
+  async getDashboardByUserId(id: string): Promise<IDashboard> {
+    return fakeDashboard.find((dashboard) => dashboard.userId === id);
+  }
+
   async getById(id: string): Promise<IUser> {
     return fakeUsers.find((user) => user.id === id && user.enabled);
   }

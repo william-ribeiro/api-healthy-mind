@@ -1,14 +1,17 @@
 import moment from 'moment';
 
 import { getRepository, Repository } from 'typeorm';
-import { ICreateUser, IUpdateUser, IUser, IUsersRepository } from '../../../interfaces';
+import { ICreateUser, IDashboard, IUpdateUser, IUser, IUsersRepository } from '../../../interfaces';
 import { User } from '../entities';
+import { Dashboard } from '../views';
 
 export class UsersRepository implements IUsersRepository {
   public repository: Repository<IUser>;
+  public viewDashboard: Repository<IDashboard>;
 
   constructor() {
     this.repository = getRepository(User);
+    this.viewDashboard = getRepository(Dashboard);
   }
 
   public async getById(id: string): Promise<IUser> {
@@ -17,6 +20,12 @@ export class UsersRepository implements IUsersRepository {
 
   public async getByEmail(email: string): Promise<IUser> {
     return this.repository.findOne({ email, enabled: true });
+  }
+
+  async getDashboardByUserId(id: string): Promise<IDashboard> {
+    return this.viewDashboard.findOne({
+      where: { userId: id },
+    });
   }
 
   public async create(payload: ICreateUser): Promise<IUser> {

@@ -4,6 +4,7 @@ import { rolesRoutes } from './roles/index';
 import { ensureAuthenticated, getIp } from '../middlewares';
 import { addressRoutes } from './address';
 import { authenticateRoutes } from './authenticate';
+import { dashboardRoutes } from './dashboard';
 import { patientsRouter } from './patients';
 import { refreshTokenRoutes } from './refreshToken';
 import { resourceRoutes } from './resource';
@@ -18,6 +19,7 @@ routes.use('/signin', authenticateRoutes);
 routes.use('/refresh-token', refreshTokenRoutes);
 
 routes.use(ensureAuthenticated);
+routes.use('/dashboard', dashboardRoutes);
 routes.use('/users', userRoutes);
 routes.use('/address', addressRoutes);
 routes.use('/patients', patientsRouter);

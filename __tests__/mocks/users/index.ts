@@ -1,2 +1,3 @@
-export * from './UserMock';
+export * from './fakeDashboard';
 export * from './fakeUsers';
+export * from './UserMock';

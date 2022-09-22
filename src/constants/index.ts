@@ -26,6 +26,7 @@ export const DATABASE = {
   },
   VIEWS: {
     CLINICAL_HISTORY: 'clinical_history',
+    DASHBOARD: 'dashboard',
   },
 };
 

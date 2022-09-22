@@ -29,7 +29,7 @@ export class UpdatePatientUseCase {
     const patient = await this.patientRepository
       .getPatientById(patientId, userId)
       .then(async (result) => {
-        if (!result) return this.patientRepository.getLoginPatientById(patientId);
+        if (!result) return this.patientRepository.getLoginPatientById(userId);
         return result;
       });
 
@@ -71,8 +71,8 @@ export class UpdatePatientUseCase {
     const payload_ = isUpdatePassword
       ? { ...filterDefinedProperties(isUpdatePassword) }
       : { ...filterDefinedProperties(payload) };
-
-    const updatePatient = await this.patientRepository.update(patientId, patient.userId, {
+    console.log('dsada', patientId);
+    const updatePatient = await this.patientRepository.update(patient.id, patient.userId, {
       ...payload_,
       isFirstLogin: false,
     });

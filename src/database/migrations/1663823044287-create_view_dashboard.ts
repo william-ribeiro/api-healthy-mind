@@ -14,9 +14,9 @@ export class createViewDashboard1663823044287 implements MigrationInterface {
               (SELECT COUNT(id) from sessions where "userId"=u.id and type ILIKE 'grupo' and enabled=true) as "totalSessionsGroup",    
               (SELECT COUNT(id) from sessions where "userId"=u.id and status ILIKE 'agendada' and date("appointmentDate")=current_date and enabled=true) as "totalSessionsScheduledPerDay",
               (SELECT COUNT(id) from sessions where "userId"=u.id and status ILIKE 'agendada' 
-               and DATE_PART('MONTH',"appointmentDate")=date_part('month',current_date) and enabled=true) as "totalSessionsScheduledPerMoth",
+               and DATE_PART('MONTH',"appointmentDate")=date_part('month',current_date) and enabled=true) as "totalSessionsScheduledPerMonth",
               (SELECT COUNT(id) from sessions where "userId"=u.id and status ILIKE 'cancelada' 
-               and DATE_PART('MONTH',"appointmentDate")=date_part('month',current_date) and enabled=true) as "totalSessionsCanceledPerMoth"
+               and DATE_PART('MONTH',"appointmentDate")=date_part('month',current_date) and enabled=true) as "totalSessionsCanceledPerMonth"
               from users u
                 where u.enabled=true`,
     );

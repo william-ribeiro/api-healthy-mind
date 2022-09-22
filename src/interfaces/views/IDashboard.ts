@@ -5,6 +5,6 @@ export abstract class IDashboard {
   public totalSessionsPair: number;
   public totalSessionsGroup: number;
   public totalSessionsScheduledPerDay: number;
-  public totalSessionsScheduledPerMoth: number;
-  public totalSessionsCanceledPerMoth: number;
+  public totalSessionsScheduledPerMonth: number;
+  public totalSessionsCanceledPerMonth: number;
 }

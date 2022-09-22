@@ -17,7 +17,7 @@ export class Dashboard implements IDashboard {
   @ViewColumn()
   public totalSessionsScheduledPerDay: number;
   @ViewColumn()
-  public totalSessionsScheduledPerMoth: number;
+  public totalSessionsScheduledPerMonth: number;
   @ViewColumn()
-  public totalSessionsCanceledPerMoth: number;
+  public totalSessionsCanceledPerMonth: number;
 }

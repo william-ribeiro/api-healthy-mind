@@ -9,8 +9,8 @@ export const fakeDashboard: IDashboard[] = [
     totalSessionsPair: 22,
     totalSessionsGroup: 24,
     totalSessionsScheduledPerDay: 33,
-    totalSessionsScheduledPerMoth: 22,
-    totalSessionsCanceledPerMoth: 2,
+    totalSessionsScheduledPerMonth: 22,
+    totalSessionsCanceledPerMonth: 2,
   } as IDashboard,
   {
     userId: fakeUsers[2].id,
@@ -19,7 +19,7 @@ export const fakeDashboard: IDashboard[] = [
     totalSessionsPair: 21,
     totalSessionsGroup: 14,
     totalSessionsScheduledPerDay: 1,
-    totalSessionsScheduledPerMoth: 11,
-    totalSessionsCanceledPerMoth: 7,
+    totalSessionsScheduledPerMonth: 11,
+    totalSessionsCanceledPerMonth: 7,
   } as IDashboard,
 ];

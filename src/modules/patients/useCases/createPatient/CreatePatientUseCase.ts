@@ -7,7 +7,7 @@ import {
   IPatient,
   IPatientRepository,
 } from '../../../../interfaces';
-import { Validators } from '../../../../shared';
+import { sendMail, Validators } from '../../../../shared';
 import { parseName, payloadValidate, removeSpecialCharactersFromString } from '../../../../utils';
 import { generatedPassword, generatePasswordHash } from './../../../../utils/helpers';
 
@@ -65,6 +65,16 @@ export class CreatePatientUseCase {
     payload.email = removeSpecialCharactersFromString(email);
 
     const patient_ = await this.patientRepository.create({ ...payload, addressId });
+
+    if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'development') {
+      if (patient_.isFirstLogin) {
+        await sendMail('teste', {
+          code: +password,
+          name: patient_.name.split(' ')[0],
+          email: patient_.email,
+        });
+      }
+    }
 
     delete patient_.password;
     patient_.password = password;

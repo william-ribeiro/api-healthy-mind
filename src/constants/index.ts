@@ -102,3 +102,10 @@ export const ROLE_IDS = {
   PROFESSIONAL: 2,
   PATIENT: 3,
 };
+
+export const EMAIL = {
+  HOST: 'smtp.gmail.com',
+  PORT: 465,
+  FROM: process.env.EMAIL_FROM,
+  USER: process.env.EMAIL_USER,
+};

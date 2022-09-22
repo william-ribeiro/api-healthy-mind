@@ -26,16 +26,22 @@ export class UpdatePatientUseCase {
   async execute(patientId: string, userId: string, payload: IUpdatePatient): Promise<IPatient> {
     if (!Object.values(payload).length || !patientId) throw new AppError('Invalid payload');
 
+    let isUserLogged = true;
     const patient = await this.patientRepository
       .getPatientById(patientId, userId)
       .then(async (result) => {
-        if (!result) return this.patientRepository.getLoginPatientById(userId);
+        if (!result) {
+          isUserLogged = false;
+
+          return this.patientRepository.getLoginPatientById(userId);
+        }
         return result;
       });
 
     if (!patient) throw new AppError('Patient not found', 404);
 
-    if (patient?.isFirstLogin && !payload.password) throw new AppError('Password must be changed');
+    if (!isUserLogged && patient?.isFirstLogin && !payload.password)
+      throw new AppError('Password must be changed');
 
     const { addressId, email, document } = payload;
 
@@ -71,10 +77,12 @@ export class UpdatePatientUseCase {
     const payload_ = isUpdatePassword
       ? { ...filterDefinedProperties(isUpdatePassword) }
       : { ...filterDefinedProperties(payload) };
-    console.log('dsada', patientId);
+
+    if (!patient?.isFirstLogin) isUserLogged = false;
+
     const updatePatient = await this.patientRepository.update(patient.id, patient.userId, {
       ...payload_,
-      isFirstLogin: false,
+      isFirstLogin: isUserLogged,
     });
 
     delete updatePatient?.password;

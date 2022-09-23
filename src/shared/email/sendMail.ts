@@ -11,7 +11,7 @@ export async function sendMail(professionalName: string, payload: ISendEmail) {
 
     await transporter.verify();
 
-    const html = recoveryTemplate(code, name, professionalName);
+    const html = recoveryTemplate(code, name, professionalName, email);
 
     const status = await transporter.sendMail({
       html,

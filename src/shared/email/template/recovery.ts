@@ -1,5 +1,10 @@
 import moment from 'moment';
-export const recoveryTemplate = (code: number, name: string, professionalName: string) => {
+export const recoveryTemplate = (
+  code: number,
+  name: string,
+  professionalName: string,
+  email: string,
+) => {
   const currentYear = moment().year();
   return ` 
   <!DOCTYPE html>
@@ -74,7 +79,7 @@ export const recoveryTemplate = (code: number, name: string, professionalName: s
               <p style="text-align: justify; color: #69625c; font-family: Arial; font-size: 14px">
                 ${name}, seja bem vindo(a) ao <b>"DoutoraMente"</b>, você foi cadastrado(a) no
                 sistema por ${professionalName}. <br /><br />
-                Para usar o sistema você precisa informar seu email: {email} e o
+                Para usar o sistema você precisa informar seu email: ${email} e o
                 <b>código temporário de acesso.</b> E não esqueça de cadastrar uma senha segura.
               </p>
             </td>

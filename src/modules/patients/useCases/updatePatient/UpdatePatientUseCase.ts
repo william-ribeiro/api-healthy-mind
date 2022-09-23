@@ -1,5 +1,4 @@
 import { inject, injectable } from 'tsyringe';
-import { AppError } from '../../../../errors';
 import {
   IAddressRepository,
   IPatient,
@@ -9,6 +8,7 @@ import {
 import { Validators } from '../../../../shared';
 import { makePasswordUpdate } from '../../../../utils';
 import { CONTAINER } from './../../../../constants';
+import { AppError } from './../../../../errors/AppError';
 import {
   filterDefinedProperties,
   removeSpecialCharactersFromString,
@@ -43,12 +43,19 @@ export class UpdatePatientUseCase {
     if (!isUserLogged && patient?.isFirstLogin && !payload.password)
       throw new AppError('Password must be changed');
 
-    const { addressId, email, document } = payload;
+    const { email, document } = payload;
 
-    if (addressId)
-      await this.addressrepository.getAddressById(addressId).then((result) => {
-        if (!result) throw new AppError('Address not found', 404);
-      });
+    if (payload?.address) {
+      await this.addressrepository
+        .update(patient.addressId, { ...payload.address })
+        .then((result) => {
+          payload.addressId = result.id;
+          delete payload.address;
+        })
+        .catch(() => {
+          throw new AppError('Address not created');
+        });
+    }
 
     if (email && email !== patient.email) {
       try {

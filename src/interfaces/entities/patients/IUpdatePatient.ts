@@ -1,3 +1,5 @@
+import { IUpdateAddress } from '../address';
+
 export interface IUpdatePatient {
   userId?: string;
   addressId?: number;
@@ -12,4 +14,5 @@ export interface IUpdatePatient {
   newPassword?: string;
   confirmPassword?: string;
   isFirstLogin?: boolean;
+  address?: IUpdateAddress;
 }

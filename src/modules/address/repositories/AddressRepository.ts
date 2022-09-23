@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { getRepository, Repository } from 'typeorm';
-import { IAddressRepository, IAddress, ICreateAddress, IUpdateAddress } from '../../../interfaces';
+import { IAddress, IAddressRepository, ICreateAddress, IUpdateAddress } from '../../../interfaces';
 import { Address } from '../entities';
 
 export class AddressRepository implements IAddressRepository {
@@ -19,6 +19,7 @@ export class AddressRepository implements IAddressRepository {
   }
 
   async update(id: number, payload: IUpdateAddress): Promise<IAddress> {
+    console.log(payload);
     const { raw: updateAddress } = await this.repository
       .createQueryBuilder()
       .update({ ...payload, updatedAt: moment() })

@@ -19,7 +19,27 @@ export class PatientRepository implements IPatientRepository {
   }
 
   async getPatientById(patientId: string, userId: string): Promise<IPatient> {
-    return this.repository.findOne({ id: patientId, userId, enabled: true });
+    return this.repository
+      .createQueryBuilder(DATABASE.PATIENTS)
+      .leftJoinAndSelect(DATABASE.JOIN.PATIENT_ADDRESS, DATABASE.ALIAS.PATIENT)
+      .select([
+        DATABASE.PATIENTS,
+        SELECT_FIELDS.PATIENT.POSTAL_CODE,
+        SELECT_FIELDS.PATIENT.STREET,
+        SELECT_FIELDS.PATIENT.NUMBER,
+        SELECT_FIELDS.PATIENT.DETAILS,
+        SELECT_FIELDS.PATIENT.DISTRICT,
+        SELECT_FIELDS.PATIENT.CITY,
+        SELECT_FIELDS.PATIENT.STATE,
+        SELECT_FIELDS.PATIENT.COUNTRY,
+      ])
+      .where({
+        id: patientId,
+        userId,
+        enabled: true,
+      })
+
+      .getOne();
   }
 
   async getLoginPatientById(patientId: string): Promise<IPatient> {

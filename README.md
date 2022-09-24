@@ -37,7 +37,7 @@
 
 ## 💻 Sobre o projeto
 
-🚀 Healthy Mind - é a API do sistema web que visa conectar Psicólogos/Psiquiatras com seus pacientes.
+🚀 Healthy Mind - é a API do [sistema web](https://web-healthy-mind.vercel.app) que visa conectar Psicólogos/Psiquiatras com seus pacientes.
 
 A API é um desafio prosposto durante a jornada Dev For Tech proposto pela [Gama Academy](https://www.gama.academy/).
 

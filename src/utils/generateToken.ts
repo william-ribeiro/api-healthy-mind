@@ -1,6 +1,7 @@
 import { sign } from 'jsonwebtoken';
-import { JWT } from '../constants';
-import { IToken } from './../interfaces';
+
+import { JWT } from '@/constants';
+import { IToken } from '@/interfaces';
 
 export const generateToken = ({ id, type, roleId }: IToken) => {
   let secret: string;

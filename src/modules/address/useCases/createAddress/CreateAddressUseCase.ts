@@ -1,9 +1,9 @@
 import { inject, injectable } from 'tsyringe';
 
-import { AppError } from '../../../../errors';
-import { IAddress, IAddressRepository, ICreateAddress } from '../../../../interfaces';
-import { CONTAINER } from './../../../../constants';
-import { Validators } from './../../../../shared/validators';
+import { CONTAINER } from '@/constants';
+import { AppError } from '@/errors';
+import { IAddress, IAddressRepository, ICreateAddress } from '@/interfaces';
+import { Validators } from '@/shared';
 
 @injectable()
 export class CreateAddressUseCase {

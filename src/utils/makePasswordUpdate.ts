@@ -1,7 +1,7 @@
 import { compare } from 'bcryptjs';
-import { AppError } from '../errors';
-import { IUpdatePatient, IUpdateUser } from '../interfaces';
-import { Validators } from '../shared';
+import { AppError } from '@/errors';
+import { IUpdatePatient, IUpdateUser } from '@/interfaces';
+import { Validators } from '@/shared';
 import { generatePasswordHash } from './helpers';
 
 export const makePasswordUpdate = async (

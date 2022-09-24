@@ -5,15 +5,16 @@ import 'reflect-metadata';
 import './database';
 import './shared';
 
-import { routes } from '@/routes/index.route';
 import cors from 'cors';
 import express, { NextFunction, Request, Response } from 'express';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import swaggerUi from 'swagger-ui-express';
-import { apiDocs } from './docs/apiDocs';
-import { AppError } from './errors';
-import { logger } from './shared';
+
+import { apiDocs } from '@/docs/apiDocs';
+import { AppError } from '@/errors';
+import { routes } from '@/routes/index.route';
+import { logger } from '@/shared';
 
 const app = express();
 app.use(express.json());

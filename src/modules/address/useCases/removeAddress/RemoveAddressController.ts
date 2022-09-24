@@ -1,8 +1,9 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
-import { AppError } from '../../../../errors';
-import { logger, timeBr } from '../../../../shared';
-import { RemoveAddressUseCase } from './RemoveAddressUseCase';
+
+import { AppError } from '@/errors';
+import { RemoveAddressUseCase } from '@/modules/address';
+import { logger, timeBr } from '@/shared';
 
 export class RemoveAddressController {
   async handle(request: Request, response: Response): Promise<Response> {

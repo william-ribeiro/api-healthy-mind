@@ -2,7 +2,7 @@ import { inject, injectable } from 'tsyringe';
 import { CONTAINER } from '../../../../constants';
 import { AppError } from '../../../../errors';
 import { IResource, IResourceRepository, IUpdateResource } from '../../../../interfaces';
-import { payloadValidate, removeSpecialCharactersFromString } from './../../../../utils/helpers';
+import { payloadValidate, removeSpecialCharactersFromString } from '@/utils/helpers';
 
 @injectable()
 export class UpdateResourceUseCase {

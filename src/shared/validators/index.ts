@@ -1,7 +1,5 @@
 import moment from 'moment-timezone';
-
 import * as yup from 'yup';
-
 export class Validators {
   user = yup.object().shape({
     name: yup.string().required('Invalid name'),

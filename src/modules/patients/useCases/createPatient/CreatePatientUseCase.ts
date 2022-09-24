@@ -1,15 +1,15 @@
 import { inject, injectable } from 'tsyringe';
-import { CONTAINER, ROLE_IDS } from '../../../../constants';
-import { AppError } from '../../../../errors';
+import { CONTAINER, ROLE_IDS } from '@/constants';
+import { AppError } from '@/errors';
+import { IAddressRepository, ICreatePatient, IPatient, IPatientRepository } from '@/interfaces';
+import { sendMail, Validators } from '@/shared';
 import {
-  IAddressRepository,
-  ICreatePatient,
-  IPatient,
-  IPatientRepository,
-} from '../../../../interfaces';
-import { sendMail, Validators } from '../../../../shared';
-import { parseName, payloadValidate, removeSpecialCharactersFromString } from '../../../../utils';
-import { generatedPassword, generatePasswordHash } from './../../../../utils/helpers';
+  generatedPassword,
+  generatePasswordHash,
+  parseName,
+  payloadValidate,
+  removeSpecialCharactersFromString,
+} from '@/utils/helpers';
 
 @injectable()
 export class CreatePatientUseCase {

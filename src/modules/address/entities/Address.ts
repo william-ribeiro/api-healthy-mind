@@ -1,7 +1,7 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { DATABASE } from '../../../constants';
-import { IAddress } from '../../../interfaces';
 
+import { DATABASE } from '@/constants';
+import { IAddress } from '@/interfaces';
 @Entity(DATABASE.ADDRESS)
 export class Address implements IAddress {
   @PrimaryGeneratedColumn()

@@ -1,8 +1,9 @@
 import { hash } from 'bcryptjs';
 import lodash from 'lodash';
 import util from 'util';
-import { CONFIG_PASSWORD, PAGINATION } from '../constants';
-import { AppError } from '../errors';
+
+import { CONFIG_PASSWORD, PAGINATION } from '@/constants';
+import { AppError } from '@/errors';
 
 export const parsePage = (page: string) => {
   let _page = page !== undefined ? parseInt(page.toString(), 10) : PAGINATION.OFFSET;

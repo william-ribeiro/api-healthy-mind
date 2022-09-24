@@ -3,7 +3,7 @@ import { CONTAINER } from '../../../../constants';
 import { AppError } from '../../../../errors';
 import { ICreateResource, IResource, IResourceRepository } from '../../../../interfaces';
 import { Validators } from '../../../../shared';
-import { removeSpecialCharactersFromString } from './../../../../utils/helpers';
+import { removeSpecialCharactersFromString } from '@/utils/helpers';
 
 @injectable()
 export class CreateResourceUseCase {

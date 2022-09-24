@@ -1,12 +1,11 @@
 import { NextFunction, Request, Response } from 'express';
 import { verify } from 'jsonwebtoken';
-import { ROLE_IDS } from './../constants/index';
-import { PatientRepository } from './../modules/patients/repositories/PatientRepository';
 
-import { AppError } from '../errors';
-import { IPayload, IResponseLocals } from '../interfaces';
-import { logger, timeBr } from '../shared/';
-import { UsersRepository } from './../modules/users/repositories/UsersRepository';
+import { ROLE_IDS } from '@/constants';
+import { AppError } from '@/errors';
+import { IPayload, IResponseLocals } from '@/interfaces';
+import { PatientRepository, UsersRepository } from '@/modules';
+import { logger, timeBr } from '@/shared/';
 
 export async function ensureAuthenticated(
   request: Request,

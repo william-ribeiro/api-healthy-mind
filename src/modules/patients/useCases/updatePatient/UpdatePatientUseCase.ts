@@ -9,10 +9,7 @@ import { Validators } from '../../../../shared';
 import { makePasswordUpdate } from '../../../../utils';
 import { CONTAINER } from './../../../../constants';
 import { AppError } from './../../../../errors/AppError';
-import {
-  filterDefinedProperties,
-  removeSpecialCharactersFromString,
-} from './../../../../utils/helpers';
+import { filterDefinedProperties, removeSpecialCharactersFromString } from '@/utils/helpers';
 
 @injectable()
 export class UpdatePatientUseCase {

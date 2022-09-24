@@ -1,8 +1,9 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
-import { AppError } from '../../../../errors';
-import { logger, timeBr } from '../../../../shared';
-import { CreateAddressUseCase } from './CreateAddressUseCase';
+
+import { AppError } from '@/errors';
+import { CreateAddressUseCase } from '@/modules/address';
+import { logger, timeBr } from '@/shared';
 export class CreateAddressController {
   async handle(request: Request, response: Response): Promise<Response> {
     const payload = request.body;

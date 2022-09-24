@@ -1,7 +1,7 @@
 import rateLimit from 'express-rate-limit';
 
-import { RATE_LIMIT } from '../constants';
-import { AppError } from './../errors';
+import { RATE_LIMIT } from '@/constants';
+import { AppError } from '@/errors';
 
 export const limit = rateLimit({
   max: RATE_LIMIT.MAX,

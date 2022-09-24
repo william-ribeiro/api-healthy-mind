@@ -1,8 +1,9 @@
-import { CONTAINER } from './../../../../constants/index';
 import { inject, injectable } from 'tsyringe';
-import { IAddress, IAddressRepository, IUpdateAddress } from '../../../../interfaces';
-import { AppError } from '../../../../errors';
-import { filterDefinedProperties } from '../../../../utils';
+
+import { CONTAINER } from '@/constants';
+import { AppError } from '@/errors';
+import { IAddress, IAddressRepository, IUpdateAddress } from '@/interfaces';
+import { filterDefinedProperties } from '@/utils';
 
 @injectable()
 export class UpdateAddressUseCase {

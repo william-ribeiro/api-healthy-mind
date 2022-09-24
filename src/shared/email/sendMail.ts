@@ -1,11 +1,11 @@
-import { EMAIL } from '../../constants';
-import { ISendEmail } from '../../interfaces';
+import { EMAIL } from '@/constants';
+import { ISendEmail } from '@/interfaces';
 import { logger } from '../logger';
 import { timeBr } from '../moment';
 import { transporter } from './config';
 import { recoveryTemplate } from './template/recovery';
 
-export async function sendMail(professionalName: string, payload: ISendEmail) {
+export async function sendMail(professionalName: string, payload: ISendEmail): Promise<void> {
   try {
     const { code, name, email } = payload;
 

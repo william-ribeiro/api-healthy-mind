@@ -1,5 +1,7 @@
 import { decode } from 'jsonwebtoken';
-import { UsersRepository } from './../../modules/users/repositories/UsersRepository';
+
+import { UsersRepository } from '@/modules/';
+
 export const decodeToken = async (token: string) => {
   const userRepository = new UsersRepository();
 

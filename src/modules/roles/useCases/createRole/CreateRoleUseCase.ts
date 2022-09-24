@@ -5,7 +5,7 @@ import { AppError } from '../../../../errors';
 import { ICreateRole, IRoleRepository } from '../../../../interfaces';
 import { Validators } from '../../../../shared';
 import { Role } from '../../entities';
-import { parseName } from './../../../../utils/helpers';
+import { parseName } from '@/utils/helpers';
 
 @injectable()
 export class CreateRoleUseCase {

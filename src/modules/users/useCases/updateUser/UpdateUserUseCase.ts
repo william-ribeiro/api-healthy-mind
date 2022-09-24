@@ -6,7 +6,7 @@ import {
   filterDefinedProperties,
   parseName,
   removeSpecialCharactersFromString,
-} from './../../../../utils/helpers';
+} from '@/utils/helpers';
 
 import { Validators } from '../../../../shared';
 import { makePasswordUpdate } from '../../../../utils';

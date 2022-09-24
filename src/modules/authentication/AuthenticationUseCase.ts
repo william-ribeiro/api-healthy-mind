@@ -71,7 +71,7 @@ export class AuthenticationUseCase {
 
       return {
         id: owner.id,
-        roleId: owner.role.id,
+        roleId: owner.roleId,
         name: owner.name,
         email,
         accessToken,

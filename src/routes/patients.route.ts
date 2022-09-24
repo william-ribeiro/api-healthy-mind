@@ -6,7 +6,7 @@ import {
   PatientInfoController,
   RemovePatientController,
   UpdatePatientController,
-} from '../../modules/patients';
+} from '../modules/patients';
 
 export const patientsRouter = Router();
 

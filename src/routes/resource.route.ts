@@ -4,7 +4,7 @@ import {
   ListResourceController,
   RemoveResourceController,
   UpdateResourceController,
-} from '../../modules';
+} from '../modules';
 
 export const resourceRoutes = Router();
 

@@ -6,7 +6,7 @@ import {
   ListSessionsController,
   RemoveSessionController,
   UpdateSessionController,
-} from '../../modules';
+} from '../modules';
 
 export const sessionsRoutes = Router();
 

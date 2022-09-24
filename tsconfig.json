@@ -5,6 +5,7 @@
   },
   "compilerOptions": {
     "target": "es2017",
+    "lib": ["es6", "es2017", "esnext.asynciterable"],
     "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
@@ -12,6 +13,8 @@
     "strict": false,
     "outDir": "./dist",
     "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
+
     "incremental": true,
     "strictPropertyInitialization": false,
     "emitDecoratorMetadata": true,
@@ -20,7 +23,13 @@
     "removeComments": true,
     "allowJs": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "importHelpers": true,
+
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": ["**/*.ts"],
   "exclude": ["node_modules"]

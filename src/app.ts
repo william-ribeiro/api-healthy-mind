@@ -5,6 +5,7 @@ import 'reflect-metadata';
 import './database';
 import './shared';
 
+import { routes } from '@/routes/index.route';
 import cors from 'cors';
 import express, { NextFunction, Request, Response } from 'express';
 import helmet from 'helmet';
@@ -12,7 +13,6 @@ import morgan from 'morgan';
 import swaggerUi from 'swagger-ui-express';
 import { apiDocs } from './docs/apiDocs';
 import { AppError } from './errors';
-import router from './routes';
 import { logger } from './shared';
 
 const app = express();
@@ -39,7 +39,7 @@ app.get('/', (_request: Request, response: Response) => {
   response.redirect(301, '/api-docs');
 });
 
-app.use(router);
+app.use(routes);
 
 app.use((err: Error, _request: Request, response: Response, _next: NextFunction) => {
   if (err instanceof AppError) {

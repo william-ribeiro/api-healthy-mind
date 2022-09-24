@@ -1,3 +1,5 @@
+import { pathsToModuleNameMapper } from 'ts-jest';
+import { compilerOptions } from './tsconfig.json';
 /*
  * For a detailed explanation regarding each configuration property and type check, visit:
  * https://jestjs.io/docs/configuration
@@ -6,7 +8,9 @@
 export default {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
-
+  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
+    prefix: '<rootDir>',
+  }),
   // Stop running tests after `n` failures
   bail: true,
 

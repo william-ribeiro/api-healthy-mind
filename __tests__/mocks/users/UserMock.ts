@@ -1,14 +1,8 @@
-import { fakeDashboard } from './fakeDashboard';
 /* eslint-disable @typescript-eslint/require-await */
 import { v4 as uuidV4 } from 'uuid';
 
-import {
-  ICreateUser,
-  IDashboard,
-  IUpdateUser,
-  IUser,
-  IUsersRepository,
-} from '../../../src/interfaces';
+import { ICreateUser, IDashboard, IUpdateUser, IUser, IUsersRepository } from '@/interfaces';
+import { fakeDashboard } from './fakeDashboard';
 import { fakeUsers } from './fakeUsers';
 
 export class UsersRepositoryMock implements IUsersRepository {

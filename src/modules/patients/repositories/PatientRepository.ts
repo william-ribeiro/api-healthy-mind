@@ -1,6 +1,7 @@
 import moment from 'moment';
 import { getRepository, Raw, Repository } from 'typeorm';
-import { DATABASE, PAGINATION, SELECT_FIELDS } from '../../../constants';
+
+import { DATABASE, PAGINATION, SELECT_FIELDS } from '@/constants';
 import {
   ICreatePatient,
   IGetPatientByAttribute,
@@ -8,8 +9,8 @@ import {
   IPatientRepository,
   IRemovePatient,
   IUpdatePatient,
-} from '../../../interfaces';
-import { Patient } from '../entities';
+} from '@/interfaces';
+import { Patient } from '@/modules';
 
 export class PatientRepository implements IPatientRepository {
   private repository: Repository<IPatient>;

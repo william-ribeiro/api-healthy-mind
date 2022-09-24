@@ -1,15 +1,15 @@
 import { inject, injectable } from 'tsyringe';
-import { CONTAINER } from '../../../../constants';
-import { AppError } from '../../../../errors';
-import { IUpdateUser, IUser, IUsersRepository } from '../../../../interfaces';
+
+import { CONTAINER } from '@/constants';
+import { AppError } from '@/errors';
+import { IUpdateUser, IUser, IUsersRepository } from '@/interfaces';
+import { Validators } from '@/shared';
 import {
   filterDefinedProperties,
+  makePasswordUpdate,
   parseName,
   removeSpecialCharactersFromString,
-} from '@/utils/helpers';
-
-import { Validators } from '../../../../shared';
-import { makePasswordUpdate } from '../../../../utils';
+} from '@/utils';
 
 @injectable()
 export class UpdateUserUseCase {

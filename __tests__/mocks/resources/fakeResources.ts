@@ -1,4 +1,4 @@
-import { IResource } from '../../../src/interfaces';
+import { IResource } from '@/interfaces';
 import { fakeUsers } from '../users';
 
 export const fakeResources: IResource[] = [

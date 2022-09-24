@@ -1,5 +1,6 @@
 import nodemailer from 'nodemailer';
-import { EMAIL } from '../../constants';
+
+import { EMAIL } from '@/constants';
 
 let privateKey: any;
 let transporter: any;

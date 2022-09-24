@@ -6,7 +6,7 @@ import {
   IRemoveResource,
   IResource,
   IUpdateResource,
-} from '../entities';
+} from '@/interfaces';
 
 export interface IResourceRepository {
   getResourceById({ resourceId, userId }: IGetResourceById): Promise<IResource>;

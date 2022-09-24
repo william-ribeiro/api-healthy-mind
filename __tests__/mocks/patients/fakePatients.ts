@@ -1,4 +1,4 @@
-import { IPatient } from '../../../src/interfaces';
+import { IPatient } from '@/interfaces';
 import { fakeAddress } from '../address';
 import { fakeUsers } from '../users';
 

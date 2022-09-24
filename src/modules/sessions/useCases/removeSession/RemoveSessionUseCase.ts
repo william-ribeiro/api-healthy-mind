@@ -1,7 +1,8 @@
 import { inject, injectable } from 'tsyringe';
-import { CONTAINER } from '../../../../constants';
-import { AppError } from '../../../../errors';
-import { ISessionRepository } from '../../../../interfaces';
+
+import { CONTAINER } from '@/constants';
+import { AppError } from '@/errors';
+import { ISessionRepository } from '@/interfaces';
 
 @injectable()
 export class RemoveSessionUseCase {

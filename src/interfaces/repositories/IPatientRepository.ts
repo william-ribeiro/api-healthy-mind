@@ -4,7 +4,7 @@ import {
   IPatient,
   IRemovePatient,
   IUpdatePatient,
-} from '../entities';
+} from '@/interfaces';
 
 export interface IPatientRepository {
   getPatientById(patientId: string, userId: string): Promise<IPatient>;

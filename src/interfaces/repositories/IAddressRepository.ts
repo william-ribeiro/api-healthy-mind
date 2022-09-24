@@ -1,4 +1,4 @@
-import { IAddress, ICreateAddress, IUpdateAddress } from '../entities';
+import { IAddress, ICreateAddress, IUpdateAddress } from '@/interfaces';
 
 export interface IAddressRepository {
   getAddressById(id: number): Promise<IAddress>;

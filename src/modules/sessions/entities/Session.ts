@@ -7,11 +7,10 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { DATABASE } from '../../../constants';
-import { ISession } from '../../../interfaces/entities';
-import { Patient } from '../../patients';
-import { Resource } from '../../resources';
-import { User } from '../../users';
+
+import { DATABASE } from '@/constants';
+import { ISession } from '@/interfaces';
+import { Patient, Resource, User } from '@/modules';
 
 @Entity(DATABASE.SESSIONS)
 export class Session implements ISession {

@@ -1,4 +1,4 @@
-import { ICredentials } from '../../../src/interfaces';
+import { ICredentials } from '@/interfaces';
 
 export const fakeCredentials: ICredentials[] = [
   {

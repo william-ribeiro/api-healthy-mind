@@ -1,7 +1,8 @@
 import { inject, injectable } from 'tsyringe';
-import { CONTAINER } from '../../../../constants';
-import { ICredentials, ICredentialsRepository, IUpdateCredentials } from '../../../../interfaces';
-import { filterDefinedProperties } from '../../../../utils';
+
+import { CONTAINER } from '@/constants';
+import { ICredentials, ICredentialsRepository, IUpdateCredentials } from '@/interfaces';
+import { filterDefinedProperties } from '@/utils';
 
 @injectable()
 export class UpdateCredentialsUseCase {

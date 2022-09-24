@@ -5,8 +5,8 @@ import {
   ICredentials,
   ICredentialsRepository,
   IUpdateCredentials,
-} from '../../../src/interfaces';
-import { filterDefinedProperties } from '../../../src/utils';
+} from '@/interfaces';
+import { filterDefinedProperties } from '@/utils';
 import { fakeCredentials } from './fakeCredentials';
 
 export class CredentialsRepositoryMock implements ICredentialsRepository {

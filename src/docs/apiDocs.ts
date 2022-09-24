@@ -1,4 +1,4 @@
-import { address } from './address';
+import { address } from './address/index';
 import { components, header } from './config';
 import { patients } from './patients';
 import { refreshToken } from './refreshToken';

@@ -1,8 +1,9 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
-import { AppError } from '../../../../errors';
-import { logger, timeBr } from '../../../../shared';
-import { FilterSessionsUseCase } from './FilterSessionsUseCase';
+
+import { AppError } from '@/errors';
+import { FilterSessionsUseCase } from '@/modules/sessions';
+import { logger, timeBr } from '@/shared';
 
 export class FilterSessionsController {
   async handle(request: Request, response: Response): Promise<Response> {

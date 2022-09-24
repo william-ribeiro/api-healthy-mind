@@ -1,18 +1,17 @@
 import { compare } from 'bcryptjs';
 import moment from 'moment';
 import { container, inject, injectable } from 'tsyringe';
-import { ROLE_IDS } from './../../constants/index';
 
-import { CONTAINER, JWT, ROLE_PROTECTED } from '../../constants';
-import { AppError } from '../../errors';
+import { CONTAINER, JWT, ROLE_IDS, ROLE_PROTECTED } from '@/constants';
+import { AppError } from '@/errors';
 import {
   IAuthentication,
   ICredentialsRepository,
   IPatientRepository,
   IUsersRepository,
-} from '../../interfaces';
-import { generateToken } from '../../utils';
-import { CreateCredentialsUseCase, UpdateCredentialsUseCase } from '../credentials';
+} from '@/interfaces';
+import { CreateCredentialsUseCase, UpdateCredentialsUseCase } from '@/modules/credentials';
+import { generateToken } from '@/utils';
 
 @injectable()
 export class AuthenticationUseCase {

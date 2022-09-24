@@ -1,5 +1,6 @@
 import { Router } from 'express';
-import { AuthenticationController } from '../modules';
+
+import { AuthenticationController } from '@/modules/authentication';
 
 export const signinRoutes = Router();
 

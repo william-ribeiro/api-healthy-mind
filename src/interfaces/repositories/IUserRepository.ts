@@ -1,5 +1,4 @@
-import { ICreateUser, IUpdateUser, IUser } from '../entities';
-import { IDashboard } from '../views';
+import { ICreateUser, IDashboard, IUpdateUser, IUser } from '@/interfaces';
 
 export interface IUsersRepository {
   getById(id: string): Promise<IUser>;

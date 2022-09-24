@@ -1,8 +1,9 @@
-import { CONTAINER } from './../../../../constants/index';
-import { inject, injectable } from 'tsyringe';
-import { IPatientRepository } from '../../../../interfaces';
-import { AppError } from '../../../../errors';
 import moment from 'moment';
+import { inject, injectable } from 'tsyringe';
+
+import { CONTAINER } from '@/constants';
+import { AppError } from '@/errors';
+import { IPatientRepository } from '@/interfaces';
 
 @injectable()
 export class RemovePatientUseCase {

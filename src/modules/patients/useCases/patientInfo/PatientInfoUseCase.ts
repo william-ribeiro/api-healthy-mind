@@ -1,7 +1,8 @@
 import { inject, injectable } from 'tsyringe';
-import { CONTAINER } from '../../../../constants';
-import { AppError } from '../../../../errors';
-import { IPatient, IPatientRepository } from '../../../../interfaces';
+
+import { CONTAINER } from '@/constants';
+import { AppError } from '@/errors';
+import { IPatient, IPatientRepository } from '@/interfaces';
 
 @injectable()
 export class PatientInfoUseCase {

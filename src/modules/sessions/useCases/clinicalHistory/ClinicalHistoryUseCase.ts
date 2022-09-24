@@ -1,6 +1,7 @@
 import { inject, injectable } from 'tsyringe';
-import { CONTAINER } from '../../../../constants';
-import { IClinicalHistory, ISessionRepository } from '../../../../interfaces';
+
+import { CONTAINER } from '@/constants';
+import { IClinicalHistory, ISessionRepository } from '@/interfaces';
 
 @injectable()
 export class ClinicalHistoryUseCase {

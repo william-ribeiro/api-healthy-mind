@@ -1,4 +1,4 @@
-export * from './entities';
-export * from './repositories';
+export * from './entities/User';
+export * from './repositories/UsersRepository';
 export * from './useCases';
-export * from './views';
+export * from './views/Dashboard';

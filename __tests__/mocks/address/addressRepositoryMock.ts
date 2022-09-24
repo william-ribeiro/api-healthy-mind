@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/require-await */
 
-import {
-  IAddress,
-  IAddressRepository,
-  ICreateAddress,
-  IUpdateAddress,
-} from '../../../src/interfaces';
-
+import { IAddress, IAddressRepository, ICreateAddress, IUpdateAddress } from '@/interfaces';
 import { fakeAddress } from './fakeAddress';
 
 export class AddressRepositoryMock implements IAddressRepository {

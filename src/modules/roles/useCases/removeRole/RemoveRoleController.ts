@@ -1,8 +1,9 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
-import { AppError } from '../../../../errors';
-import { logger, timeBr } from '../../../../shared';
-import { RemoveRoleUseCase } from './RemoveRoleUseCase';
+
+import { AppError } from '@/errors';
+import { RemoveRoleUseCase } from '@/modules/roles';
+import { logger, timeBr } from '@/shared';
 
 export class RemoveRoleController {
   async handle(request: Request, response: Response): Promise<Response> {

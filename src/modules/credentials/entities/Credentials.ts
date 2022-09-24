@@ -1,6 +1,7 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { DATABASE } from '../../../constants';
-import { ICredentials } from '../../../interfaces';
+
+import { DATABASE } from '@/constants';
+import { ICredentials } from '@/interfaces';
 
 @Entity(DATABASE.CREDENTIALS)
 export class Credentials implements ICredentials {

@@ -1,8 +1,9 @@
 import moment from 'moment';
 import { inject, injectable } from 'tsyringe';
-import { CONTAINER } from '../../../../constants';
-import { AppError } from '../../../../errors';
-import { ICredentialsRepository, IUsersRepository } from '../../../../interfaces';
+
+import { CONTAINER } from '@/constants';
+import { AppError } from '@/errors';
+import { ICredentialsRepository, IUsersRepository } from '@/interfaces';
 
 @injectable()
 export class RemoveUserUseCase {

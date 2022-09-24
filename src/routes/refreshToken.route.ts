@@ -1,6 +1,7 @@
 import { Router } from 'express';
-import { RefreshTokenController } from '../modules';
+
+import { RefreshTokenController } from '@/modules/credentials';
 
 export const refreshTokenRoutes = Router();
 
-refreshTokenRoutes.use('/', new RefreshTokenController().handle);
+refreshTokenRoutes.post('/', new RefreshTokenController().handle);

@@ -1,7 +1,8 @@
 import moment from 'moment';
 import { getRepository, Repository } from 'typeorm';
-import { ICreateRole, IRole, IRoleRepository, IUpdateRole } from '../../../interfaces';
-import { Role } from '../entities';
+
+import { ICreateRole, IRole, IRoleRepository, IUpdateRole } from '@/interfaces';
+import { Role } from '@/modules';
 
 export class RoleRepository implements IRoleRepository {
   public repository: Repository<IRole>;

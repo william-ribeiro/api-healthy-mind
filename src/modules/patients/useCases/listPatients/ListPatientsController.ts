@@ -1,8 +1,9 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
-import { AppError } from '../../../../errors';
-import { logger, timeBr } from '../../../../shared';
-import { ListPatientsUseCase } from './ListPatientsUseCase';
+
+import { AppError } from '@/errors';
+import { ListPatientsUseCase } from '@/modules/patients';
+import { logger, timeBr } from '@/shared';
 
 export class ListPatientsController {
   async handle(request: Request, response: Response): Promise<Response> {

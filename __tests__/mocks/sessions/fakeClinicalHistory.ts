@@ -1,6 +1,6 @@
-import { IClinicalHistory } from '../../../src/interfaces';
+import { IClinicalHistory } from '@/interfaces';
 import { fakePatients } from '../patients';
-import { fakeResources } from '../resources/fakeResources';
+import { fakeResources } from '../resources';
 import { fakeUsers } from '../users';
 
 export const fakeClinicalHistory: IClinicalHistory[] = [

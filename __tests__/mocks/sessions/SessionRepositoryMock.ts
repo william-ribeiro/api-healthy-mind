@@ -1,16 +1,14 @@
-import { fakeClinicalHistory } from './fakeClinicalHistory';
 /* eslint-disable @typescript-eslint/require-await */
-
-import { PAGINATION } from '../../../src/constants';
+import { PAGINATION } from '@/constants';
 import {
   IClinicalHistory,
   ICreateSession,
   ISession,
   ISessionRepository,
   IUpdateSession,
-} from '../../../src/interfaces';
-import { buildClusters } from '../../../src/utils';
-
+} from '@/interfaces';
+import { buildClusters } from '@/utils';
+import { fakeClinicalHistory } from './fakeClinicalHistory';
 import { fakeSession } from './fakeSessions';
 
 export class SessionRepositoryMock implements ISessionRepository {

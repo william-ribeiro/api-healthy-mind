@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/require-await */
 
 import { v4 as uuidV4 } from 'uuid';
-import { PAGINATION } from '../../../src/constants';
+
+import { PAGINATION } from '@/constants';
 import {
   ICreatePatient,
   IGetPatientByAttribute,
@@ -9,9 +10,8 @@ import {
   IPatientRepository,
   IRemovePatient,
   IUpdatePatient,
-} from '../../../src/interfaces';
-import { buildClusters } from '../../../src/utils';
-
+} from '@/interfaces';
+import { buildClusters } from '@/utils';
 import { fakePatients } from './fakePatients';
 
 export class PatientsRepositoryMock implements IPatientRepository {

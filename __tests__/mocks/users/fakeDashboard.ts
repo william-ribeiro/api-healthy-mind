@@ -1,4 +1,4 @@
-import { IDashboard } from '../../../src/interfaces';
+import { IDashboard } from '@/interfaces';
 import { fakeUsers } from './fakeUsers';
 
 export const fakeDashboard: IDashboard[] = [

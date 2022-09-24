@@ -1,5 +1,6 @@
 import { Router } from 'express';
-import { DashboardController } from '../modules';
+
+import { DashboardController } from '@/modules/users';
 
 export const dashboardRoutes = Router();
 

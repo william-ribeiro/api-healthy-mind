@@ -1,8 +1,9 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
-import { AppError } from '../../../../errors';
-import { logger, timeBr } from '../../../../shared';
-import { UpdatePatientUseCase } from './UpdatePatientUseCase';
+
+import { AppError } from '@/errors';
+import { UpdatePatientUseCase } from '@/modules/patients';
+import { logger, timeBr } from '@/shared';
 
 export class UpdatePatientController {
   async handle(request: Request, response: Response): Promise<Response> {

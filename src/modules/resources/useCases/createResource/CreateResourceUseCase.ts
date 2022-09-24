@@ -1,9 +1,10 @@
 import { inject, injectable } from 'tsyringe';
-import { CONTAINER } from '../../../../constants';
-import { AppError } from '../../../../errors';
-import { ICreateResource, IResource, IResourceRepository } from '../../../../interfaces';
-import { Validators } from '../../../../shared';
-import { removeSpecialCharactersFromString } from '@/utils/helpers';
+
+import { CONTAINER } from '@/constants';
+import { AppError } from '@/errors';
+import { ICreateResource, IResource, IResourceRepository } from '@/interfaces';
+import { Validators } from '@/shared';
+import { removeSpecialCharactersFromString } from '@/utils';
 
 @injectable()
 export class CreateResourceUseCase {

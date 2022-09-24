@@ -1,16 +1,16 @@
 import moment from 'moment-timezone';
-
 import { inject, injectable } from 'tsyringe';
-import { AppError } from '../../../../errors';
+
+import { CONTAINER } from '@/constants';
+import { AppError } from '@/errors';
 import {
   IPatientRepository,
   IResourceRepository,
   ISession,
   ISessionRepository,
   IUpdateSession,
-} from '../../../../interfaces';
-import { filterDefinedProperties, payloadValidate } from '../../../../utils';
-import { CONTAINER } from './../../../../constants';
+} from '@/interfaces';
+import { filterDefinedProperties, payloadValidate } from '@/utils';
 
 @injectable()
 export class UpdateSessionUseCase {

@@ -1,8 +1,9 @@
 import moment from 'moment';
 import { inject, injectable } from 'tsyringe';
-import { CONTAINER } from '../../../../constants/index';
-import { AppError } from '../../../../errors';
-import { IRemoveResource, IResourceRepository } from '../../../../interfaces';
+
+import { CONTAINER } from '@/constants';
+import { AppError } from '@/errors';
+import { IRemoveResource, IResourceRepository } from '@/interfaces';
 
 @injectable()
 export class RemoveResourceUseCase {

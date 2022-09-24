@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Request, Response } from 'express';
-
 import { container } from 'tsyringe';
-import { AppError } from '../../errors';
-import { logger, timeBr } from '../../shared';
-import { AuthenticationUseCase } from './AuthenticationUseCase';
+
+import { AppError } from '@/errors';
+import { AuthenticationUseCase } from '@/modules/authentication';
+import { logger, timeBr } from '@/shared';
 
 export class AuthenticationController {
   async handle(request: Request, response: Response): Promise<Response> {

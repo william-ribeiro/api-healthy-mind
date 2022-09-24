@@ -1,7 +1,8 @@
 import { inject, injectable } from 'tsyringe';
-import { CONTAINER } from '../../../../constants';
-import { ICreateCredentials, ICredentials, ICredentialsRepository } from '../../../../interfaces';
-import { toCamelCase } from '../../../../utils';
+
+import { CONTAINER } from '@/constants';
+import { ICreateCredentials, ICredentials, ICredentialsRepository } from '@/interfaces';
+import { toCamelCase } from '@/utils';
 
 @injectable()
 export class CreateCredentialsUseCase {

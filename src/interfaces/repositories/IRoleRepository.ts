@@ -1,4 +1,4 @@
-import { ICreateRole, IRole, IUpdateRole } from '../entities';
+import { ICreateRole, IRole, IUpdateRole } from '@/interfaces';
 
 export interface IRoleRepository {
   getRoleById(roleId: number): Promise<IRole>;

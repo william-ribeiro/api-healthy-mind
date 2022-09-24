@@ -1,5 +1,6 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
-import { DATABASE } from '../../constants';
+
+import { DATABASE } from '@/constants';
 
 export class createViewDashboard1663823044287 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {

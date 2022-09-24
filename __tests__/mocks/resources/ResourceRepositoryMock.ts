@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/require-await */
-import { PAGINATION } from '../../../src/constants';
+import { PAGINATION } from '@/constants';
 import {
   ICreateResource,
   IGetAllResources,
@@ -9,8 +9,8 @@ import {
   IResource,
   IResourceRepository,
   IUpdateResource,
-} from '../../../src/interfaces';
-import { buildClusters } from '../../../src/utils';
+} from '@/interfaces';
+import { buildClusters } from '@/utils';
 
 import { fakeResources } from './fakeResources';
 

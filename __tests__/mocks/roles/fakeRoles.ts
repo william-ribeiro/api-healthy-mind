@@ -1,4 +1,4 @@
-import { IRole } from '../../../src/interfaces';
+import { IRole } from '@/interfaces';
 
 export const fakeRoles: IRole[] = [
   {

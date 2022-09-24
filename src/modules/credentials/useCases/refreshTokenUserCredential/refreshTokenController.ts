@@ -1,8 +1,9 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
-import { AppError } from '../../../../errors';
-import { logger, timeBr } from '../../../../shared';
-import { RefreshTokenUseCase } from './refreshTokenUseCase';
+
+import { AppError } from '@/errors';
+import { RefreshTokenUseCase } from '@/modules/credentials';
+import { logger, timeBr } from '@/shared';
 
 export class RefreshTokenController {
   async handle(request: Request, response: Response): Promise<Response> {

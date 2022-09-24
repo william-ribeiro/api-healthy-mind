@@ -1,9 +1,10 @@
 import { Router } from 'express';
+
 import {
   CreateAddressController,
   RemoveAddressController,
   UpdateAddressController,
-} from '../modules/address';
+} from '@/modules/address';
 
 export const addressRoutes = Router();
 

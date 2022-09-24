@@ -1,5 +1,6 @@
 import { Router } from 'express';
-import { CreateRoleController, RemoveRoleController, UpdateRoleController } from '../modules';
+
+import { CreateRoleController, RemoveRoleController, UpdateRoleController } from '@/modules/roles';
 
 export const rolesRoutes = Router();
 

@@ -1,6 +1,7 @@
 import moment from 'moment';
 import { getRepository, ILike, Repository } from 'typeorm';
-import { PAGINATION } from '../../../constants';
+
+import { PAGINATION } from '@/constants';
 import {
   ICreateResource,
   IGetAllResources,
@@ -10,8 +11,8 @@ import {
   IResource,
   IResourceRepository,
   IUpdateResource,
-} from '../../../interfaces';
-import { Resource } from '../entities';
+} from '@/interfaces';
+import { Resource } from '@/modules';
 
 export class ResourceRepository implements IResourceRepository {
   private resourceRepository: Repository<IResource>;

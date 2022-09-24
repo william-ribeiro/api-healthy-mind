@@ -1,4 +1,4 @@
-import { IAddress } from '../../../src/interfaces';
+import { IAddress } from '@/interfaces';
 
 export const fakeAddress: IAddress[] = [
   {

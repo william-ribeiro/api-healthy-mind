@@ -1,8 +1,9 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
-import { AppError } from '../../../../errors';
-import { logger, timeBr } from '../../../../shared';
-import { UpdateUserUseCase } from './UpdateUserUseCase';
+
+import { AppError } from '@/errors';
+import { UpdateUserUseCase } from '@/modules/users';
+import { logger, timeBr } from '@/shared';
 
 export class UpdateUserController {
   async handle(request: Request, response: Response): Promise<Response> {

@@ -1,9 +1,9 @@
 import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryColumn } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
-import { DATABASE } from '../../../constants';
-import { IPatient, IUser } from '../../../interfaces/entities';
-import { Patient } from '../../patients';
-import { Role } from '../../roles';
+
+import { DATABASE } from '@/constants';
+import { IPatient, IUser } from '@/interfaces';
+import { Patient, Role } from '@/modules';
 
 @Entity(DATABASE.USERS)
 export class User implements IUser {

@@ -1,8 +1,9 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
-import { AppError } from '../../../../errors';
-import { logger, timeBr } from '../../../../shared';
-import { RemoveResourceUseCase } from './RemoveResourceUseCase';
+
+import { AppError } from '@/errors';
+import { RemoveResourceUseCase } from '@/modules/resources';
+import { logger, timeBr } from '@/shared';
 
 export class RemoveResourceController {
   async handle(request: Request, response: Response): Promise<Response> {

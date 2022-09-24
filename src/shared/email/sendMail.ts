@@ -1,7 +1,6 @@
 import { EMAIL } from '@/constants';
 import { ISendEmail } from '@/interfaces';
-import { logger } from '../logger';
-import { timeBr } from '../moment';
+import { logger, timeBr } from '@/shared';
 import { transporter } from './config';
 import { recoveryTemplate } from './template/recovery';
 

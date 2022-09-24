@@ -1,15 +1,14 @@
 import { inject, injectable } from 'tsyringe';
+
+import { CONTAINER } from '@/constants';
+import { AppError } from '@/errors/AppError';
+import { IAddressRepository, IPatient, IPatientRepository, IUpdatePatient } from '@/interfaces';
+import { Validators } from '@/shared';
 import {
-  IAddressRepository,
-  IPatient,
-  IPatientRepository,
-  IUpdatePatient,
-} from '../../../../interfaces';
-import { Validators } from '../../../../shared';
-import { makePasswordUpdate } from '../../../../utils';
-import { CONTAINER } from './../../../../constants';
-import { AppError } from './../../../../errors/AppError';
-import { filterDefinedProperties, removeSpecialCharactersFromString } from '@/utils/helpers';
+  filterDefinedProperties,
+  makePasswordUpdate,
+  removeSpecialCharactersFromString,
+} from '@/utils';
 
 @injectable()
 export class UpdatePatientUseCase {

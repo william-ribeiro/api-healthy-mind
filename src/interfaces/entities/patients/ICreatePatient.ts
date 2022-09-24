@@ -1,4 +1,4 @@
-import { ICreateAddress } from './../address/ICreateAddress';
+import { ICreateAddress } from '@/interfaces';
 export interface ICreatePatient {
   userId: string;
   addressId: number;

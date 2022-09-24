@@ -1,14 +1,10 @@
 import { inject, injectable } from 'tsyringe';
 
-import { CONTAINER, ROLE_IDS } from '../../../../constants';
-import { AppError } from '../../../../errors';
-import { ICreateUser, IUser, IUsersRepository } from '../../../../interfaces';
-import { Validators } from '../../../../shared';
-import {
-  generatePasswordHash,
-  parseName,
-  removeSpecialCharactersFromString,
-} from '../../../../utils';
+import { CONTAINER, ROLE_IDS } from '@/constants';
+import { AppError } from '@/errors';
+import { ICreateUser, IUser, IUsersRepository } from '@/interfaces';
+import { Validators } from '@/shared';
+import { generatePasswordHash, parseName, removeSpecialCharactersFromString } from '@/utils';
 
 @injectable()
 export class CreateUserUseCase {

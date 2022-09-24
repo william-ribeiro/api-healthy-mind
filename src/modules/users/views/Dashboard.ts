@@ -1,6 +1,7 @@
 import { ViewColumn, ViewEntity } from 'typeorm';
-import { DATABASE } from '../../../constants';
-import { IDashboard } from '../../../interfaces';
+
+import { DATABASE } from '@/constants';
+import { IDashboard } from '@/interfaces';
 
 @ViewEntity(DATABASE.VIEWS.DASHBOARD)
 export class Dashboard implements IDashboard {

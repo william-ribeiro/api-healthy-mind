@@ -1,5 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
-import { DATABASE } from '../../constants';
+
+import { DATABASE } from '@/constants';
 
 export class createTableAddress1661489275684 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {

@@ -1,8 +1,9 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
-import { AppError } from '../../../../errors';
-import { logger, timeBr } from '../../../../shared';
-import { UpdateRoleUseCase } from './UpdateRoleUseCase';
+
+import { AppError } from '@/errors';
+import { UpdateRoleUseCase } from '@/modules/roles';
+import { logger, timeBr } from '@/shared';
 
 export class UpdateRoleController {
   async handle(request: Request, response: Response): Promise<Response> {

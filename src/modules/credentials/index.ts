@@ -1,3 +1,3 @@
-export * from './entities';
-export * from './repositories';
+export * from './entities/Credentials';
+export * from './repositories/CredentialsRepository';
 export * from './useCases';

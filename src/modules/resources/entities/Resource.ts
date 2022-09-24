@@ -1,7 +1,8 @@
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { DATABASE } from '../../../constants';
-import { IResource } from '../../../interfaces';
-import { Session } from '../../sessions';
+
+import { DATABASE } from '@/constants';
+import { IResource } from '@/interfaces';
+import { Session } from '@/modules';
 
 @Entity(DATABASE.RESOURCES)
 export class Resource implements IResource {

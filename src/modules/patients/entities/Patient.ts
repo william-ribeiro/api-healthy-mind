@@ -8,11 +8,10 @@ import {
   PrimaryColumn,
 } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
-import { DATABASE } from '../../../constants';
-import { IPatient, IUser } from '../../../interfaces';
-import { Address } from '../../address';
-import { Role } from '../../roles';
-import { User } from '../../users';
+
+import { DATABASE } from '@/constants';
+import { IPatient, IUser } from '@/interfaces';
+import { Address, Role, User } from '@/modules';
 
 @Entity(DATABASE.PATIENTS)
 export class Patient implements IPatient {

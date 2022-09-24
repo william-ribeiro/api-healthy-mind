@@ -1,15 +1,16 @@
 import moment from 'moment';
 import { getRepository, Raw, Repository } from 'typeorm';
-import { DATABASE, PAGINATION, SELECT_FIELDS } from '../../../constants';
+
+import { DATABASE, PAGINATION, SELECT_FIELDS } from '@/constants';
 import {
   IClinicalHistory,
   ICreateSession,
   ISession,
   ISessionRepository,
   IUpdateSession,
-} from '../../../interfaces';
-import { Session } from '../entities';
-import { ClinicalHistory } from '../views';
+} from '@/interfaces';
+import { Session } from '@/modules';
+import { ClinicalHistory } from '@/modules/sessions';
 
 export class SessionRepository implements ISessionRepository {
   private sessionRepository: Repository<ISession>;

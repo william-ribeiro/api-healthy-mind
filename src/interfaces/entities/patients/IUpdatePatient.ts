@@ -1,4 +1,4 @@
-import { IUpdateAddress } from '../address';
+import { IUpdateAddress } from '@/interfaces';
 
 export interface IUpdatePatient {
   userId?: string;

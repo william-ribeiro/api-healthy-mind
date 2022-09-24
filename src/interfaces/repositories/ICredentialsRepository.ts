@@ -1,4 +1,4 @@
-import { ICreateCredentials, ICredentials, IUpdateCredentials } from '../entities';
+import { ICreateCredentials, ICredentials, IUpdateCredentials } from '@/interfaces';
 
 export interface ICredentialsRepository {
   getCredentialByOwnerId(ownerId: string): Promise<ICredentials>;

@@ -1,8 +1,9 @@
 import moment from 'moment';
 import { inject, injectable } from 'tsyringe';
-import { CONTAINER, ROLE_PROTECTED } from '../../../../constants';
-import { AppError } from '../../../../errors';
-import { IRoleRepository } from './../../../../interfaces';
+
+import { CONTAINER, ROLE_PROTECTED } from '@/constants';
+import { AppError } from '@/errors';
+import { IRoleRepository } from '@/interfaces';
 
 @injectable()
 export class RemoveRoleUseCase {

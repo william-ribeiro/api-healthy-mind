@@ -1,6 +1,7 @@
 import { inject, injectable } from 'tsyringe';
-import { CONTAINER } from '../../../../constants';
-import { IDashboard, IUsersRepository } from '../../../../interfaces';
+
+import { CONTAINER } from '@/constants';
+import { IDashboard, IUsersRepository } from '@/interfaces';
 
 @injectable()
 export class DashboardUseCase {

@@ -1,5 +1,4 @@
-import { ICreateSession, ISession, IUpdateSession } from '../entities/sessions';
-import { IClinicalHistory } from '../views';
+import { IClinicalHistory, ICreateSession, ISession, IUpdateSession } from '@/interfaces';
 
 export interface ISessionRepository {
   getSessionById(sessionId: number, userId: string): Promise<ISession>;

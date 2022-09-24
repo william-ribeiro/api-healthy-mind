@@ -1,11 +1,11 @@
 import { decode, verify } from 'jsonwebtoken';
 import { inject, injectable } from 'tsyringe';
 
-import { CONTAINER, JWT } from '../../../../constants';
-import { AppError } from '../../../../errors';
-import { ICredentialsRepository, IPayload, IRefreshToken } from '../../../../interfaces';
-import { logger, timeBr } from '../../../../shared';
-import { generateToken } from '../../../../utils';
+import { CONTAINER, JWT } from '@/constants';
+import { AppError } from '@/errors';
+import { ICredentialsRepository, IPayload, IRefreshToken } from '@/interfaces';
+import { logger, timeBr } from '@/shared';
+import { generateToken } from '@/utils';
 
 @injectable()
 export class RefreshTokenUseCase {

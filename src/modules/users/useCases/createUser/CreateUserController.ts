@@ -1,8 +1,9 @@
-import { CreateUserUseCase } from './CreateUserUseCase';
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
-import { AppError } from '../../../../errors';
-import { logger, timeBr } from '../../../../shared';
+
+import { AppError } from '@/errors';
+import { CreateUserUseCase } from '@/modules/users';
+import { logger, timeBr } from '@/shared';
 
 export class CreateUserController {
   async handle(request: Request, response: Response): Promise<Response> {

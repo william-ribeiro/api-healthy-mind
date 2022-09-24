@@ -1,8 +1,9 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
-import { AppError } from '../../../../errors';
-import { logger, timeBr } from '../../../../shared';
-import { CreateResourceUseCase } from './CreateResourceUseCase';
+
+import { AppError } from '@/errors';
+import { CreateResourceUseCase } from '@/modules/resources';
+import { logger, timeBr } from '@/shared';
 
 export class CreateResoureController {
   async handle(request: Request, response: Response): Promise<Response> {

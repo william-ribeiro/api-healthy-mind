@@ -1,9 +1,9 @@
 import moment from 'moment';
-
 import { getRepository, Repository } from 'typeorm';
-import { ICreateUser, IDashboard, IUpdateUser, IUser, IUsersRepository } from '../../../interfaces';
-import { User } from '../entities';
-import { Dashboard } from '../views';
+
+import { ICreateUser, IDashboard, IUpdateUser, IUser, IUsersRepository } from '@/interfaces';
+import { User } from '@/modules';
+import { Dashboard } from '@/modules/users';
 
 export class UsersRepository implements IUsersRepository {
   public repository: Repository<IUser>;

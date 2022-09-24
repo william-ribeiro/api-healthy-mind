@@ -1,14 +1,15 @@
 import { inject, injectable } from 'tsyringe';
-import { AppError } from '../../../../errors';
+
+import { CONTAINER } from '@/constants';
+import { AppError } from '@/errors';
 import {
   ICreateSession,
   IPatientRepository,
   IResourceRepository,
   ISession,
   ISessionRepository,
-} from '../../../../interfaces';
-import { Validators } from '../../../../shared';
-import { CONTAINER } from './../../../../constants';
+} from '@/interfaces';
+import { Validators } from '@/shared';
 
 @injectable()
 export class CreateSessionUseCase {

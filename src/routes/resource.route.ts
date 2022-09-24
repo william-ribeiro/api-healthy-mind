@@ -1,10 +1,11 @@
 import { Router } from 'express';
+
 import {
   CreateResoureController,
   ListResourceController,
   RemoveResourceController,
   UpdateResourceController,
-} from '../modules';
+} from '@/modules/resources';
 
 export const resourceRoutes = Router();
 

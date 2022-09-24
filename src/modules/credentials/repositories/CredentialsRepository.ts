@@ -1,12 +1,13 @@
 import moment from 'moment';
 import { getRepository, Repository } from 'typeorm';
+
 import {
   ICreateCredentials,
   ICredentials,
   ICredentialsRepository,
   IUpdateCredentials,
-} from '../../../interfaces';
-import { Credentials } from '../entities';
+} from '@/interfaces';
+import { Credentials } from '@/modules';
 
 export class CredentialsRepository implements ICredentialsRepository {
   private repository: Repository<ICredentials>;

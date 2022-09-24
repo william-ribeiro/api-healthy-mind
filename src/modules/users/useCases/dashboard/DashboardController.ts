@@ -1,8 +1,9 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
-import { AppError } from '../../../../errors';
-import { logger, timeBr } from '../../../../shared';
-import { DashboardUseCase } from './DashboardUseCase';
+
+import { AppError } from '@/errors';
+import { DashboardUseCase } from '@/modules/users';
+import { logger, timeBr } from '@/shared';
 
 export class DashboardController {
   async handle(request: Request, response: Response): Promise<Response> {

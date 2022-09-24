@@ -1,5 +1,6 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
-import { DATABASE } from './../../constants/index';
+
+import { DATABASE } from '@/constants';
 
 export class createTableSessions1661490620503 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {

@@ -1,7 +1,5 @@
 /* eslint-disable @typescript-eslint/require-await */
-
-import { ICreateRole, IRole, IRoleRepository, IUpdateRole } from '../../../src/interfaces';
-
+import { ICreateRole, IRole, IRoleRepository, IUpdateRole } from '@/interfaces';
 import { fakeRoles } from './fakeRoles';
 
 export class RolesRepositoryMock implements IRoleRepository {

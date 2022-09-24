@@ -1,8 +1,7 @@
-import { ISession } from '../../../src/interfaces';
+import { ISession } from '@/interfaces';
 import { fakePatients } from '../patients';
+import { fakeResources } from '../resources/';
 import { fakeUsers } from '../users';
-import { fakeResources } from './../resources/fakeResources';
-
 export const fakeSession: ISession[] = [
   {
     id: 1,

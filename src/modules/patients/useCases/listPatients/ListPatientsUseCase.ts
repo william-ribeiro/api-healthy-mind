@@ -1,7 +1,8 @@
 import { inject, injectable } from 'tsyringe';
-import { CONTAINER, PAGINATION } from '../../../../constants';
-import { IPaginate, IPatient, IPatientRepository } from '../../../../interfaces';
-import { parsePage } from '../../../../utils';
+
+import { CONTAINER, PAGINATION } from '@/constants';
+import { IPaginate, IPatient, IPatientRepository } from '@/interfaces';
+import { parsePage } from '@/utils';
 
 @injectable()
 export class ListPatientsUseCase {

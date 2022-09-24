@@ -1,8 +1,9 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
-import { AppError } from '../../../../errors';
-import { logger, timeBr } from '../../../../shared';
-import { UpdateResourceUseCase } from './UpdateResourceUseCase';
+
+import { AppError } from '@/errors';
+import { UpdateResourceUseCase } from '@/modules/resources';
+import { logger, timeBr } from '@/shared';
 
 export class UpdateResourceController {
   async handle(request: Request, response: Response): Promise<Response> {

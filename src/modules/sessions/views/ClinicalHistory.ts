@@ -1,6 +1,7 @@
 import { ViewColumn, ViewEntity } from 'typeorm';
-import { DATABASE } from '../../../constants';
-import { IClinicalHistory } from '../../../interfaces';
+
+import { DATABASE } from '@/constants';
+import { IClinicalHistory } from '@/interfaces';
 
 @ViewEntity(DATABASE.VIEWS.CLINICAL_HISTORY)
 export class ClinicalHistory implements IClinicalHistory {

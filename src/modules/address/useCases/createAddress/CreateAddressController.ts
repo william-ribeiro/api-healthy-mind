@@ -16,8 +16,10 @@ export class CreateAddressController {
       logger.info(`${timeBr} | [ADDRESS CREATED] => ${JSON.stringify(payload)}`);
 
       return response.status(201).json(createAddress);
-    } catch (err: Error | any) {
-      logger.error(`${timeBr} | [ADDRESS NOT CREATED => ${JSON.stringify(payload)}]`);
+    } catch (err) {
+      logger.error(
+        `${timeBr} | [ADDRESS NOT CREATED => Error: ${err.message} | ${JSON.stringify(payload)}]`,
+      );
 
       throw new AppError(err.message, err.statusCode);
     }

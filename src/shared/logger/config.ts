@@ -1,5 +1,6 @@
-import winston from 'winston';
 import { resolve } from 'path';
+import winston from 'winston';
+import winstonDaily from 'winston-daily-rotate-file';
 
 const filter = (level: string) =>
   winston.format((info) => {
@@ -18,21 +19,36 @@ const levels = {
 };
 
 const transports = [
-  new winston.transports.File({
-    filename: resolve(__dirname, '..', '..', '..', 'logs', 'error.log'),
+  new winstonDaily({
     level: 'error',
-    format: winston.format.simple(),
+    datePattern: 'YYY-MM-DD',
+    dirname: resolve(__dirname, '..', '..', '..', 'logs', 'error'),
+    filename: '%DATE%.log',
+    maxFiles: 30,
+    json: false,
+    zippedArchive: true,
+    format: filter('error'),
   }),
 
-  new winston.transports.File({
-    filename: resolve(__dirname, '..', '..', '..', 'logs', 'combined.log'),
+  new winstonDaily({
     level: 'info',
-    format: winston.format.simple(),
+    datePattern: 'YYY-MM-DD',
+    dirname: resolve(__dirname, '..', '..', '..', 'logs', 'info'),
+    filename: '%DATE%.log',
+    maxFiles: 30,
+    json: false,
+    zippedArchive: true,
+    format: filter('info'),
   }),
 
-  new winston.transports.File({
-    filename: resolve(__dirname, '..', '..', '..', 'logs', 'http.log'),
+  new winstonDaily({
     level: 'http',
+    datePattern: 'YYY-MM-DD',
+    filename: '%DATE%.log',
+    dirname: resolve(__dirname, '..', '..', '..', 'logs', 'http'),
+    maxFiles: 30,
+    json: false,
+    zippedArchive: true,
     format: filter('http'),
   }),
 

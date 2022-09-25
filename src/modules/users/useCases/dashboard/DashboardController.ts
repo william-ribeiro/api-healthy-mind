@@ -17,8 +17,8 @@ export class DashboardController {
       logger.info(`${timeBr} | [TOTALS IN DASHBOARD] => ${JSON.stringify(dashboard)}`);
 
       return response.json(dashboard);
-    } catch (err: Error | any) {
-      logger.error(`${timeBr} | [GET DASHBOARD FAILED] `);
+    } catch (err) {
+      logger.error(`${timeBr} | [GET DASHBOARD FAILED] => Error: ${err.message} | `);
 
       throw new AppError(err.message, err.statusCode);
     }

@@ -17,8 +17,8 @@ export class ClinicalHistoryController {
       logger.info(`${timeBr} | [TOTAL CLINICAL HISTORY] => ${clinicalHistory.length}`);
 
       return response.json(clinicalHistory);
-    } catch (err: Error | any) {
-      logger.error(`${timeBr} | [GET CLINICAL HISTORY FAILED] `);
+    } catch (err) {
+      logger.error(`${timeBr} | [GET CLINICAL HISTORY FAILED] => Error: ${err.message} | `);
 
       throw new AppError(err.message, err.statusCode);
     }

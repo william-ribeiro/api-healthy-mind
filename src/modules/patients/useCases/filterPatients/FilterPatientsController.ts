@@ -22,8 +22,10 @@ export class FilterPatientsController {
       logger.info(`${timeBr} | [TOTAL FILTER PATIENTS] => ${patients.response.legth}`);
 
       return response.json(patients);
-    } catch (err: Error | any) {
-      logger.error(`${timeBr} | [FILTER PATIENTS FAILED] => {field: ${field}}`);
+    } catch (err) {
+      logger.error(
+        `${timeBr} | [FILTER PATIENTS FAILED] => Error: ${err.message} | {field: ${field}}`,
+      );
 
       throw new AppError(err.message, err.statusCode);
     }

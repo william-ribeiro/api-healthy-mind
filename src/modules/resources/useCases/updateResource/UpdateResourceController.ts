@@ -23,8 +23,10 @@ export class UpdateResourceController {
       logger.info(`${timeBr} | [RESOURCE CREATED] => ${JSON.stringify(payload)}`);
 
       return response.json(resource);
-    } catch (err: Error | any) {
-      logger.error(`${timeBr} | [RESOURCE NOT UPDATED] => ${JSON.stringify(payload)}`);
+    } catch (err) {
+      logger.error(
+        `${timeBr} | [RESOURCE NOT UPDATED] => Error: ${err.message} | ${JSON.stringify(payload)}`,
+      );
 
       throw new AppError(err.message, err.statusCode);
     }

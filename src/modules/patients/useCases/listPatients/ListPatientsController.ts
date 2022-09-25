@@ -17,8 +17,8 @@ export class ListPatientsController {
       logger.info(`${timeBr} | [TOTAL PATIENTS] => ${patients.response.length}`);
 
       return response.json(patients);
-    } catch (err: Error | any) {
-      logger.error(`${timeBr} | [LIST PATIENTS FAILED] `);
+    } catch (err) {
+      logger.error(`${timeBr} | [LIST PATIENTS FAILED] => Error: ${err.message}`);
 
       throw new AppError(err.message, err.statusCode);
     }

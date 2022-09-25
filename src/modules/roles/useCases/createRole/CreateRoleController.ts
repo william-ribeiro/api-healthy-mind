@@ -15,8 +15,8 @@ export class CreateRoleController {
       logger.info(`${timeBr} | [ROLE CREATED] => ${{ role }}`);
 
       return response.status(201).json(role);
-    } catch (err: Error | any) {
-      logger.error(`${timeBr} | [ROLE NOT CREATED] => ${err.message}`);
+    } catch (err) {
+      logger.error(`${timeBr} | [ROLE NOT CREATED] => Error: ${err.message} | ${err.message}`);
 
       throw new AppError(err.message, err.statusCode);
     }

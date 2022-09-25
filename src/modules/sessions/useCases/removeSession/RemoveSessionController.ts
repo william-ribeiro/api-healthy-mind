@@ -18,8 +18,8 @@ export class RemoveSessionController {
       logger.info(`${timeBr} | [REMOVED SESSION] => ${sessionId}`);
 
       return response.sendStatus(204);
-    } catch (err: Error | any) {
-      logger.error(`${timeBr} | [SESSION NOT REMOVED] => ${sessionId}`);
+    } catch (err) {
+      logger.error(`${timeBr} | [SESSION NOT REMOVED] => Error: ${err.message} | ${sessionId}`);
 
       throw new AppError(err.message, err.statusCode);
     }

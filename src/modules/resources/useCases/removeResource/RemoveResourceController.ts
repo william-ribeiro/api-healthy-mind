@@ -18,8 +18,10 @@ export class RemoveResourceController {
       logger.info(`${timeBr} | [RESOURCE REMOVED] => resourceId: ${resourceId}`);
 
       return response.sendStatus(204);
-    } catch (err: Error | any) {
-      logger.error(`${timeBr} | [RESOURCE NOT REMOVED] => resourceId: ${resourceId}`);
+    } catch (err) {
+      logger.error(
+        `${timeBr} | [RESOURCE NOT REMOVED] => Error: ${err.message} | resourceId: ${resourceId}`,
+      );
       throw new AppError(err.message, err.statusCode);
     }
   }

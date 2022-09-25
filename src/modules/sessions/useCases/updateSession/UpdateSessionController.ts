@@ -19,8 +19,10 @@ export class UpdateSessionController {
       logger.info(`${timeBr} | [UPDATED SESSION] => ${JSON.stringify(createSession)}`);
 
       return response.json(createSession);
-    } catch (err: Error | any) {
-      logger.error(`${timeBr} | [SESSION NOT UPDATED] => ${JSON.stringify(payload)}`);
+    } catch (err) {
+      logger.error(
+        `${timeBr} | [SESSION NOT UPDATED] => Error: ${err.message} | ${JSON.stringify(payload)}`,
+      );
 
       throw new AppError(err.message, err.statusCode);
     }

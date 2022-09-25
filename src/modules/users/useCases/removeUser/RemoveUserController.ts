@@ -15,8 +15,8 @@ export class RemoveUserController {
       logger.info(`${timeBr} | [USER REMOVED] => ${id}`);
 
       return response.status(204).send();
-    } catch (err: Error | any) {
-      logger.error(`${timeBr} | [USER NOT REMOVED] => ${id}`);
+    } catch (err) {
+      logger.error(`${timeBr} | [USER NOT REMOVED] => Error: ${err.message} | ${id}`);
 
       throw new AppError(err.message);
     }

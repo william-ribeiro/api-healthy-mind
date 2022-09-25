@@ -18,8 +18,10 @@ export class RemovePatientController {
       logger.info(`${timeBr} | [PATIENT REMOVED] => patientId: ${patientId}`);
 
       return response.sendStatus(204);
-    } catch (err: Error | any) {
-      logger.error(`${timeBr} | [PATIENT NOT REMOVED] => patientId: ${patientId}`);
+    } catch (err) {
+      logger.error(
+        `${timeBr} | [PATIENT NOT REMOVED] => Error: ${err.message} | patientId: ${patientId}`,
+      );
       throw new AppError(err.message, err.statusCode);
     }
   }

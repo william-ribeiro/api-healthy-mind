@@ -18,8 +18,10 @@ export class UpdatePatientController {
       logger.info(`${timeBr} | [UPDATED PATIENT] => ${JSON.stringify(payload)}`);
 
       return response.json(updatePatient);
-    } catch (err: Error | any) {
-      logger.error(`${timeBr} | [PATIENT NOT UPDATED] => ${JSON.stringify(payload)}`);
+    } catch (err) {
+      logger.error(
+        `${timeBr} | [PATIENT NOT UPDATED] => Error: ${err.message} | ${JSON.stringify(payload)}`,
+      );
 
       throw new AppError(err.message, err.statusCode);
     }

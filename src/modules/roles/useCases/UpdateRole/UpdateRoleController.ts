@@ -18,8 +18,10 @@ export class UpdateRoleController {
       logger.info(`${timeBr} | [ROLE UPDATED] => ${JSON.stringify(payload)}`);
 
       return response.json(role);
-    } catch (err: Error | any) {
-      logger.error(`${timeBr} | [ROLE NOT UPDATED] => ${JSON.stringify(payload)}`);
+    } catch (err) {
+      logger.error(
+        `${timeBr} | [ROLE NOT UPDATED] => Error: ${err.message} | ${JSON.stringify(payload)}`,
+      );
 
       throw new AppError(err.message, err.statusCode);
     }

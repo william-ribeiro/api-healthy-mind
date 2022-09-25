@@ -18,8 +18,8 @@ export class PatientInfoController {
       logger.info(`${timeBr} | [PATIENT INFO SUCCESS] => ${patientId}`);
 
       return response.json(patients);
-    } catch (err: Error | any) {
-      logger.error(`${timeBr} | [PATIENT INFO FAILED] => ${patientId}}`);
+    } catch (err) {
+      logger.error(`${timeBr} | [PATIENT INFO FAILED] => Error: ${err.message} | ${patientId}}`);
 
       throw new AppError(err.message, err.statusCode);
     }

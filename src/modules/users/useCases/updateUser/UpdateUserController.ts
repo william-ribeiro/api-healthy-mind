@@ -18,8 +18,8 @@ export class UpdateUserController {
       logger.info(`${timeBr} | [Updated user] => ${userUpdate.email}`);
 
       return response.json(userUpdate);
-    } catch (err: Error | any) {
-      logger.error(`${timeBr} | [User not updated] => ${err.message}`);
+    } catch (err) {
+      logger.error(`${timeBr} | [User not updated] => Error: ${err.message} | ${err.message}`);
 
       throw new AppError(err.message, err.statusCode);
     }

@@ -18,8 +18,10 @@ export class CreatePatientController {
       logger.info(`${timeBr} | [CREATED PATIENT] => ${JSON.stringify(patient)}`);
 
       return response.status(201).json(patient);
-    } catch (err: Error | any) {
-      logger.error(`${timeBr} | [PATIENT NOT CREATED] => ${JSON.stringify(payload)}`);
+    } catch (err) {
+      logger.error(
+        `${timeBr} | [PATIENT NOT CREATED] => Error: ${err.message} | ${JSON.stringify(payload)}`,
+      );
 
       throw new AppError(err.message, err.statusCode);
     }

@@ -17,8 +17,8 @@ export class RefreshTokenController {
       logger.info(`${timeBr} | [REFRESH TOKEN SUCCESS] =>`);
 
       return response.json({ accessToken: newAcessToken });
-    } catch (err: Error | any) {
-      logger.error(`${timeBr} | [REFRESH TOKEN FAIL] => ${err.message}`);
+    } catch (err) {
+      logger.error(`${timeBr} | [REFRESH TOKEN FAIL] => Error: ${err.message} | ${err.message}`);
 
       throw new AppError(err.message, err.statusCode);
     }

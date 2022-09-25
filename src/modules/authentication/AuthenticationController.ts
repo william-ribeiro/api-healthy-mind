@@ -19,7 +19,9 @@ export class AuthenticationController {
 
       return response.json(token);
     } catch (err) {
-      logger.error(`${timeBr} | [LOGIN FAILED]=> ${email} | ${err.message} `);
+      logger.error(
+        `${timeBr} | [LOGIN FAILED]=> Error: ${err.message} | ${email} | ${err.message} `,
+      );
 
       if (err.statusCode === 401) throw new AppError(err.message, err.statusCode);
 

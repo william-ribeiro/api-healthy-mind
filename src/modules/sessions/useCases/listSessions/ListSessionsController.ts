@@ -17,8 +17,8 @@ export class ListSessionsController {
       logger.info(`${timeBr} | [TOTAL SESSIONS] => ${sessions.response.length}`);
 
       return response.json(sessions);
-    } catch (err: Error | any) {
-      logger.error(`${timeBr} | [LIST SESSIONS FAILED] `);
+    } catch (err) {
+      logger.error(`${timeBr} | [LIST SESSIONS FAILED] => Error: ${err.message} | `);
 
       throw new AppError(err.message, err.statusCode);
     }

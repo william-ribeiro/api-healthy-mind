@@ -15,8 +15,10 @@ export class CreateUserController {
       logger.info(`${timeBr} | [USER CREATED] => ${user.email}`);
 
       return response.status(201).json(user);
-    } catch (err: Error | any) {
-      logger.error(`${timeBr} | [USER NOT CREATED] => ${err.message}`);
+    } catch (err) {
+      logger.error(
+        `${timeBr} | [USER NOT CREATED] => Error: ${err.message} | ${JSON.stringify(request.body)}`,
+      );
 
       throw new AppError(err.message, err.statusCode);
     }

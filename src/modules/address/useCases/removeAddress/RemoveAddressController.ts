@@ -16,8 +16,10 @@ export class RemoveAddressController {
       logger.info(`${timeBr} | [ADDRESS REMOVED] => {"addresId":"${addressId}"`);
 
       return response.status(204).send();
-    } catch (err: Error | any) {
-      logger.error(`${timeBr} | [ADDRESS NOT REMOVED] => {"addressId":"${addressId}"}`);
+    } catch (err) {
+      logger.error(
+        `${timeBr} | [ADDRESS NOT REMOVED] => Error: ${err.message} | {"addressId":"${addressId}"}`,
+      );
 
       throw new AppError(err.message, err.statusCode);
     }

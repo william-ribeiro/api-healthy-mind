@@ -17,8 +17,10 @@ export class UpdateAddressController {
       logger.info(`${timeBr} | [ADDRESS UPDATED] => ${JSON.stringify(payload)}`);
 
       return response.json(updateAddress);
-    } catch (err: Error | any) {
-      logger.error(`${timeBr} | [ADDRESS NOT UPDATED] => ${JSON.stringify(payload)}`);
+    } catch (err) {
+      logger.error(
+        `${timeBr} | [ADDRESS NOT UPDATED] => Error: ${err.message} | ${JSON.stringify(payload)}`,
+      );
       throw new AppError(err.message, err.statusCode);
     }
   }

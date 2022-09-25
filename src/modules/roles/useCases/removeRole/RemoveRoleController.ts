@@ -16,8 +16,8 @@ export class RemoveRoleController {
       logger.info(`${timeBr} | [ROLE REMOVED] => ${{ id: roleId }}`);
 
       return response.sendStatus(204);
-    } catch (err: Error | any) {
-      logger.error(`${timeBr} | [ROLE NOT REMOVED] => ${{ id: roleId }}`);
+    } catch (err) {
+      logger.error(`${timeBr} | [ROLE NOT REMOVED] => Error: ${err.message} | ${{ id: roleId }}`);
 
       throw new AppError(err.message, err.statuCode);
     }

@@ -18,8 +18,10 @@ export class CreateSessionController {
       logger.info(`${timeBr} | [CREATED SESSION] => ${JSON.stringify(createSession)}`);
 
       return response.status(201).json(createSession);
-    } catch (err: Error | any) {
-      logger.error(`${timeBr} | [SESSION NOT CREATED] => ${JSON.stringify(payload)}`);
+    } catch (err) {
+      logger.error(
+        `${timeBr} | [SESSION NOT CREATED] => Error: ${err.message} | ${JSON.stringify(payload)}`,
+      );
 
       throw new AppError(err.message, err.statusCode);
     }

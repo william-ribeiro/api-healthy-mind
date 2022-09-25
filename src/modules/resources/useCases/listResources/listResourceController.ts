@@ -16,8 +16,8 @@ export class ListResourceController {
       logger.info(`${timeBr} | [TOTAL RESOURCES] => ${resources.total}`);
 
       return response.json(resources);
-    } catch (err: Error | any) {
-      logger.error(`${timeBr} | [LIST RESOURCE FAILED]`);
+    } catch (err) {
+      logger.error(`${timeBr} | [LIST RESOURCE FAILED] => Error: ${err.message} |`);
 
       throw new AppError(err.message, err.statusCode);
     }

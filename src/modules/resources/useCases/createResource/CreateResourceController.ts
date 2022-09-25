@@ -20,9 +20,12 @@ export class CreateResoureController {
       logger.info(`${timeBr} | [RESOURCE CREATED] => ${JSON.stringify({ payload })}`);
 
       return response.status(201).json(resource);
-    } catch (err: Error | any) {
+    } catch (err) {
       logger.error(
-        `${timeBr} | [RESOURCE NOT CREATED] => ${JSON.stringify({ ...payload, userId })}`,
+        `${timeBr} | [RESOURCE NOT CREATED] => Error: ${err.message} | ${JSON.stringify({
+          ...payload,
+          userId,
+        })}`,
       );
 
       throw new AppError(err.message, err.statusCode);

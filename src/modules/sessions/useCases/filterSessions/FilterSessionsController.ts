@@ -23,8 +23,10 @@ export class FilterSessionsController {
       logger.info(`${timeBr} | [TOTAL FILTER SESSIONS] => ${sessions.response.legth}`);
 
       return response.json(sessions);
-    } catch (err: Error | any) {
-      logger.error(`${timeBr} | [FILTER SESSIONS FAILED] => {field: ${field}}`);
+    } catch (err) {
+      logger.error(
+        `${timeBr} | [FILTER SESSIONS FAILED] => Error: ${err.message} | {field: ${field}}`,
+      );
 
       throw new AppError(err.message, err.statusCode);
     }

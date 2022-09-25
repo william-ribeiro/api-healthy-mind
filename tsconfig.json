@@ -33,5 +33,5 @@
     }
   },
   "include": ["**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "**/*.spec.ts", "__tests__", "jest.config.ts"]
 }

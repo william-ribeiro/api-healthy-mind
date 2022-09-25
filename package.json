@@ -12,6 +12,7 @@
     "docker:tests": "docker-compose -f tools/init.yml run --rm tests",
     "start": "node dist/src/server.js",
     "build": "tsc",
+    "postbuild": "ef-tspm",
     "start:server": "nodemon -r tsconfig-paths/register -w src --ext ts --exec ts-node --transpile-only src/server.ts",
     "deploy": "git checkout main && git merge develop && git push -f origin main && git checkout develop",
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli",
@@ -25,6 +26,7 @@
     "test:coverage": "npx jest --verbose --runInBand --coverage"
   },
   "dependencies": {
+    "@ef-carbon/tspm": "^2.2.5",
     "@jest/globals": "^28.0.0",
     "@types/app-root-path": "^1.2.4",
     "@types/axios": "^0.14.0",

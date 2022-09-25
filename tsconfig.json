@@ -1,7 +1,6 @@
 {
   "ts-node": {
-    "files": true,
-    "compilerOptions": {}
+    "files": true
   },
   "compilerOptions": {
     "target": "es2017",
@@ -32,6 +31,6 @@
       "@utils": ["utils"]
     }
   },
-  "include": ["**/*.ts"],
+  "include": ["**/*.ts", "babel.config.js"],
   "exclude": ["node_modules", "**/*.spec.ts", "__tests__"]
 }

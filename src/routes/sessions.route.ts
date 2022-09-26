@@ -12,7 +12,11 @@ import {
 
 export const sessionsRoutes = Router();
 
-sessionsRoutes.get('/:patientId', AUTH.ALL, new ClinicalHistoryController().handle);
+sessionsRoutes.get(
+  '/history-clinical/:patientId',
+  AUTH.ALL,
+  new ClinicalHistoryController().handle,
+);
 sessionsRoutes.get('/list', AUTH.ALL, new ListSessionsController().handle);
 
 sessionsRoutes.get('/filter', AUTH.PROFESSIONAL, new FilterSessionsController().handle);

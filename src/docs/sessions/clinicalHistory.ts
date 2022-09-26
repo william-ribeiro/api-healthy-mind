@@ -4,7 +4,7 @@ const { successResponse, badRequestError, unauthorizedError, forbiddenError, int
   components.responses;
 
 export const clinicalHistory = {
-  '/sessions/{patientId}': {
+  '/sessions/history-clinical/{patientId}': {
     get: {
       tags: ['Sessions'],
       security: [{ bearerAuth: [] }],

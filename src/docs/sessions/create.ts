@@ -1,7 +1,13 @@
 import { components } from '../config';
 
-const { createdResponse, badRequestError, notFoundError, unauthorizedError, internalError } =
-  components.responses;
+const {
+  createdResponse,
+  badRequestError,
+  notFoundError,
+  unauthorizedError,
+  forbiddenError,
+  internalError,
+} = components.responses;
 
 export const create = {
   '/sessions': {
@@ -55,8 +61,9 @@ export const create = {
       responses: {
         '201': createdResponse,
         '400': badRequestError,
-        '404': notFoundError,
         '401': unauthorizedError,
+        '403': forbiddenError,
+        '404': notFoundError,
         '500': internalError,
       },
     },

@@ -1,6 +1,6 @@
 import { components } from '../config';
 
-const { noContentResponse, badRequestError, unauthorizedError, internalError } =
+const { noContentResponse, badRequestError, unauthorizedError, forbiddenError, internalError } =
   components.responses;
 
 export const remove = {
@@ -14,6 +14,7 @@ export const remove = {
         '204': noContentResponse,
         '400': badRequestError,
         '401': unauthorizedError,
+        '403': forbiddenError,
         '500': internalError,
       },
     },

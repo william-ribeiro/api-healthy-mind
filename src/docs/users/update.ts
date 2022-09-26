@@ -7,6 +7,7 @@ const {
   notFoundError,
   conflictError,
   internalError,
+  forbiddenError,
 } = components.responses;
 
 export const update = {
@@ -41,6 +42,7 @@ export const update = {
         '200': successResponse,
         '400': badRequestError,
         '401': unauthorizedError,
+        '403,': forbiddenError,
         '404': notFoundError,
         '409': conflictError,
         '500': internalError,

@@ -1,6 +1,7 @@
 import { components } from '../config';
 
-const { successResponse, badRequestError, unauthorizedError, internalError } = components.responses;
+const { successResponse, badRequestError, unauthorizedError, forbiddenError, internalError } =
+  components.responses;
 
 export const patientInfo = {
   '/patients/info/{patientId}': {
@@ -22,6 +23,7 @@ export const patientInfo = {
         '200': successResponse,
         '400': badRequestError,
         '401': unauthorizedError,
+        '403': forbiddenError,
         '500': internalError,
       },
     },

@@ -1,5 +1,6 @@
 import { Router } from 'express';
 
+import { AUTH } from '@/middlewares';
 import {
   ClinicalHistoryController,
   CreateSessionController,
@@ -11,9 +12,14 @@ import {
 
 export const sessionsRoutes = Router();
 
-sessionsRoutes.get('/list', new ListSessionsController().handle);
-sessionsRoutes.get('/filter', new FilterSessionsController().handle);
-sessionsRoutes.get('/:patientId', new ClinicalHistoryController().handle);
-sessionsRoutes.post('/', new CreateSessionController().handle);
-sessionsRoutes.put('/update/:sessionId', new UpdateSessionController().handle);
-sessionsRoutes.delete('/remove/:sessionId', new RemoveSessionController().handle);
+sessionsRoutes.get('/:patientId', AUTH.ALL, new ClinicalHistoryController().handle);
+sessionsRoutes.get('/list', AUTH.ALL, new ListSessionsController().handle);
+
+sessionsRoutes.get('/filter', AUTH.PROFESSIONAL, new FilterSessionsController().handle);
+sessionsRoutes.post('/', AUTH.PROFESSIONAL, new CreateSessionController().handle);
+sessionsRoutes.put('/update/:sessionId', AUTH.PROFESSIONAL, new UpdateSessionController().handle);
+sessionsRoutes.delete(
+  '/remove/:sessionId',
+  AUTH.PROFESSIONAL,
+  new RemoveSessionController().handle,
+);

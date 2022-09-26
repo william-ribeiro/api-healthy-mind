@@ -1,5 +1,6 @@
 import { Router } from 'express';
 
+import { AUTH } from '@/middlewares';
 import {
   CreatePatientController,
   FilterPatientsController,
@@ -11,9 +12,14 @@ import {
 
 export const patientsRouter = Router();
 
-patientsRouter.get('/list', new ListPatientsController().handle);
-patientsRouter.get('/filter', new FilterPatientsController().handle);
-patientsRouter.get('/info/:patientId', new PatientInfoController().handle);
-patientsRouter.post('/', new CreatePatientController().handle);
-patientsRouter.put('/update/:patientId', new UpdatePatientController().handle);
-patientsRouter.delete('/remove/:patientId', new RemovePatientController().handle);
+patientsRouter.get('/info/:patientId', AUTH.ALL, new PatientInfoController().handle);
+patientsRouter.put('/update/:patientId', AUTH.ALL, new UpdatePatientController().handle);
+
+patientsRouter.get('/list', AUTH.PROFESSIONAL, new ListPatientsController().handle);
+patientsRouter.get('/filter', AUTH.PROFESSIONAL, new FilterPatientsController().handle);
+patientsRouter.post('/', AUTH.PROFESSIONAL, new CreatePatientController().handle);
+patientsRouter.delete(
+  '/remove/:patientId',
+  AUTH.PROFESSIONAL,
+  new RemovePatientController().handle,
+);

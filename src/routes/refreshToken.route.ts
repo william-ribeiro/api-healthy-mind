@@ -1,7 +1,8 @@
 import { Router } from 'express';
 
+import { AUTH } from '@/middlewares';
 import { RefreshTokenController } from '@/modules/credentials';
 
 export const refreshTokenRoutes = Router();
 
-refreshTokenRoutes.post('/', new RefreshTokenController().handle);
+refreshTokenRoutes.post('/', AUTH.ALL, new RefreshTokenController().handle);

@@ -1,7 +1,13 @@
 import { components } from '../config';
 
-const { createdResponse, badRequestError, conflictError, unauthorizedError, internalError } =
-  components.responses;
+const {
+  createdResponse,
+  badRequestError,
+  conflictError,
+  unauthorizedError,
+  forbiddenError,
+  internalError,
+} = components.responses;
 
 export const create = {
   '/patients': {
@@ -97,6 +103,7 @@ export const create = {
         '201': createdResponse,
         '400': badRequestError,
         '401': unauthorizedError,
+        '403': forbiddenError,
         '409': conflictError,
         '500': internalError,
       },

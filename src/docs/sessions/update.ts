@@ -1,7 +1,13 @@
 import { components } from '../config';
 
-const { successResponse, badRequestError, unauthorizedError, notFoundError, internalError } =
-  components.responses;
+const {
+  successResponse,
+  badRequestError,
+  unauthorizedError,
+  notFoundError,
+  forbiddenError,
+  internalError,
+} = components.responses;
 
 export const update = {
   '/sessions/update/{sessionId}': {
@@ -54,6 +60,7 @@ export const update = {
         '200': successResponse,
         '400': badRequestError,
         '401': unauthorizedError,
+        '403': forbiddenError,
         '404': notFoundError,
         '500': internalError,
       },

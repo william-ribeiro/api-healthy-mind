@@ -1,5 +1,6 @@
 import { Router } from 'express';
 
+import { AUTH } from '@/middlewares';
 import {
   CreateAddressController,
   RemoveAddressController,
@@ -8,6 +9,6 @@ import {
 
 export const addressRoutes = Router();
 
-addressRoutes.post('/', new CreateAddressController().handle);
-addressRoutes.put('/update/:addressId', new UpdateAddressController().handle);
-addressRoutes.delete('/remove/:addressId', new RemoveAddressController().handle);
+addressRoutes.post('/', AUTH.PROFESSIONAL, new CreateAddressController().handle);
+addressRoutes.put('/update/:addressId', AUTH.PROFESSIONAL, new UpdateAddressController().handle);
+addressRoutes.delete('/remove/:addressId', AUTH.PROFESSIONAL, new RemoveAddressController().handle);

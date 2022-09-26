@@ -6,6 +6,7 @@ const {
   unauthorizedError,
   conflictError,
   notFoundError,
+  forbiddenError,
   internalError,
 } = components.responses;
 
@@ -48,8 +49,9 @@ export const update = {
         '200': successResponse,
         '400': badRequestError,
         '401': unauthorizedError,
-        '409': conflictError,
+        '403': forbiddenError,
         '404': notFoundError,
+        '409': conflictError,
         '500': internalError,
       },
     },

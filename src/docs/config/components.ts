@@ -8,6 +8,7 @@ export const components = {
     noContentResponse: { description: 'No Content' },
     badRequestError: { description: 'Bad Request' },
     unauthorizedError: { description: 'Unauthorized' },
+    forbiddenError: { description: 'Forbidden' },
     notFoundError: { description: 'Not found' },
     conflictError: { description: 'Conflict' },
     internalError: { description: 'Internal server error' },
